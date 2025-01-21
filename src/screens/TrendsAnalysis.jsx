@@ -32,13 +32,13 @@ function TrendsAnalysis() {
     return (
         <Stack>
             <VStack alignItems={"flex-start"} padding={"24px 20px"} background={"rgba(254, 243, 113, 1)"} >
-                <Image onClick={() => navigate(-1)} w={"24px"} h={"24px"} src="../src/assets/leftarrowicon.svg" alt="trend" />
+                <Image onClick={() => navigate(-1)} w={"24px"} h={"24px"} src="/assets/leftarrowicon.svg" alt="trend" />
                 <HStack>
-                    <Image w={"66px"} h={"72px"} border={"1px solid rgba(0, 0, 0, 1)"} src="../src/assets/trendtwoimage.svg" alt="trend" />
+                    <Image w={"66px"} h={"72px"} border={"1px solid rgba(0, 0, 0, 1)"} src="/assets/trendtwoimage.svg" alt="trend" />
                     <VStack>
                         <Text fontWeight={"700"} fontSize={"20px"} color={"rgba(0, 0, 0, 1)"}>{trend}</Text>
                         <HStack>
-                            <Image src="../src/assets/downarrowicon.svg" alt="trend" />
+                            <Image src="/assets/downarrowicon.svg" alt="trend" />
                             <Text color={"rgba(255, 0, 0, 1)"} fontWeight={"500"} fontSize={"14px"}>-4.5%</Text>
                             <Text color={"rgba(0, 0, 0, 1)"} fontWeight={"500"} fontSize={"14px"}>Today</Text>
                         </HStack>

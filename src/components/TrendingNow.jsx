@@ -6,19 +6,19 @@ import { useNavigate } from "react-router-dom";
 
 const listOfTrendingNow = [
     {
-        img: "./src/assets/trendingone.svg",
+        img: "./assets/trendingone.svg",
         title: "Rich Brunette Waves",
         percentage: "1.2%",
         bgColor: "rgba(188, 196, 255, 1)"
     },
     {
-        img: "./src/assets/trendingtwo.svg",
+        img: "./assets/trendingtwo.svg",
         title: "Sleek Blonde Bob",
         percentage: "2.5%",
         bgColor: "rgba(254, 243, 113, 1)"
     },
     {
-        img: "./src/assets/trendingtwo.svg",
+        img: "./assets/trendingtwo.svg",
         title: "Curly Red Locks",
         percentage: "4.1%",
         bgColor: "rgba(218, 247, 239, 1)"
@@ -27,15 +27,15 @@ const listOfTrendingNow = [
 
 const optionsOfTrendingNow = [
     {
-        img: "./src/assets/Clockicon.svg",
+        img: "./assets/Clockicon.svg",
         title: "Trending Now",
     },
     {
-        img: "./src/assets/Trending up.svg",
+        img: "./assets/Trending up.svg",
         title: "Emerging Trends"
     },
     {
-        img: "./src/assets/Trending down.svg",
+        img: "./assets/Trending down.svg",
         title: "Declining Trends"
     }
 ]
@@ -63,7 +63,7 @@ function TrendingNow({ onSelectTrendingNow, selectedTrendingNow, selectedTrend }
         <Stack pl={"20px"} pr={"20px"} >
             <HStack ref={dropdownRef} onClick={() => setOpenTrendingNow(!openTrendingNow)} position="relative">
                 <Text fontWeight={"700"} color={"rgba(0, 0, 0, 1)"} fontSize={"18px"}>Trending Now</Text>
-                <Image src="./src/assets/dropdownlogo.svg" alt="Trending Now" />
+                <Image src="./assets/dropdownlogo.svg" alt="Trending Now" />
 
                 {openTrendingNow && (
                     <VStack
@@ -100,7 +100,7 @@ function TrendingNow({ onSelectTrendingNow, selectedTrendingNow, selectedTrend }
                         <Image w={"32px"} h={"32px"} src={trend.img} alt={trend.title} />
                         <Text fontWeight={"600"} color={"rgba(0, 0, 0, 0.9)"} fontSize={"14px"}>{trend.title}</Text>
                         <HStack>
-                            <Image src="./src/assets/uparrowicon.svg" alt="Arrow Up" />
+                            <Image src="./assets/uparrowicon.svg" alt="Arrow Up" />
                             <Text fontWeight={"700"} color={"rgba(0, 128, 0, 1)"} fontSize={"14px"}>{trend.percentage}</Text>
                         </HStack>
                     </Stack>
@@ -108,7 +108,7 @@ function TrendingNow({ onSelectTrendingNow, selectedTrendingNow, selectedTrend }
             </HStack>
             <HStack alignItems={"center"} justifyContent={"center"} mt={"15px"}>
                 <Text fontWeight={"800"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"} textDecoration={"underline"}>See More Trends</Text>
-                <Image src="./src/assets/rightarrowicon.svg" alt="Right Arrow" />
+                <Image src="./assets/rightarrowicon.svg" alt="Right Arrow" />
             </HStack>
         </Stack>
     )

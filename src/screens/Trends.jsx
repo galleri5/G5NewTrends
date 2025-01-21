@@ -5,15 +5,15 @@ import { useEffect, useRef, useState } from "react"
 
 const optionsOfTrendingNow = [
     {
-        img: "/src/assets/Clockicon.svg",
+        img: "/assets/Clockicon.svg",
         title: "Trending Now",
     },
     {
-        img: "/src/assets/Trending up.svg",
+        img: "/assets/Trending up.svg",
         title: "Emerging Trends"
     },
     {
-        img: "/src/assets/Trending down.svg",
+        img: "/assets/Trending down.svg",
         title: "Declining Trends"
     }
 ]
@@ -39,7 +39,7 @@ function Trends() {
     return (
         <Stack padding={"20px"}>
             <HStack alignItems={"flex-start"}>
-                <Image onClick={() => navigate(-1)} w={"30px"} h={"24px"} src="/src/assets/leftarrowicon.svg" alt="trend" />
+                <Image onClick={() => navigate(-1)} w={"30px"} h={"24px"} src="/assets/leftarrowicon.svg" alt="trend" />
                 <Text fontWeight={"500"} fontSize={"16px"} color={"rgba(0, 0, 0, 1)"}>Trends</Text>
             </HStack>
             <VStack alignItems={"flex-start"} mt={"20px"} gap={"20px"}>
@@ -48,7 +48,7 @@ function Trends() {
                 <VStack alignItems={"flex-start"}>
                     <HStack ref={dropdownRef} onClick={() => setOpenTrendingNow(!openTrendingNow)} position="relative">
                         <Text fontWeight={"700"} color={"rgba(0, 0, 0, 1)"} fontSize={"18px"}>{trending}</Text>
-                        <Image src="/src/assets/dropdownlogo.svg" alt="Trending Now" />
+                        <Image src="/assets/dropdownlogo.svg" alt="Trending Now" />
 
                         {openTrendingNow && (
                             <VStack
@@ -80,7 +80,7 @@ function Trends() {
                 <VStack alignItems={"flex-start"} w={"100%"} gap={"20px"} width={"100%"}>
                     <HStack justifyContent={"space-between"} w={"100%"}>
                         <Text fontWeight={"600"} fontSize={"14px"} color={"rgba(0, 0, 0, 1)"}>18 Trends</Text>
-                        <Image src="/src/assets/filterimage.svg" alt="trend" />
+                        <Image src="/assets/filterimage.svg" alt="trend" />
                     </HStack>
                 </VStack>
                 <ListOfTrendsTable />

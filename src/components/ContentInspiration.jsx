@@ -11,23 +11,23 @@ const listOfContent = [
 ]
 
 const listOfReels = [
-    { img: "../src/assets/contentinspirationImage.svg" },
-    { img: "../src/assets/contentinspirationImage.svg" },
-    { img: "../src/assets/contentinspirationImage.svg" },
-    { img: "../src/assets/contentinspirationImage.svg" },
+    { img: "/assets/contentinspirationImage.svg" },
+    { img: "/assets/contentinspirationImage.svg" },
+    { img: "/assets/contentinspirationImage.svg" },
+    { img: "/assets/contentinspirationImage.svg" },
 ]
 
 const optionsOfTrendingNow = [
     {
-        img: "../src/assets/engagementsimage.svg",
+        img: "/assets/engagementsimage.svg",
         title: "Engagements",
     },
     {
-        img: "../src/assets/Impressionsimage.svg",
+        img: "/assets/Impressionsimage.svg",
         title: "Impressions"
     },
     {
-        img: "../src/assets/virtalityimage.svg",
+        img: "/assets/virtalityimage.svg",
         title: "Virtality"
     }
 ]
@@ -38,7 +38,7 @@ function ContentInspiration({ onSelectContent, selectedContent, showContentGalle
         <Stack padding={showContentGallery == true ? "" : "20px"}>
             <HStack alignItems={"center"} justifyContent={"space-between"}>
                 <Text fontSize={"16px"} fontWeight={"700"} color={"rgba(0, 0, 0, 1)"}>{showContentGallery ? "Content Inspirations Gallery" : "Content Inspirations for you"}</Text>
-                <Image src="../src/assets/rightarrowicon.svg" alt="arrow" />
+                <Image src="/assets/rightarrowicon.svg" alt="arrow" />
             </HStack>
             <HStack w={"100%"} justifyContent={"space-around"} mt={"10px"}>
                 {listOfContent.map((content) => (
@@ -52,12 +52,12 @@ function ContentInspiration({ onSelectContent, selectedContent, showContentGalle
                 position={"relative"}
             >
                 <HStack>
-                    <Image w={"16px"} h={"16px"} src="../src/assets/rankedimage.svg" alt="content" />
+                    <Image w={"16px"} h={"16px"} src="/assets/rankedimage.svg" alt="content" />
                     <Text fontSize={"12px"} fontWeight={"600"} color={"rgba(0, 0, 0, 1)"}>Ranked By</Text>
                 </HStack>
                 <HStack onClick={() => setShowImpressions(!showImpressions)}>
                     <Text fontSize={"12px"} fontWeight={"600"} color={"rgba(0, 0, 0, 1)"}>Impressions</Text>
-                    <Image w={"16px"} h={"16px"} src="../src/assets/dropdownlogo.svg" alt="content" />
+                    <Image w={"16px"} h={"16px"} src="/assets/dropdownlogo.svg" alt="content" />
                 </HStack>
 
                 {showImpressions && (

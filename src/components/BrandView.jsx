@@ -1,27 +1,27 @@
 import { HStack, Image, Stack, Text } from "@chakra-ui/react"
 const listOfBrandsView = [
     {
-        img: "../src/assets/brand1image.svg",
+        img: "/assets/brand1image.svg",
         title: "Brand 1",
     },
     {
-        img: "../src/assets/pepsiimage.svg",
+        img: "/assets/pepsiimage.svg",
         title: "Brand 2",
     },
     {
-        img: "../src/assets/pgimage.svg",
+        img: "/assets/pgimage.svg",
         title: "Brand 3",
     },
     {
-        img: "../src/assets/macimage.svg",
+        img: "/assets/macimage.svg",
         title: "Brand 4",
     },
     {
-        img: "../src/assets/macimage.svg",
+        img: "/assets/macimage.svg",
         title: "Brand 4",
     },
     {
-        img: "../src/assets/macimage.svg",
+        img: "/assets/macimage.svg",
         title: "Brand 4",
     },
 
