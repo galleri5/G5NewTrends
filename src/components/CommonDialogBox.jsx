@@ -51,8 +51,7 @@ const CommonDialogBox = ({
 CommonDialogBox.propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClose: PropTypes.func.isRequired,
-    title: PropTypes.string.isRequired,
-    items: PropTypes.arrayOf().isRequired,
+    items: PropTypes.array,
     onSelect: PropTypes.func.isRequired,
     selectedItem: PropTypes.string
 }
