@@ -1,7 +1,8 @@
-import { Stack, Text, Image, HStack, VStack } from "@chakra-ui/react"
+import { Stack, Text, Image, HStack } from "@chakra-ui/react"
 import { useState, useRef, useEffect } from "react"
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
+import CommonDialogBox from "./CommonDialogBox";
 
 
 const listOfTrendingNow = [
@@ -45,6 +46,11 @@ function TrendingNow({ onSelectTrendingNow, selectedTrendingNow, selectedTrend }
     const dropdownRef = useRef(null);
     const navigate = useNavigate();
 
+    const handleSelect = (selectedItem) => {
+        onSelectTrendingNow(selectedItem);
+        navigate(`/trends/${selectedTrend}/${selectedItem}`);
+    };
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -61,34 +67,23 @@ function TrendingNow({ onSelectTrendingNow, selectedTrendingNow, selectedTrend }
 
     return (
         <Stack pl={"20px"} pr={"20px"} >
-            <HStack ref={dropdownRef} onClick={() => setOpenTrendingNow(!openTrendingNow)} position="relative">
-                <Text fontWeight={"700"} color={"rgba(0, 0, 0, 1)"} fontSize={"18px"}>Trending Now</Text>
-                <Image src="./assets/dropdownlogo.svg" alt="Trending Now" />
+            <HStack
+                ref={dropdownRef}
+                onClick={() => setOpenTrendingNow(!openTrendingNow)}
+                position="relative"
+            >
+                <Text fontWeight={"700"} color={"rgba(0, 0, 0, 1)"} fontSize={"18px"}>
+                    Trending Now
+                </Text>
+                <Image src="/assets/dropdownlogo.svg" alt="Trending Now" />
 
-                {openTrendingNow && (
-                    <VStack
-                        position="absolute"
-                        top="120%"
-                        left="0"
-                        borderWidth={"1px 3px 3px 1px"}
-                        padding={"12px"}
-                        borderRadius={"8px"}
-                        background={"rgba(255, 255, 255, 1)"}
-                        minW={"230px"}
-                        borderColor={"rgba(0, 0, 0, 1)"}
-                        zIndex={10}
-                        alignItems={"flex-start"}
-                    >
-                        {optionsOfTrendingNow.map((option, index) => (
-                            <HStack onClick={() => { onSelectTrendingNow(option?.title), navigate(`/trends/${selectedTrend}/${option?.title}`) }} key={index} background={option?.title == selectedTrendingNow ? "rgba(251, 221, 107, 1)" : ""} padding={"12px"} w={"100%"} borderRadius={"8px"}>
-                                <Image w={"16px"} h={"16px"} src={option.img} alt={option.title} />
-                                <Text fontWeight={"600"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"}>
-                                    {option.title}
-                                </Text>
-                            </HStack>
-                        ))}
-                    </VStack>
-                )}
+                <CommonDialogBox
+                    isOpen={openTrendingNow}
+                    onClose={() => setOpenTrendingNow(false)}
+                    items={optionsOfTrendingNow}
+                    onSelect={handleSelect}
+                    selectedItem={selectedTrendingNow}
+                />
             </HStack>
 
             <Text fontWeight={"500"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"}>
