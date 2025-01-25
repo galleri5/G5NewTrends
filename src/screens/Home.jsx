@@ -1,38 +1,62 @@
-import ContentInspiration from '@/components/ContentInspiration';
-import ListOfTrends from '@/components/ListOfTrends'
-import TopTrendsComponent from '@/components/TopTrendsComponent';
-import TrendingNow from '@/components/TrendingNow';
+
+import CategoryCard from '@/components/CategoryCard'
 import TrendsHeading from '@/components/TrendsHeading'
-import { Stack } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Stack, VStack, Text } from '@chakra-ui/react'
+// import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
+const listOfCategories = [
+    {
+        name: "Fashion",
+        img: "/assets/fashionimage.svg",
+        bgcolor: "rgba(255, 214, 179, 1)"
+    },
+    {
+        name: "Music",
+        img: "/assets/musicimage.svg",
+        bgcolor: "rgba(231, 243, 239, 1)"
+    },
+    {
+        name: "Beauty",
+        img: "/assets/beautyimage.svg",
+        bgcolor: "rgba(255, 230, 230, 1)"
+    },
+    {
+        name: "Drinks",
+        img: "/assets/fashionimage.svg",
+        bgcolor: "rgba(199, 206, 255, 1)"
+    }
+]
+
 
 function Home() {
-    const [selectedTrend, setSelectedTrend] = useState("Fashion");
-    console.log(selectedTrend);
-    const [selectedTrendingNow, setSelectedTrendingNow] = useState("Trending Now");
-    console.log(selectedTrendingNow);
-    const [selectedContent, setSelectedContent] = useState("All");
+    const navigate = useNavigate()
 
+    const handleSelectedCategory = (category) => {
+        console.log(category);
 
-
-    const handleTrendSelect = (trend) => {
-        setSelectedTrend(trend);
-    };
-
-    const handleTrendingNowSelect = (trendingNow) => {
-        setSelectedTrendingNow(trendingNow);
+        navigate(`/trends/${category}`)
     }
 
-    const handleSelectContent = (content) => {
-        setSelectedContent(content);
-    }
+
     return (
         <Stack>
             <TrendsHeading />
-            <ListOfTrends onTrendSelect={handleTrendSelect} selectedTrend={selectedTrend} />
-            <TrendingNow onSelectTrendingNow={handleTrendingNowSelect} selectedTrendingNow={selectedTrendingNow} selectedTrend={selectedTrend} />
-            <TopTrendsComponent selectedTrend={selectedTrend} />
-            <ContentInspiration onSelectContent={handleSelectContent} selectedContent={selectedContent} />
+            <VStack padding={"24px"} gap={"20px"}>
+                <VStack gap={"8px"} alignItems={"flex-start"}>
+                    <Text fontSize={"20px"} fontWeight={"700"} color={"rgba(0, 0, 0, 1)"}>
+                        Explore Categories
+                    </Text>
+                    <Text fontSize={"14px"} fontWeight={"500"} color={"rgba(0, 0, 0, 0.8)"}>Discover, Analyze, and Create with Data-Driven Insights.</Text>
+                </VStack>
+                <VStack w={"100%"} gap={"20px"}>
+                    {listOfCategories.map((category, index) => (
+                        <CategoryCard key={index} name={category.name} img={category.img} bgcolor={category.bgcolor} onClick={handleSelectedCategory} />
+                    ))}
+                </VStack>
+            </VStack>
+
+
         </Stack>
     )
 }
