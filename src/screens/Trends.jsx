@@ -1,65 +1,72 @@
-import { useNavigate, useParams } from "react-router-dom"
-import { HStack, Image, Stack, Text, VStack } from "@chakra-ui/react"
-import ListOfTrendsTable from "@/components/ListOfTrendsTable"
-import { useEffect, useRef, useState } from "react"
-import CommonDialogBox from "@/components/CommonDialogBox"
-import TrendsNameHeadingLabel from "@/components/TrendsNameHeadingLabel"
-import { img } from "framer-motion/client"
-import ListOfTrends from "@/components/ListOfMethodsInTrends"
-import TransformationContent from "@/components/TransformationContent"
-import PersonalNarratives from "@/components/PersonalNarratives"
-import EducationalContent from "@/components/EducationalContent"
-import LifeCycleDocumentation from "@/components/LifeCycleDocumentation"
-
-const optionsOfTrendingNow = [
-    {
-        img: "/assets/Clockicon.svg",
-        title: "Trending Now",
-    },
-    {
-        img: "/assets/Trending up.svg",
-        title: "Emerging Trends"
-    },
-    {
-        img: "/assets/Trending down.svg",
-        title: "Declining Trends"
-    }
-]
+import { useParams } from "react-router-dom";
+import { Stack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import TrendsNameHeadingLabel from "@/components/TrendsNameHeadingLabel";
+import ListOfTrends from "@/components/ListOfMethodsInTrends";
+import TransformationContent from "@/components/TransformationContent";
+import PersonalNarratives from "@/components/PersonalNarratives";
+import EducationalContent from "@/components/EducationalContent";
+import LifeCycleDocumentation from "@/components/LifeCycleDocumentation";
+import { Fashion } from "../../public/constants";
 
 function Trends() {
-    const [selectedMethodOftrendType, setSelectedMethodOftrendType] = useState("Video Formats")
-    const { category } = useParams()
-    // const dropdownRef = useRef(null);
+  const [selectedTrend, setSelectedTrend] = useState("Video Formats");
+  const [data, setData] = useState();
+  const { category } = useParams();
 
-    // useEffect(() => {
-    //     function handleClickOutside(event) {
-    //         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-    //             setOpenTrendingNow(false);
-    //         }
-    //     }
+  const handleSelectTrendType = (trendType) => {
+    setSelectedTrend(trendType);
+  };
 
-    //     document.addEventListener("mousedown", handleClickOutside);
-    //     return () => {
-    //         document.removeEventListener("mousedown", handleClickOutside);
-    //     };
-    // }, []);
+  useEffect(() => {
+    fetchData();
+  }, [category]);
 
-    const handleSelectTrendType = (trendType) => {
-        setSelectedMethodOftrendType(trendType)
+  const fetchData = () => {
+    switch (category) {
+      case "Fashion":
+        return setData(Fashion);
+      case "food":
+        return Fashion;
+      case "travel":
+        return Fashion;
+      case "fitness":
+        return Fashion;
+      default:
+        return Fashion;
     }
+  };
 
+  return (
+    <Stack>
+      {data && (
+        <>
+          <TrendsNameHeadingLabel heading={category} />
+          <ListOfTrends
+            selectedMethodOftrendType={selectedTrend}
+            handleSelectTrendType={handleSelectTrendType}
+          />
 
-    return (
-        <Stack>
-            <TrendsNameHeadingLabel heading={category} />
-            <ListOfTrends selectedMethodOftrendType={selectedMethodOftrendType} handleSelectTrendType={handleSelectTrendType} />
-            <TransformationContent />
-            <PersonalNarratives />
-            <EducationalContent />
-            <LifeCycleDocumentation />
-
-        </Stack>
-    )
+          <TransformationContent
+            label={Object.keys(data[selectedTrend])[0]}
+            data={data[selectedTrend][Object.keys(data[selectedTrend])[0]]}
+          />
+          <PersonalNarratives
+            label={Object.keys(data[selectedTrend])[1]}
+            data={data[selectedTrend][Object.keys(data[selectedTrend])[1]]}
+          />
+          <EducationalContent
+            label={Object.keys(data[selectedTrend])[2]}
+            data={data[selectedTrend][Object.keys(data[selectedTrend])[2]]}
+          />
+          <LifeCycleDocumentation
+            label={Object.keys(data[selectedTrend])[3]}
+            data={data[selectedTrend][Object.keys(data[selectedTrend])[3]]}
+          />
+        </>
+      )}
+    </Stack>
+  );
 }
 
-export default Trends
+export default Trends;
