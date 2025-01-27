@@ -1,9 +1,8 @@
 import { HStack, Stack, Text, Image } from "@chakra-ui/react";
-import PricingWidgetsLabel from "./pricingWidgetsLabel";
 import CommonDialogBox from "./CommonDialogBox";
 import { useState } from "react";
 import TrendsformationCard from "./TransformationCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const optionsOfTrendingNow = [
   {
@@ -23,7 +22,7 @@ const optionsOfTrendingNow = [
   },
 ];
 
-function LifeCycleDocumentation({ label, data }) {
+function LifeCycleDocumentation({ category, label, data, selectedTrend }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectTrendStatus, setSelectTrendStatus] = useState("Popular Trends");
   const navigate = useNavigate();
@@ -77,7 +76,17 @@ function LifeCycleDocumentation({ label, data }) {
                 (option) => option.title === selectTrendStatus
               )?.key
             }
-            onClick={() => navigate(`/trendsAnalysis/${item?.name}`)}
+            onClick={() =>
+              navigate(
+                `/trendsAnalysis/${
+                  item?.name
+                }?category=${category}&subCategory=${label}&trendType=${
+                  optionsOfTrendingNow.find(
+                    (option) => option.title === selectTrendStatus
+                  )?.key
+                }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
+              )
+            }
           />
         ))}
       </HStack>

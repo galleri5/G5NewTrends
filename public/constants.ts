@@ -1,511 +1,4 @@
 //
-export const Fashion = {
-  "Video Formats": {
-    "Entertainment Formats": {
-      emerging: [
-        {
-          name: "Trending Audio Remakes",
-          percentage: 56.5,
-          shortcode: "DFNL_PuNupp",
-        },
-        {
-          name: "Dance Trends",
-          percentage: 43.5,
-          shortcode: "DFMgP_voEKI",
-        },
-      ],
-      popular: [],
-      declining: [
-        {
-          name: "Lip Sync",
-          percentage: 46.5,
-          shortcode: "DFNRaWfSEXB",
-        },
-        {
-          name: "Comedy Skits",
-          percentage: 31.9,
-          shortcode: "DFNPssdzw8E",
-        },
-        {
-          name: "Reaction Videos",
-          percentage: 8.8,
-          shortcode: "DFQdw6DSBB7",
-        },
-      ],
-    },
-    "Lifestyle Documentation": {
-      emerging: [],
-      popular: [
-        {
-          name: "Shopping Hauls",
-          percentage: 100.0,
-          shortcode: "DFNbPtxIasQ",
-        },
-      ],
-      declining: [
-        {
-          name: "Product Showcase",
-          percentage: 22.2,
-          shortcode: "DFPuH4HJVb3",
-        },
-        {
-          name: "Event Preparation",
-          percentage: 16.3,
-          shortcode: "DFMud0jsTWf",
-        },
-        {
-          name: "Travel Vlogs",
-          percentage: 12.9,
-          shortcode: "DFNHCvpprSG",
-        },
-      ],
-    },
-    "Transformation Content": {
-      emerging: [
-        {
-          name: "Makeup Transformations",
-          percentage: 100.0,
-          shortcode: "DFPyzWsSrXW",
-        },
-      ],
-      popular: [
-        {
-          name: "Outfit Transitions",
-          percentage: 100.0,
-          shortcode: "DFQcTrkSrUb",
-        },
-      ],
-      declining: [
-        {
-          name: "Hair Transformations",
-          percentage: 34.9,
-          shortcode: "DFP2PXpSbnq",
-        },
-        {
-          name: "Skill Progress",
-          percentage: 32.7,
-          shortcode: "DFSb5F6JtF-",
-        },
-        {
-          name: "Before and After Reveals",
-          percentage: 15.8,
-          shortcode: "DFPthqLMgzj",
-        },
-      ],
-    },
-    "Personal Narratives": {
-      emerging: [],
-      popular: [
-        {
-          name: "Day in My Life",
-          percentage: 100.0,
-          shortcode: "DFQGapsIVR7",
-        },
-      ],
-      declining: [
-        {
-          name: "GRWM",
-          percentage: 60.8,
-          shortcode: "DFQIyTkvwvd",
-        },
-        {
-          name: "Story Times",
-          percentage: 21.8,
-          shortcode: "DFPhdIvuGw6",
-        },
-        {
-          name: "Life Updates",
-          percentage: 3.1,
-          shortcode: "DFQHgN-yewZ",
-        },
-      ],
-    },
-    "Educational Content": {
-      emerging: [],
-      popular: [
-        {
-          name: "How-To Tutorials",
-          percentage: 100.0,
-          shortcode: "DFNfI_YsdGv",
-        },
-      ],
-      declining: [
-        {
-          name: "Skill Demonstrations",
-          percentage: 39.8,
-          shortcode: "DFNbUGJTvV3",
-        },
-        {
-          name: "Product Reviews",
-          percentage: 25.8,
-          shortcode: "DFRz8uCvedY",
-        },
-        {
-          name: "Quick Tips and Hacks",
-          percentage: 23.9,
-          shortcode: "DFP7G38tIlE",
-        },
-      ],
-    },
-  },
-  "Photography Styles": {
-    "Aesthetic Themes": {
-      emerging: [
-        {
-          name: "Ethereal/Dreamy",
-          percentage: 52.1,
-          shortcode: "DFM49YzsVq3",
-        },
-        {
-          name: "Urban Grunge",
-          percentage: 47.9,
-          shortcode: "DFST4CMSHMS",
-        },
-      ],
-      popular: [],
-      declining: [
-        {
-          name: "Clean Girl Aesthetic",
-          percentage: 35.4,
-          shortcode: "DFQGapsIVR7",
-        },
-        {
-          name: "Soft Minimalism",
-          percentage: 19.3,
-          shortcode: "DFPyzWsSrXW",
-        },
-        {
-          name: "Y2K Revival",
-          percentage: 14.4,
-          shortcode: "DFPYnnJz-1b",
-        },
-      ],
-    },
-    "Content Presentation": {
-      emerging: [],
-      popular: [
-        {
-          name: "Product Styling",
-          percentage: 100.0,
-          shortcode: "DFM62TKO_My",
-        },
-      ],
-      declining: [
-        {
-          name: "Outfit Grids",
-          percentage: 30.5,
-          shortcode: "DFST4CMSHMS",
-        },
-        {
-          name: "Flat Lays",
-          percentage: 29.0,
-          shortcode: "DFSSez8gx4H",
-        },
-        {
-          name: "Collection Displays",
-          percentage: 16.9,
-          shortcode: "DFPFvfxSgKG",
-        },
-      ],
-    },
-    "Technical Styles": {
-      emerging: [],
-      popular: [
-        {
-          name: "Golden Hour Shots",
-          percentage: 100.0,
-          shortcode: "DFSe7CLyBkw",
-        },
-      ],
-      declining: [
-        {
-          name: "Backlit Portraits",
-          percentage: 42.2,
-          shortcode: "DFNRaWfSEXB",
-        },
-        {
-          name: "Silhouettes",
-          percentage: 24.1,
-          shortcode: "DFMud0jsTWf",
-        },
-        {
-          name: "High Contrast",
-          percentage: 10.6,
-          shortcode: "DFQAHRYydUy",
-        },
-      ],
-    },
-    "Composition Trends": {
-      emerging: [
-        {
-          name: "Symmetrical Frames",
-          percentage: 45.4,
-          shortcode: "DFSlN1coGMC",
-        },
-        {
-          name: "Rule of Thirds",
-          percentage: 29.8,
-          shortcode: "DFNFFaSTWLc",
-        },
-        {
-          name: "Minimalist Layouts",
-          percentage: 24.8,
-          shortcode: "DFNSymzSL9r",
-        },
-      ],
-      popular: [],
-      declining: [
-        {
-          name: "Grid Layouts",
-          percentage: 72.0,
-          shortcode: "DFM4ToqtnvT",
-        },
-        {
-          name: "Leading Lines",
-          percentage: 11.4,
-          shortcode: "DFNSpVqMPP5",
-        },
-        {
-          name: "Geometric Patterns",
-          percentage: 7.9,
-          shortcode: "DFPbgZXRDS0",
-        },
-      ],
-    },
-  },
-  "Visual Elements": {
-    "Color Schemes": {
-      emerging: [
-        {
-          name: "Jewel Tones",
-          percentage: 62.3,
-          shortcode: "DFM49YzsVq3",
-        },
-        {
-          name: "Earth Tones",
-          percentage: 37.7,
-          shortcode: "DFSe7CLyBkw",
-        },
-      ],
-      popular: [],
-      declining: [
-        {
-          name: "High Contrast",
-          percentage: 27.1,
-          shortcode: "DFSlN1coGMC",
-        },
-        {
-          name: "Muted Palettes",
-          percentage: 21.8,
-          shortcode: "DFP-TRytt6r",
-        },
-        {
-          name: "Natural Colors",
-          percentage: 20.7,
-          shortcode: "DFQGapsIVR7",
-        },
-      ],
-    },
-    "Location Settings": {
-      emerging: [
-        {
-          name: "Studio Setups",
-          percentage: 100.0,
-          shortcode: "DFM49YzsVq3",
-        },
-      ],
-      popular: [
-        {
-          name: "Home Spaces",
-          percentage: 100.0,
-          shortcode: "DFQGapsIVR7",
-        },
-      ],
-      declining: [
-        {
-          name: "Nature Backdrops",
-          percentage: 32.4,
-          shortcode: "DFM4ToqtnvT",
-        },
-        {
-          name: "Public Spaces",
-          percentage: 27.3,
-          shortcode: "DFP-TRytt6r",
-        },
-        {
-          name: "Urban Architecture",
-          percentage: 22.6,
-          shortcode: "DFNPssdzw8E",
-        },
-      ],
-    },
-    "Prop Elements": {
-      emerging: [
-        {
-          name: "Plants and Flowers",
-          percentage: 100.0,
-          shortcode: "DFQGapsIVR7",
-        },
-      ],
-      popular: [
-        {
-          name: "Fashion Accessories",
-          percentage: 100.0,
-          shortcode: "DFM62TKO_My",
-        },
-      ],
-      declining: [
-        {
-          name: "Tech Devices",
-          percentage: 37.0,
-          shortcode: "DFPFvfxSgKG",
-        },
-        {
-          name: "Decorative Objects",
-          percentage: 26.9,
-          shortcode: "DFSSez8gx4H",
-        },
-        {
-          name: "Lifestyle Products",
-          percentage: 14.9,
-          shortcode: "DFP0yFOyzBQ",
-        },
-      ],
-    },
-    "Fashion Accessories": {
-      emerging: [],
-      popular: [
-        {
-          name: "Jewellery",
-          percentage: 100.0,
-          shortcode: "DFO__-HSe4X",
-        },
-      ],
-      declining: [
-        {
-          name: "Flowers",
-          percentage: 25.0,
-          shortcode: "DFQGapsIVR7",
-        },
-        {
-          name: "Necklace",
-          percentage: 25.0,
-          shortcode: "DFPUhJTstYN",
-        },
-        {
-          name: "Jewelry",
-          percentage: 25.0,
-          shortcode: "DFPzO_PTevq",
-        },
-      ],
-    },
-  },
-  "Content Strategies": {
-    "Presentation Formats": {
-      emerging: [
-        {
-          name: "Multi-Slide Carousels",
-          percentage: 100.0,
-          shortcode: "DFM49YzsVq3",
-        },
-      ],
-      popular: [
-        {
-          name: "Single Image Impact",
-          percentage: 100.0,
-          shortcode: "DFSe7CLyBkw",
-        },
-      ],
-      declining: [
-        {
-          name: "Tutorial Sequences",
-          percentage: 42.6,
-          shortcode: "DFNIYr2O1CC",
-        },
-        {
-          name: "Video-Photo Mix",
-          percentage: 35.3,
-          shortcode: "DFRxjPotK8d",
-        },
-        {
-          name: "Collection Showcases",
-          percentage: 15.0,
-          shortcode: "DFP5jt-zGXO",
-        },
-      ],
-    },
-    "Engagement Elements": {
-      emerging: [
-        {
-          name: "Trend Participation",
-          percentage: 100.0,
-          shortcode: "DFNPssdzw8E",
-        },
-      ],
-      popular: [
-        {
-          name: "Question Prompts",
-          percentage: 100.0,
-          shortcode: "DFQGapsIVR7",
-        },
-      ],
-      declining: [
-        {
-          name: "Save-Worthy Tips",
-          percentage: 43.1,
-          shortcode: "DFP2PXpSbnq",
-        },
-        {
-          name: "Response Requests",
-          percentage: 25.4,
-          shortcode: "DFNY-ZhtHvC",
-        },
-        {
-          name: "Duet Opportunities",
-          percentage: 10.8,
-          shortcode: "DFP0yFOyzBQ",
-        },
-      ],
-    },
-    "Narrative Approaches": {
-      emerging: [
-        {
-          name: "Life Updates",
-          percentage: 100.0,
-          shortcode: "DFNP92Vs0ki",
-        },
-      ],
-      popular: [],
-      declining: [
-        {
-          name: "Day-in-Life Sequences",
-          percentage: 22.1,
-          shortcode: "DFNkIOHSvwc",
-        },
-        {
-          name: "Behind-the-Scenes",
-          percentage: 17.1,
-          shortcode: "DFST4CMSHMS",
-        },
-        {
-          name: "Process Reveals",
-          percentage: 12.0,
-          shortcode: "DFMqrfDTegQ",
-        },
-      ],
-    },
-    "Poll Slides": {
-      emerging: [],
-      popular: [],
-      declining: [],
-    },
-    "Interactive Swipes": {
-      emerging: [],
-      popular: [],
-      declining: [],
-    },
-  },
-};
 
 export const FashionDetails = {
   "Video Formats": {
@@ -20982,6 +20475,514 @@ export const FashionDetails = {
       emerging: {},
       popular: {},
       declining: {},
+    },
+  },
+};
+
+export const Fashion = {
+  "Video Formats": {
+    "Entertainment Formats": {
+      emerging: [
+        {
+          name: "Trending Audio Remakes",
+          percentage: 56.5,
+          shortcode: "DFNL_PuNupp",
+        },
+        {
+          name: "Dance Trends",
+          percentage: 43.5,
+          shortcode: "DFMgP_voEKI",
+        },
+      ],
+      popular: [],
+      declining: [
+        {
+          name: "Lip Sync",
+          percentage: 46.5,
+          shortcode: "DFNRaWfSEXB",
+        },
+        {
+          name: "Comedy Skits",
+          percentage: 31.9,
+          shortcode: "DFNPssdzw8E",
+        },
+        {
+          name: "Reaction Videos",
+          percentage: 8.8,
+          shortcode: "DFQdw6DSBB7",
+        },
+      ],
+    },
+    "Lifestyle Documentation": {
+      emerging: [],
+      popular: [
+        {
+          name: "Shopping Hauls",
+          percentage: 100.0,
+          shortcode: "DFNbPtxIasQ",
+        },
+      ],
+      declining: [
+        {
+          name: "Product Showcase",
+          percentage: 22.2,
+          shortcode: "DFPuH4HJVb3",
+        },
+        {
+          name: "Event Preparation",
+          percentage: 16.3,
+          shortcode: "DFMud0jsTWf",
+        },
+        {
+          name: "Travel Vlogs",
+          percentage: 12.9,
+          shortcode: "DFNHCvpprSG",
+        },
+      ],
+    },
+    "Transformation Content": {
+      emerging: [
+        {
+          name: "Makeup Transformations",
+          percentage: 100.0,
+          shortcode: "DFPyzWsSrXW",
+        },
+      ],
+      popular: [
+        {
+          name: "Outfit Transitions",
+          percentage: 100.0,
+          shortcode: "DFQcTrkSrUb",
+        },
+      ],
+      declining: [
+        {
+          name: "Hair Transformations",
+          percentage: 34.9,
+          shortcode: "DFP2PXpSbnq",
+        },
+        {
+          name: "Skill Progress",
+          percentage: 32.7,
+          shortcode: "DFSb5F6JtF-",
+        },
+        {
+          name: "Before and After Reveals",
+          percentage: 15.8,
+          shortcode: "DFPthqLMgzj",
+        },
+      ],
+    },
+    "Personal Narratives": {
+      emerging: [],
+      popular: [
+        {
+          name: "Day in My Life",
+          percentage: 100.0,
+          shortcode: "DFQGapsIVR7",
+        },
+      ],
+      declining: [
+        {
+          name: "GRWM",
+          percentage: 60.8,
+          shortcode: "DFQIyTkvwvd",
+        },
+        {
+          name: "Story Times",
+          percentage: 21.8,
+          shortcode: "DFPhdIvuGw6",
+        },
+        {
+          name: "Life Updates",
+          percentage: 3.1,
+          shortcode: "DFQHgN-yewZ",
+        },
+      ],
+    },
+    "Educational Content": {
+      emerging: [],
+      popular: [
+        {
+          name: "How-To Tutorials",
+          percentage: 100.0,
+          shortcode: "DFNfI_YsdGv",
+        },
+      ],
+      declining: [
+        {
+          name: "Skill Demonstrations",
+          percentage: 39.8,
+          shortcode: "DFNbUGJTvV3",
+        },
+        {
+          name: "Product Reviews",
+          percentage: 25.8,
+          shortcode: "DFRz8uCvedY",
+        },
+        {
+          name: "Quick Tips and Hacks",
+          percentage: 23.9,
+          shortcode: "DFP7G38tIlE",
+        },
+      ],
+    },
+  },
+  "Photography Styles": {
+    "Aesthetic Themes": {
+      emerging: [
+        {
+          name: "Ethereal/Dreamy",
+          percentage: 52.1,
+          shortcode: "DFM49YzsVq3",
+        },
+        {
+          name: "Urban Grunge",
+          percentage: 47.9,
+          shortcode: "DFST4CMSHMS",
+        },
+      ],
+      popular: [],
+      declining: [
+        {
+          name: "Clean Girl Aesthetic",
+          percentage: 35.4,
+          shortcode: "DFQGapsIVR7",
+        },
+        {
+          name: "Soft Minimalism",
+          percentage: 19.3,
+          shortcode: "DFPyzWsSrXW",
+        },
+        {
+          name: "Y2K Revival",
+          percentage: 14.4,
+          shortcode: "DFPYnnJz-1b",
+        },
+      ],
+    },
+    "Content Presentation": {
+      emerging: [],
+      popular: [
+        {
+          name: "Product Styling",
+          percentage: 100.0,
+          shortcode: "DFM62TKO_My",
+        },
+      ],
+      declining: [
+        {
+          name: "Outfit Grids",
+          percentage: 30.5,
+          shortcode: "DFST4CMSHMS",
+        },
+        {
+          name: "Flat Lays",
+          percentage: 29.0,
+          shortcode: "DFSSez8gx4H",
+        },
+        {
+          name: "Collection Displays",
+          percentage: 16.9,
+          shortcode: "DFPFvfxSgKG",
+        },
+      ],
+    },
+    "Technical Styles": {
+      emerging: [],
+      popular: [
+        {
+          name: "Golden Hour Shots",
+          percentage: 100.0,
+          shortcode: "DFSe7CLyBkw",
+        },
+      ],
+      declining: [
+        {
+          name: "Backlit Portraits",
+          percentage: 42.2,
+          shortcode: "DFNRaWfSEXB",
+        },
+        {
+          name: "Silhouettes",
+          percentage: 24.1,
+          shortcode: "DFMud0jsTWf",
+        },
+        {
+          name: "High Contrast",
+          percentage: 10.6,
+          shortcode: "DFQAHRYydUy",
+        },
+      ],
+    },
+    "Composition Trends": {
+      emerging: [
+        {
+          name: "Symmetrical Frames",
+          percentage: 45.4,
+          shortcode: "DFSlN1coGMC",
+        },
+        {
+          name: "Rule of Thirds",
+          percentage: 29.8,
+          shortcode: "DFNFFaSTWLc",
+        },
+        {
+          name: "Minimalist Layouts",
+          percentage: 24.8,
+          shortcode: "DFNSymzSL9r",
+        },
+      ],
+      popular: [],
+      declining: [
+        {
+          name: "Grid Layouts",
+          percentage: 72.0,
+          shortcode: "DFM4ToqtnvT",
+        },
+        {
+          name: "Leading Lines",
+          percentage: 11.4,
+          shortcode: "DFNSpVqMPP5",
+        },
+        {
+          name: "Geometric Patterns",
+          percentage: 7.9,
+          shortcode: "DFPbgZXRDS0",
+        },
+      ],
+    },
+  },
+  "Visual Elements": {
+    "Color Schemes": {
+      emerging: [
+        {
+          name: "Jewel Tones",
+          percentage: 62.3,
+          shortcode: "DFM49YzsVq3",
+        },
+        {
+          name: "Earth Tones",
+          percentage: 37.7,
+          shortcode: "DFSe7CLyBkw",
+        },
+      ],
+      popular: [],
+      declining: [
+        {
+          name: "High Contrast",
+          percentage: 27.1,
+          shortcode: "DFSlN1coGMC",
+        },
+        {
+          name: "Muted Palettes",
+          percentage: 21.8,
+          shortcode: "DFP-TRytt6r",
+        },
+        {
+          name: "Natural Colors",
+          percentage: 20.7,
+          shortcode: "DFQGapsIVR7",
+        },
+      ],
+    },
+    "Location Settings": {
+      emerging: [
+        {
+          name: "Studio Setups",
+          percentage: 100.0,
+          shortcode: "DFM49YzsVq3",
+        },
+      ],
+      popular: [
+        {
+          name: "Home Spaces",
+          percentage: 100.0,
+          shortcode: "DFQGapsIVR7",
+        },
+      ],
+      declining: [
+        {
+          name: "Nature Backdrops",
+          percentage: 32.4,
+          shortcode: "DFM4ToqtnvT",
+        },
+        {
+          name: "Public Spaces",
+          percentage: 27.3,
+          shortcode: "DFP-TRytt6r",
+        },
+        {
+          name: "Urban Architecture",
+          percentage: 22.6,
+          shortcode: "DFNPssdzw8E",
+        },
+      ],
+    },
+    "Prop Elements": {
+      emerging: [
+        {
+          name: "Plants and Flowers",
+          percentage: 100.0,
+          shortcode: "DFQGapsIVR7",
+        },
+      ],
+      popular: [
+        {
+          name: "Fashion Accessories",
+          percentage: 100.0,
+          shortcode: "DFM62TKO_My",
+        },
+      ],
+      declining: [
+        {
+          name: "Tech Devices",
+          percentage: 37.0,
+          shortcode: "DFPFvfxSgKG",
+        },
+        {
+          name: "Decorative Objects",
+          percentage: 26.9,
+          shortcode: "DFSSez8gx4H",
+        },
+        {
+          name: "Lifestyle Products",
+          percentage: 14.9,
+          shortcode: "DFP0yFOyzBQ",
+        },
+      ],
+    },
+    "Fashion Accessories": {
+      emerging: [],
+      popular: [
+        {
+          name: "Jewellery",
+          percentage: 100.0,
+          shortcode: "DFO__-HSe4X",
+        },
+      ],
+      declining: [
+        {
+          name: "Flowers",
+          percentage: 25.0,
+          shortcode: "DFQGapsIVR7",
+        },
+        {
+          name: "Necklace",
+          percentage: 25.0,
+          shortcode: "DFPUhJTstYN",
+        },
+        {
+          name: "Jewelry",
+          percentage: 25.0,
+          shortcode: "DFPzO_PTevq",
+        },
+      ],
+    },
+  },
+  "Content Strategies": {
+    "Presentation Formats": {
+      emerging: [
+        {
+          name: "Multi-Slide Carousels",
+          percentage: 100.0,
+          shortcode: "DFM49YzsVq3",
+        },
+      ],
+      popular: [
+        {
+          name: "Single Image Impact",
+          percentage: 100.0,
+          shortcode: "DFSe7CLyBkw",
+        },
+      ],
+      declining: [
+        {
+          name: "Tutorial Sequences",
+          percentage: 42.6,
+          shortcode: "DFNIYr2O1CC",
+        },
+        {
+          name: "Video-Photo Mix",
+          percentage: 35.3,
+          shortcode: "DFRxjPotK8d",
+        },
+        {
+          name: "Collection Showcases",
+          percentage: 15.0,
+          shortcode: "DFP5jt-zGXO",
+        },
+      ],
+    },
+    "Engagement Elements": {
+      emerging: [
+        {
+          name: "Trend Participation",
+          percentage: 100.0,
+          shortcode: "DFNPssdzw8E",
+        },
+      ],
+      popular: [
+        {
+          name: "Question Prompts",
+          percentage: 100.0,
+          shortcode: "DFQGapsIVR7",
+        },
+      ],
+      declining: [
+        {
+          name: "Save-Worthy Tips",
+          percentage: 43.1,
+          shortcode: "DFP2PXpSbnq",
+        },
+        {
+          name: "Response Requests",
+          percentage: 25.4,
+          shortcode: "DFNY-ZhtHvC",
+        },
+        {
+          name: "Duet Opportunities",
+          percentage: 10.8,
+          shortcode: "DFP0yFOyzBQ",
+        },
+      ],
+    },
+    "Narrative Approaches": {
+      emerging: [
+        {
+          name: "Life Updates",
+          percentage: 100.0,
+          shortcode: "DFNP92Vs0ki",
+        },
+      ],
+      popular: [],
+      declining: [
+        {
+          name: "Day-in-Life Sequences",
+          percentage: 22.1,
+          shortcode: "DFNkIOHSvwc",
+        },
+        {
+          name: "Behind-the-Scenes",
+          percentage: 17.1,
+          shortcode: "DFST4CMSHMS",
+        },
+        {
+          name: "Process Reveals",
+          percentage: 12.0,
+          shortcode: "DFMqrfDTegQ",
+        },
+      ],
+    },
+    "Poll Slides": {
+      emerging: [],
+      popular: [],
+      declining: [],
+    },
+    "Interactive Swipes": {
+      emerging: [],
+      popular: [],
+      declining: [],
     },
   },
 };

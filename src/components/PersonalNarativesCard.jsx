@@ -1,12 +1,10 @@
 import { VStack, HStack, Image, Text, Badge, Skeleton } from "@chakra-ui/react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
 
 const PersonalNarativesCard = ({ item, onClick, type, index }) => {
   const [fetchedData, setFetchedData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     fetchPostData(item?.shortcode);
@@ -80,7 +78,7 @@ const PersonalNarativesCard = ({ item, onClick, type, index }) => {
             objectFit="cover"
             border="1px solid rgba(0, 0, 0, 1)"
             borderRadius="53px"
-            onClick={() => navigate(`/trendsAnalysis/${item?.name}`)}
+            onClick={onClick}
           />
         )}
       </Skeleton>

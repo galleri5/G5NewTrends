@@ -22,12 +22,10 @@ const optionsOfTrendingNow = [
   },
 ];
 
-function TransformationContent({ label, data }) {
+function TransformationContent({ category, label, data, selectedTrend }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectTrendStatus, setSelectTrendStatus] = useState("Popular Trends");
   const navigate = useNavigate();
-  const { category } = useParams();
-
   const handleSelectTrendStatus = (item) => {
     setSelectTrendStatus(item);
   };
@@ -77,7 +75,17 @@ function TransformationContent({ label, data }) {
                 (option) => option.title === selectTrendStatus
               )?.key
             }
-            onClick={() => navigate(`/trendsAnalysis/${item?.name}`)}
+            onClick={() =>
+              navigate(
+                `/trendsAnalysis/${
+                  item?.name
+                }?category=${category}&subCategory=${label}&trendType=${
+                  optionsOfTrendingNow.find(
+                    (option) => option.title === selectTrendStatus
+                  )?.key
+                }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
+              )
+            }
           />
         ))}
       </HStack>

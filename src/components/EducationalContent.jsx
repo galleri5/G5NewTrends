@@ -22,10 +22,9 @@ const optionsOfTrendingNow = [
   },
 ];
 
-function EducationalContent({ label, data }) {
+function EducationalContent({ category, label, data, selectedTrend }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectTrendStatus, setSelectTrendStatus] = useState("Popular Trends");
-  const { category } = useParams();
   const navigate = useNavigate();
 
   const handleSelectTrendStatus = (item) => {
@@ -79,7 +78,17 @@ function EducationalContent({ label, data }) {
               borderRadius={"6px"}
               border={"1px solid rgba(0, 0, 0, 1)"}
               width={"100%"}
-              onClick={() => navigate(`/trendsAnalysis/${item?.name}`)}
+              onClick={() =>
+                navigate(
+                  `/trendsAnalysis/${
+                    item?.name
+                  }?category=${category}&subCategory=${label}&trendType=${
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key
+                  }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
+                )
+              }
             >
               <HStack gap={"16px"}>
                 <Text

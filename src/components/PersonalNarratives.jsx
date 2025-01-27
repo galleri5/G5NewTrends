@@ -23,10 +23,10 @@ const optionsOfTrendingNow = [
   },
 ];
 
-function PersonalNarratives({ label, data }) {
+function PersonalNarratives({ category, label, data, selectedTrend }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectTrendStatus, setSelectTrendStatus] = useState("Popular Trends");
-  const { category } = useParams();
+  const navigate = useNavigate();
 
   const handleSelectTrendStatus = (item) => {
     setSelectTrendStatus(item);
@@ -69,7 +69,22 @@ function PersonalNarratives({ label, data }) {
             (option) => option.title === selectTrendStatus
           )?.key
         ].map((item, index) => (
-          <PersonalNarativesCard key={index} item={item} index={index} />
+          <PersonalNarativesCard
+            key={index}
+            item={item}
+            index={index}
+            onClick={() =>
+              navigate(
+                `/trendsAnalysis/${
+                  item?.name
+                }?category=${category}&subCategory=${label}&trendType=${
+                  optionsOfTrendingNow.find(
+                    (option) => option.title === selectTrendStatus
+                  )?.key
+                }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
+              )
+            }
+          />
         ))}
         {/* {listOfTransformationContent.map((item, index) => (
           <PersonalNarativesCard key={index} item={item} />

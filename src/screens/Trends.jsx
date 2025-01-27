@@ -48,18 +48,26 @@ function Trends() {
           />
 
           <TransformationContent
+            category={category}
+            selectedTrend={selectedTrend}
             label={Object.keys(data[selectedTrend])[0]}
             data={data[selectedTrend][Object.keys(data[selectedTrend])[0]]}
           />
           <PersonalNarratives
+            category={category}
+            selectedTrend={selectedTrend}
             label={Object.keys(data[selectedTrend])[1]}
             data={data[selectedTrend][Object.keys(data[selectedTrend])[1]]}
           />
           <EducationalContent
+            category={category}
+            selectedTrend={selectedTrend}
             label={Object.keys(data[selectedTrend])[2]}
             data={data[selectedTrend][Object.keys(data[selectedTrend])[2]]}
           />
           <LifeCycleDocumentation
+            category={category}
+            selectedTrend={selectedTrend}
             label={Object.keys(data[selectedTrend])[3]}
             data={data[selectedTrend][Object.keys(data[selectedTrend])[3]]}
           />
