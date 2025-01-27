@@ -7,7 +7,7 @@ import TransformationContent from "@/components/TransformationContent";
 import PersonalNarratives from "@/components/PersonalNarratives";
 import EducationalContent from "@/components/EducationalContent";
 import LifeCycleDocumentation from "@/components/LifeCycleDocumentation";
-import { Fashion } from "../../public/constants";
+import { Beauty, Fashion, Home } from "../../public/constants";
 
 function Trends() {
   const [selectedTrend, setSelectedTrend] = useState("Video Formats");
@@ -26,10 +26,10 @@ function Trends() {
     switch (category) {
       case "Fashion":
         return setData(Fashion);
-      case "food":
-        return Fashion;
-      case "travel":
-        return Fashion;
+      case "Beauty":
+        return setData(Beauty);
+      case "Home":
+        return setData(Home);
       case "fitness":
         return Fashion;
       default:

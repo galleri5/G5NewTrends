@@ -7,7 +7,11 @@ import LocationDemographics from "@/components/LocationDemographics";
 import BrandView from "@/components/BrandView";
 import ContentInspiration from "@/components/ContentInspiration";
 import { useEffect } from "react";
-import { FashionDetails } from "../../public/constants";
+import {
+  FashionDetails,
+  BeautyDetails,
+  HomeDetails,
+} from "../../public/constants";
 
 function TrendsAnalysis() {
   const { trend } = useParams();
@@ -44,14 +48,19 @@ function TrendsAnalysis() {
         return setData(
           FashionDetails[selectedTrend][subCategory][trendType][trend]
         );
-      case "food":
-        return Fashion;
-      case "travel":
-        return Fashion;
-      case "fitness":
-        return Fashion;
+      case "Beauty":
+        return setData(
+          BeautyDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "Home":
+        return setData(
+          HomeDetails[selectedTrend][subCategory][trendType][trend]
+        );
+
       default:
-        return Fashion;
+        return setData(
+          FashionDetails[selectedTrend][subCategory][trendType][trend]
+        );
     }
   };
 
