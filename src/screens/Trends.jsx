@@ -36,7 +36,6 @@ function Trends() {
         return Fashion;
     }
   };
-
   return (
     <Stack>
       {data && (
@@ -47,30 +46,38 @@ function Trends() {
             handleSelectTrendType={handleSelectTrendType}
           />
 
-          <TransformationContent
-            category={category}
-            selectedTrend={selectedTrend}
-            label={Object.keys(data[selectedTrend])[0]}
-            data={data[selectedTrend][Object.keys(data[selectedTrend])[0]]}
-          />
-          <PersonalNarratives
-            category={category}
-            selectedTrend={selectedTrend}
-            label={Object.keys(data[selectedTrend])[1]}
-            data={data[selectedTrend][Object.keys(data[selectedTrend])[1]]}
-          />
-          <EducationalContent
-            category={category}
-            selectedTrend={selectedTrend}
-            label={Object.keys(data[selectedTrend])[2]}
-            data={data[selectedTrend][Object.keys(data[selectedTrend])[2]]}
-          />
-          <LifeCycleDocumentation
-            category={category}
-            selectedTrend={selectedTrend}
-            label={Object.keys(data[selectedTrend])[3]}
-            data={data[selectedTrend][Object.keys(data[selectedTrend])[3]]}
-          />
+          {Object.keys(data[selectedTrend])[0] && (
+            <TransformationContent
+              category={category}
+              selectedTrend={selectedTrend}
+              label={Object.keys(data[selectedTrend])[0]}
+              data={data[selectedTrend][Object.keys(data[selectedTrend])[0]]}
+            />
+          )}
+          {Object.keys(data[selectedTrend])[1] && (
+            <PersonalNarratives
+              category={category}
+              selectedTrend={selectedTrend}
+              label={Object.keys(data[selectedTrend])[1]}
+              data={data[selectedTrend][Object.keys(data[selectedTrend])[1]]}
+            />
+          )}
+          {Object.keys(data[selectedTrend])[2] && (
+            <EducationalContent
+              category={category}
+              selectedTrend={selectedTrend}
+              label={Object.keys(data[selectedTrend])[2]}
+              data={data[selectedTrend][Object.keys(data[selectedTrend])[2]]}
+            />
+          )}
+          {Object.keys(data[selectedTrend])[3] && (
+            <LifeCycleDocumentation
+              category={category}
+              selectedTrend={selectedTrend}
+              label={Object.keys(data[selectedTrend])[3]}
+              data={data[selectedTrend][Object.keys(data[selectedTrend])[3]]}
+            />
+          )}
         </>
       )}
     </Stack>
