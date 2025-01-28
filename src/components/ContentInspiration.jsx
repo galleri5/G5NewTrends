@@ -200,7 +200,7 @@ function ContentInspiration({
                 objectFit: "cover",
                 borderRadius: "8px",
               }}
-              controls={false}
+              controls={true}
               muted
               loop
               playsInline

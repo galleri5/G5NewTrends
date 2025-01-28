@@ -22,7 +22,9 @@ function TrendsAnalysis() {
   //   const [selectedGraphDates, setSelectedGraphDates] = useState("All");
   const location = useLocation();
   const [selectedContent, setSelectedContent] = useState("All");
-  const [selectPostsFilter, setSelectPostsFilter] = useState("Recent Posts");
+  const [selectPostsFilter, setSelectPostsFilter] = useState(
+    "Top Engagement Posts"
+  );
   const [fetchedData, setFetchedData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
@@ -86,8 +88,6 @@ function TrendsAnalysis() {
         );
     }
   };
-
-  console.log(data);
 
   useEffect(() => {
     fetchPostData(shortCode);
