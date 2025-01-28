@@ -1,5 +1,4 @@
 import { HStack, Stack, Text, Image } from "@chakra-ui/react";
-import PricingWidgetsLabel from "./pricingWidgetsLabel";
 import CommonDialogBox from "./CommonDialogBox";
 import { useState } from "react";
 import PersonalNarativesCard from "./PersonalNarativesCard";
