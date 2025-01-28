@@ -73,6 +73,11 @@ function PersonalNarratives({ category, label, data, selectedTrend }) {
             key={index}
             item={item}
             index={index}
+            type={
+              optionsOfTrendingNow.find(
+                (option) => option.title === selectTrendStatus
+              )?.key
+            }
             onClick={() =>
               navigate(
                 `/trendsAnalysis/${
