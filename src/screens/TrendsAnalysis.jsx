@@ -1,17 +1,20 @@
-// import InterestGraph from "@/components/InterestGraph";
 import { HStack, Stack, VStack, Image, Text, Skeleton } from "@chakra-ui/react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useState } from "react";
-// import AboutTrend from "@/components/AboutTrend";
 import LocationDemographics from "@/components/LocationDemographics";
 import BrandView from "@/components/BrandView";
 import ContentInspiration from "@/components/ContentInspiration";
 import { useEffect } from "react";
-import {
-  FashionDetails,
-  BeautyDetails,
-  HomeDetails,
-} from "../../public/constants";
+
+import fashionDetails from "../../public/Trends/-fashion-2.json";
+import beautyDetails from "../../public/Trends/-beauty-2.json";
+import homeDetails from "../../public/Trends/-home-2.json";
+import fitnessDetails from "../../public/Trends/-fitness-2.json";
+
+import lifestyleDetails from "../../public/Trends/-lifestyle-2.json";
+import petsDetails from "../../public/Trends/-pets-2.json";
+import kitchenDetails from "../../public/Trends/-kitchen-2.json";
+import parentingDetails from "../../public/Trends/-parenting-2.json";
 
 function TrendsAnalysis() {
   const { trend } = useParams();
@@ -43,23 +46,43 @@ function TrendsAnalysis() {
   }, [category]);
 
   const fetchData = () => {
-    switch (category) {
-      case "Fashion":
+    switch (category?.toLowerCase()) {
+      case "fashion":
         return setData(
-          FashionDetails[selectedTrend][subCategory][trendType][trend]
+          fashionDetails[selectedTrend][subCategory][trendType][trend]
         );
-      case "Beauty":
+      case "beauty":
         return setData(
-          BeautyDetails[selectedTrend][subCategory][trendType][trend]
+          beautyDetails[selectedTrend][subCategory][trendType][trend]
         );
-      case "Home":
+      case "home":
         return setData(
-          HomeDetails[selectedTrend][subCategory][trendType][trend]
+          homeDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "fitness":
+        return setData(
+          fitnessDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "lifestyle":
+        return setData(
+          lifestyleDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "pets":
+        return setData(
+          petsDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "kitchen":
+        return setData(
+          kitchenDetails[selectedTrend][subCategory][trendType][trend]
+        );
+      case "parenting":
+        return setData(
+          parentingDetails[selectedTrend][subCategory][trendType][trend]
         );
 
       default:
         return setData(
-          FashionDetails[selectedTrend][subCategory][trendType][trend]
+          fashionDetails[selectedTrend][subCategory][trendType][trend]
         );
     }
   };

@@ -1,0 +1,968 @@
+{
+  "Video Formats": {
+    "Entertainment Formats": {
+      "emerging": [
+        {
+          "name": "Trending Audio Remakes",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Comedy Skits",
+          "percentage": 74.2,
+          "shortcode": "DFMFK63Tx2s"
+        },
+        {
+          "name": "Reaction Videos",
+          "percentage": 72.7,
+          "shortcode": "DFPFQPINcPd"
+        },
+        {
+          "name": "Story Times",
+          "percentage": 60.0,
+          "shortcode": "DFRqp-Wpc4J"
+        },
+        {
+          "name": "POV",
+          "percentage": 50.0,
+          "shortcode": "DFO6MsyRTz6"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Comedy Skits",
+          "percentage": 62.0,
+          "shortcode": "DFMFK63Tx2s"
+        },
+        {
+          "name": "Trending Audio Remakes",
+          "percentage": 19.3,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "POV",
+          "percentage": 5.4,
+          "shortcode": "DFO6MsyRTz6"
+        },
+        {
+          "name": "Reaction Videos",
+          "percentage": 3.6,
+          "shortcode": "DFPFQPINcPd"
+        },
+        {
+          "name": "Challenges",
+          "percentage": 3.2,
+          "shortcode": "DFQdHTlSQD9"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Skill Demonstrations",
+          "percentage": -30,
+          "shortcode": "DFMb_w9Po2W"
+        },
+        {
+          "name": "Animal Behavior",
+          "percentage": -30,
+          "shortcode": "DFNmsjFJ31g"
+        },
+        {
+          "name": "Pranks",
+          "percentage": -12.5,
+          "shortcode": "DFNYgy8TuFI"
+        }
+      ]
+    },
+    "Personal Narratives": {
+      "emerging": [
+        {
+          "name": "Day in My Life",
+          "percentage": 75,
+          "shortcode": "DFMnakKSd9V"
+        },
+        {
+          "name": "Night Routine",
+          "percentage": 75,
+          "shortcode": "DFQMpNNxa3y"
+        },
+        {
+          "name": "POV",
+          "percentage": 75,
+          "shortcode": "DFO6MsyRTz6"
+        },
+        {
+          "name": "Story Times",
+          "percentage": 50.0,
+          "shortcode": "DFRqp-Wpc4J"
+        },
+        {
+          "name": "Life Updates",
+          "percentage": 33.3,
+          "shortcode": "DFM_13QTNS7"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Day in My Life",
+          "percentage": 93.4,
+          "shortcode": "DFMnakKSd9V"
+        },
+        {
+          "name": "Success Stories",
+          "percentage": 1.6,
+          "shortcode": "DFM77kGMWqC"
+        },
+        {
+          "name": "Life Updates",
+          "percentage": 1.4,
+          "shortcode": "DFM_13QTNS7"
+        },
+        {
+          "name": "Story Times",
+          "percentage": 1.0,
+          "shortcode": "DFRqp-Wpc4J"
+        },
+        {
+          "name": "Night Routine",
+          "percentage": 0.8,
+          "shortcode": "DFQMpNNxa3y"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Success Stories",
+          "percentage": -40.0,
+          "shortcode": "DFM77kGMWqC"
+        },
+        {
+          "name": "Pet Vlogs",
+          "percentage": -30,
+          "shortcode": "DFNZU3Hpop-"
+        },
+        {
+          "name": "Rescue Story",
+          "percentage": -30,
+          "shortcode": "DFQONiXxvz5"
+        }
+      ]
+    },
+    "Lifestyle Documentation": {
+      "emerging": [
+        {
+          "name": "Day in My Life",
+          "percentage": 75,
+          "shortcode": "DFMnakKSd9V"
+        },
+        {
+          "name": "Animal Care",
+          "percentage": 75,
+          "shortcode": "DFPfZi2zPRN"
+        },
+        {
+          "name": "Event Preparation",
+          "percentage": 75,
+          "shortcode": "DFPOCatvojw"
+        },
+        {
+          "name": "Seasonal Activities",
+          "percentage": 75,
+          "shortcode": "DFMp4E2yGh0"
+        },
+        {
+          "name": "Pet Care",
+          "percentage": 75,
+          "shortcode": "DFOvDVvSKz-"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Weekend Recaps",
+          "percentage": 14.8,
+          "shortcode": "DFMsdfGSCqC"
+        },
+        {
+          "name": "Travel Vlogs",
+          "percentage": 10.4,
+          "shortcode": "DFQaeG0NM3V"
+        },
+        {
+          "name": "Event Preparation",
+          "percentage": 7.4,
+          "shortcode": "DFPOCatvojw"
+        },
+        {
+          "name": "Pet Adoption",
+          "percentage": 5.6,
+          "shortcode": "DFPBurYzoY3"
+        },
+        {
+          "name": "Food Reviews",
+          "percentage": 5.3,
+          "shortcode": "DFSqt9ho-Cs"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Pet Vlogs",
+          "percentage": -66.7,
+          "shortcode": "DFNZU3Hpop-"
+        },
+        {
+          "name": "Pet Content",
+          "percentage": -50.0,
+          "shortcode": "DFNPU9XJ3ux"
+        },
+        {
+          "name": "Animal Rescue",
+          "percentage": -45.5,
+          "shortcode": "DFMXO7hB5KS"
+        },
+        {
+          "name": "Animal Welfare",
+          "percentage": -33.3,
+          "shortcode": "DFMaqAsosr1"
+        },
+        {
+          "name": "Pet Updates",
+          "percentage": -30,
+          "shortcode": "DFNORHpTDHw"
+        }
+      ]
+    },
+    "Educational Content": {
+      "emerging": [
+        {
+          "name": "Skill Demonstrations",
+          "percentage": 75,
+          "shortcode": "DFMb_w9Po2W"
+        },
+        {
+          "name": "Quick Tips and Hacks",
+          "percentage": 75,
+          "shortcode": "DFN0r1nSIsD"
+        },
+        {
+          "name": "Expert Advice",
+          "percentage": 66.7,
+          "shortcode": "DFSC76uIOUm"
+        },
+        {
+          "name": "Educational Shorts",
+          "percentage": 30,
+          "shortcode": "DFRvI_PCifv"
+        },
+        {
+          "name": "How-To Tutorials",
+          "percentage": 10.0,
+          "shortcode": "DFNHwXfp4Vv"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Quick Tips and Hacks",
+          "percentage": 25.6,
+          "shortcode": "DFN0r1nSIsD"
+        },
+        {
+          "name": "How-To Tutorials",
+          "percentage": 23.3,
+          "shortcode": "DFNHwXfp4Vv"
+        },
+        {
+          "name": "Skill Demonstrations",
+          "percentage": 20.0,
+          "shortcode": "DFMb_w9Po2W"
+        },
+        {
+          "name": "Expert Advice",
+          "percentage": 17.8,
+          "shortcode": "DFSC76uIOUm"
+        },
+        {
+          "name": "Educational Shorts",
+          "percentage": 7.8,
+          "shortcode": "DFRvI_PCifv"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Myth Busting",
+          "percentage": -30,
+          "shortcode": "DFNeIvbTZRE"
+        }
+      ]
+    }
+  },
+  "Photography Styles": {
+    "Content Presentation": {
+      "emerging": [
+        {
+          "name": "Before/After Sets",
+          "percentage": 75,
+          "shortcode": "DFMTR34yF9x"
+        },
+        {
+          "name": "Comparison Shots",
+          "percentage": 75,
+          "shortcode": "DFQdHTlSQD9"
+        },
+        {
+          "name": "Food Plating",
+          "percentage": 75,
+          "shortcode": "DFSsBIdSfW_"
+        },
+        {
+          "name": "Multi-Slide Carousels",
+          "percentage": 75,
+          "shortcode": "DFNO19hPm91"
+        },
+        {
+          "name": "Single Image Impact",
+          "percentage": 75,
+          "shortcode": "DFL0VMxzzet"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Flat Lays",
+          "percentage": 31.7,
+          "shortcode": "DFPPu6vyCoU"
+        },
+        {
+          "name": "Before/After Sets",
+          "percentage": 22.2,
+          "shortcode": "DFMTR34yF9x"
+        },
+        {
+          "name": "Collection Displays",
+          "percentage": 12.1,
+          "shortcode": "DFMtBCsSdQG"
+        },
+        {
+          "name": "Comparison Shots",
+          "percentage": 8.8,
+          "shortcode": "DFQdHTlSQD9"
+        },
+        {
+          "name": "Product Styling",
+          "percentage": 8.7,
+          "shortcode": "DFOWCqdSrwx"
+        }
+      ],
+      "declining": []
+    },
+    "Technical Styles": {
+      "emerging": [
+        {
+          "name": "Silhouettes",
+          "percentage": 75,
+          "shortcode": "DFQjeldyMHH"
+        },
+        {
+          "name": "Golden Hour Shots",
+          "percentage": 75,
+          "shortcode": "DFNY25JP9Vv"
+        },
+        {
+          "name": "Motion Blur",
+          "percentage": 75,
+          "shortcode": "DFQaeG0NM3V"
+        },
+        {
+          "name": "Reflections",
+          "percentage": 75,
+          "shortcode": "DFS4XZtyQJb"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 69.2,
+          "shortcode": "DFR40AoRCVa"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Golden Hour Shots",
+          "percentage": 39.5,
+          "shortcode": "DFNY25JP9Vv"
+        },
+        {
+          "name": "Silhouettes",
+          "percentage": 38.7,
+          "shortcode": "DFQjeldyMHH"
+        },
+        {
+          "name": "Backlit Portraits",
+          "percentage": 10.0,
+          "shortcode": "DFMb_w9Po2W"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 4.4,
+          "shortcode": "DFR40AoRCVa"
+        },
+        {
+          "name": "Motion Blur",
+          "percentage": 2.8,
+          "shortcode": "DFQaeG0NM3V"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Soft Focus",
+          "percentage": -50.0,
+          "shortcode": "DFO8pkmiVyF"
+        },
+        {
+          "name": "Close-up Shots",
+          "percentage": -30,
+          "shortcode": "DFNNfONMDf_"
+        },
+        {
+          "name": "Close-Up Shots",
+          "percentage": -30,
+          "shortcode": "DFNQhkcyWxr"
+        },
+        {
+          "name": "Fish Eye Lens",
+          "percentage": -30,
+          "shortcode": "DFOWy99RBIA"
+        },
+        {
+          "name": "Natural Light Photography",
+          "percentage": -30,
+          "shortcode": "DFOJ6xkTyq7"
+        }
+      ]
+    },
+    "Aesthetic Themes": {
+      "emerging": [
+        {
+          "name": "Dark Academia",
+          "percentage": 75,
+          "shortcode": "DFPAUZSNx1J"
+        },
+        {
+          "name": "Ethereal/Dreamy",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Urban Grunge",
+          "percentage": 75,
+          "shortcode": "DFNV2tpT7TJ"
+        },
+        {
+          "name": "Minimalist Layouts",
+          "percentage": 75,
+          "shortcode": "DFRbv6svnh3"
+        },
+        {
+          "name": "Cottagecore",
+          "percentage": 73.8,
+          "shortcode": "DFMkjtwyud_"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Ethereal/Dreamy",
+          "percentage": 34.6,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Cottagecore",
+          "percentage": 32.9,
+          "shortcode": "DFMkjtwyud_"
+        },
+        {
+          "name": "Soft Minimalism",
+          "percentage": 16.0,
+          "shortcode": "DFMsadeyrqI"
+        },
+        {
+          "name": "Urban Grunge",
+          "percentage": 8.3,
+          "shortcode": "DFNV2tpT7TJ"
+        },
+        {
+          "name": "Vintage Film Look",
+          "percentage": 3.7,
+          "shortcode": "DFSxKvIteJw"
+        }
+      ],
+      "declining": []
+    },
+    "Composition Trends": {
+      "emerging": [
+        {
+          "name": "Symmetrical Frames",
+          "percentage": 75,
+          "shortcode": "DFMr0pkzX2v"
+        },
+        {
+          "name": "Minimalist Layouts",
+          "percentage": 75,
+          "shortcode": "DFRbv6svnh3"
+        },
+        {
+          "name": "Rule of Thirds",
+          "percentage": 75,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Grid Layouts",
+          "percentage": 75,
+          "shortcode": "DFNYgy8TuFI"
+        },
+        {
+          "name": "Flat Lays",
+          "percentage": 30,
+          "shortcode": "DFPPu6vyCoU"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Rule of Thirds",
+          "percentage": 48.8,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Symmetrical Frames",
+          "percentage": 35.5,
+          "shortcode": "DFMr0pkzX2v"
+        },
+        {
+          "name": "Minimalist Layouts",
+          "percentage": 8.2,
+          "shortcode": "DFRbv6svnh3"
+        },
+        {
+          "name": "Grid Layouts",
+          "percentage": 6.6,
+          "shortcode": "DFNYgy8TuFI"
+        },
+        {
+          "name": "Leading Lines",
+          "percentage": 0.4,
+          "shortcode": "DFOhyG_NlWu"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Leading Lines",
+          "percentage": -30,
+          "shortcode": "DFOhyG_NlWu"
+        }
+      ]
+    }
+  },
+  "Visual Elements": {
+    "Location Settings": {
+      "emerging": [
+        {
+          "name": "Urban Architecture",
+          "percentage": 75,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Outdoor Spaces",
+          "percentage": 75,
+          "shortcode": "DFNhB48MZ_W"
+        },
+        {
+          "name": "Nature Backdrops",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Studio Setups",
+          "percentage": 75,
+          "shortcode": "DFOvDVvSKz-"
+        },
+        {
+          "name": "Public Spaces",
+          "percentage": 75,
+          "shortcode": "DFQjeldyMHH"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Home Spaces",
+          "percentage": 62.4,
+          "shortcode": "DFMiR6czqdy"
+        },
+        {
+          "name": "Nature Backdrops",
+          "percentage": 15.0,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Public Spaces",
+          "percentage": 14.1,
+          "shortcode": "DFQjeldyMHH"
+        },
+        {
+          "name": "Urban Architecture",
+          "percentage": 4.4,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Studio Setups",
+          "percentage": 2.8,
+          "shortcode": "DFOvDVvSKz-"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Car Interior",
+          "percentage": -30,
+          "shortcode": "DFPeLx-T1Ez"
+        }
+      ]
+    },
+    "Prop Elements": {
+      "emerging": [
+        {
+          "name": "Tech Devices",
+          "percentage": 75,
+          "shortcode": "DFOvDVvSKz-"
+        },
+        {
+          "name": "Plants and Flowers",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Trending Products",
+          "percentage": 75,
+          "shortcode": "DFSaVI-M7fz"
+        },
+        {
+          "name": "Food Styling Props",
+          "percentage": 73.0,
+          "shortcode": "DFSqt9ho-Cs"
+        },
+        {
+          "name": "Lifestyle Products",
+          "percentage": 62.9,
+          "shortcode": "DFNQXnRSC__"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Plants and Flowers",
+          "percentage": 71.4,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Natural Elements",
+          "percentage": 11.0,
+          "shortcode": "DFPFQPINcPd"
+        },
+        {
+          "name": "Food Styling Props",
+          "percentage": 5.0,
+          "shortcode": "DFSqt9ho-Cs"
+        },
+        {
+          "name": "Lifestyle Products",
+          "percentage": 4.6,
+          "shortcode": "DFNQXnRSC__"
+        },
+        {
+          "name": "Pets",
+          "percentage": 3.4,
+          "shortcode": "DFL0VMxzzet"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Dog Toys",
+          "percentage": -30,
+          "shortcode": "DFNHKlvzVgV"
+        },
+        {
+          "name": "Pet Toys",
+          "percentage": -30,
+          "shortcode": "DFNddA3yfh8"
+        },
+        {
+          "name": "Pets and Flowers",
+          "percentage": -30,
+          "shortcode": "DFMlmMmJ6xB"
+        },
+        {
+          "name": "Animals",
+          "percentage": -18.8,
+          "shortcode": "DFNhB48MZ_W"
+        }
+      ]
+    },
+    "Color Schemes": {
+      "emerging": [
+        {
+          "name": "Jewel Tones",
+          "percentage": 75,
+          "shortcode": "DFNQhkcyWxr"
+        },
+        {
+          "name": "Muted Palettes",
+          "percentage": 75,
+          "shortcode": "DFMNsz8OH6M"
+        },
+        {
+          "name": "Monochromatic",
+          "percentage": 75,
+          "shortcode": "DFLfHefM0j0"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 75,
+          "shortcode": "DFRqp-Wpc4J"
+        },
+        {
+          "name": "Earth Tones",
+          "percentage": 75,
+          "shortcode": "DFQjeldyMHH"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Natural Colors",
+          "percentage": 47.3,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Earth Tones",
+          "percentage": 35.8,
+          "shortcode": "DFQjeldyMHH"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 6.9,
+          "shortcode": "DFRqp-Wpc4J"
+        },
+        {
+          "name": "Pastels",
+          "percentage": 4.2,
+          "shortcode": "DFPUMEUSVEv"
+        },
+        {
+          "name": "Muted Palettes",
+          "percentage": 3.0,
+          "shortcode": "DFMNsz8OH6M"
+        }
+      ],
+      "declining": []
+    }
+  },
+  "Content Strategies": {
+    "Engagement Elements": {
+      "emerging": [
+        {
+          "name": "Question Prompts",
+          "percentage": 75,
+          "shortcode": "DFPFQPINcPd"
+        },
+        {
+          "name": "Shareable Moments",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Trend Participation",
+          "percentage": 75,
+          "shortcode": "DFPPu6vyCoU"
+        },
+        {
+          "name": "Duet Opportunities",
+          "percentage": 70.0,
+          "shortcode": "DFR8x4zy-TT"
+        },
+        {
+          "name": "Response Requests",
+          "percentage": 57.1,
+          "shortcode": "DFMhQLLparx"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Question Prompts",
+          "percentage": 62.8,
+          "shortcode": "DFPFQPINcPd"
+        },
+        {
+          "name": "Trend Participation",
+          "percentage": 12.5,
+          "shortcode": "DFPPu6vyCoU"
+        },
+        {
+          "name": "Shareable Moments",
+          "percentage": 11.9,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Response Requests",
+          "percentage": 5.8,
+          "shortcode": "DFMhQLLparx"
+        },
+        {
+          "name": "Community Challenges",
+          "percentage": 3.3,
+          "shortcode": "DFMK9HAyIev"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Shoppable Post",
+          "percentage": -30,
+          "shortcode": "DFNNWVsoiU1"
+        },
+        {
+          "name": "Save-Worthy Tips",
+          "percentage": -6.7,
+          "shortcode": "DFNHwXfp4Vv"
+        }
+      ]
+    },
+    "Presentation Formats": {
+      "emerging": [
+        {
+          "name": "Single Image Impact",
+          "percentage": 75,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Video-Photo Mix",
+          "percentage": 75,
+          "shortcode": "DFQH2jSvA6T"
+        },
+        {
+          "name": "Multi-Slide Carousels",
+          "percentage": 73.9,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Series Content",
+          "percentage": 30,
+          "shortcode": "DFSC76uIOUm"
+        },
+        {
+          "name": "Tutorial Sequences",
+          "percentage": 30,
+          "shortcode": "DFPw_9ySVAX"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Single Image Impact",
+          "percentage": 55.9,
+          "shortcode": "DFP8I3oRyc6"
+        },
+        {
+          "name": "Multi-Slide Carousels",
+          "percentage": 42.5,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Video-Photo Mix",
+          "percentage": 1.5,
+          "shortcode": "DFQH2jSvA6T"
+        },
+        {
+          "name": "Series Content",
+          "percentage": 0.0,
+          "shortcode": "DFSC76uIOUm"
+        },
+        {
+          "name": "Tutorial Sequences",
+          "percentage": 0.0,
+          "shortcode": "DFPw_9ySVAX"
+        }
+      ],
+      "declining": []
+    },
+    "Narrative Approaches": {
+      "emerging": [
+        {
+          "name": "Seasonal Changes",
+          "percentage": 75,
+          "shortcode": "DFNqeu1oXz_"
+        },
+        {
+          "name": "Reality vs Expectation",
+          "percentage": 75,
+          "shortcode": "DFNf5dQsBVG"
+        },
+        {
+          "name": "Time Progression",
+          "percentage": 75,
+          "shortcode": "DFNdbchMQGk"
+        },
+        {
+          "name": "Challenge Progressions",
+          "percentage": 75,
+          "shortcode": "DFQdHTlSQD9"
+        },
+        {
+          "name": "Day-in-Life Sequences",
+          "percentage": 75,
+          "shortcode": "DFPsDoDpqEA"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Day-in-Life Sequences",
+          "percentage": 24.6,
+          "shortcode": "DFPsDoDpqEA"
+        },
+        {
+          "name": "Success Stories",
+          "percentage": 24.2,
+          "shortcode": "DFQjeldyMHH"
+        },
+        {
+          "name": "Life Updates",
+          "percentage": 22.7,
+          "shortcode": "DFSqt9ho-Cs"
+        },
+        {
+          "name": "Reality vs Expectation",
+          "percentage": 13.0,
+          "shortcode": "DFNf5dQsBVG"
+        },
+        {
+          "name": "Challenge Progressions",
+          "percentage": 8.2,
+          "shortcode": "DFQdHTlSQD9"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Educational Content",
+          "percentage": -30,
+          "shortcode": "DFMMwq_NC7k"
+        },
+        {
+          "name": "Story Times",
+          "percentage": -30,
+          "shortcode": "DFOBa_dzmXe"
+        },
+        {
+          "name": "Animal Behavior",
+          "percentage": -30,
+          "shortcode": "DFMtIfLtRZP"
+        },
+        {
+          "name": "Trend Participation",
+          "percentage": -30,
+          "shortcode": "DFPPu6vyCoU"
+        },
+        {
+          "name": "Behind-the-Scenes",
+          "percentage": -11.1,
+          "shortcode": "DFOvDVvSKz-"
+        }
+      ]
+    }
+  }
+}

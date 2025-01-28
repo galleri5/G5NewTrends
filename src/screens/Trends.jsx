@@ -7,7 +7,16 @@ import TransformationContent from "@/components/TransformationContent";
 import PersonalNarratives from "@/components/PersonalNarratives";
 import EducationalContent from "@/components/EducationalContent";
 import LifeCycleDocumentation from "@/components/LifeCycleDocumentation";
-import { Beauty, Fashion, Home } from "../../public/constants";
+
+import fashionData from "../../public/Trends/-fashion.json";
+import beautyData from "../../public/Trends/-beauty.json";
+import homeData from "../../public/Trends/-home.json";
+import fitnessData from "../../public/Trends/-fitness.json";
+
+import lifestyleData from "../../public/Trends/-lifestyle.json";
+import petsData from "../../public/Trends/-pets.json";
+import kitchenData from "../../public/Trends/-kitchen.json";
+import parentingData from "../../public/Trends/-parenting.json";
 
 function Trends() {
   const [selectedTrend, setSelectedTrend] = useState("Video Formats");
@@ -23,19 +32,28 @@ function Trends() {
   }, [category]);
 
   const fetchData = () => {
-    switch (category) {
-      case "Fashion":
-        return setData(Fashion);
-      case "Beauty":
-        return setData(Beauty);
-      case "Home":
-        return setData(Home);
+    switch (category?.toLowerCase()) {
+      case "fashion":
+        return setData(fashionData);
+      case "beauty":
+        return setData(beautyData);
+      case "home":
+        return setData(homeData);
       case "fitness":
-        return Fashion;
+        return setData(fitnessData);
+      case "lifestyle":
+        return setData(lifestyleData);
+      case "pets":
+        return setData(petsData);
+      case "kitchen":
+        return setData(kitchenData);
+      case "parenting":
+        return setData(parentingData);
       default:
-        return Fashion;
+        return setData(fashionData);
     }
   };
+
   return (
     <Stack>
       {data && (
