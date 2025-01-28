@@ -51,8 +51,6 @@ function Home() {
   const navigate = useNavigate();
 
   const handleSelectedCategory = (category) => {
-    console.log(category);
-
     navigate(`/trends/${category}`);
   };
 
