@@ -1,8 +1,6 @@
-# React + Vite
+#Galleri5 Trends Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A data-driven analytics platform for discovering, analyzing, and creating content based on trending categories in fashion, beauty, home, kitchen, and lifestyle sectors.
+Overview
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Galleri5 Trends is a comprehensive analytics dashboard that helps content creators, marketers, and brands understand trending content, user demographics, and engagement patterns across different categories.
