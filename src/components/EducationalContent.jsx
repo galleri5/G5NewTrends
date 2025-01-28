@@ -66,8 +66,12 @@ function EducationalContent({ category, label, data, selectedTrend }) {
             (option) => option.title === selectTrendStatus
           )?.key;
 
-          if (!selectedKey || !data[selectedKey]) {
-            return <Text>No data available</Text>;
+          if (
+            !selectedKey ||
+            !data[selectedKey] ||
+            data[selectedKey].length === 0
+          ) {
+            return <>No data found with the selected filter</>;
           }
 
           return data[selectedKey].map((item, index) => (

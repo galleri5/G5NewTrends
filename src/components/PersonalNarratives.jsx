@@ -63,38 +63,45 @@ function PersonalNarratives({ category, label, data, selectedTrend }) {
         />
       </HStack>
 
-      <HStack overflow="auto" w="full" scrollBehavior="smooth" gap={"16px"}>
-        {data[
+      {(
+        data[
           optionsOfTrendingNow.find(
             (option) => option.title === selectTrendStatus
           )?.key
-        ].map((item, index) => (
-          <PersonalNarativesCard
-            key={index}
-            item={item}
-            index={index}
-            type={
-              optionsOfTrendingNow.find(
-                (option) => option.title === selectTrendStatus
-              )?.key
-            }
-            onClick={() =>
-              navigate(
-                `/trendsAnalysis/${
-                  item?.name
-                }?category=${category}&subCategory=${label}&trendType=${
-                  optionsOfTrendingNow.find(
-                    (option) => option.title === selectTrendStatus
-                  )?.key
-                }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
-              )
-            }
-          />
-        ))}
-        {/* {listOfTransformationContent.map((item, index) => (
-          <PersonalNarativesCard key={index} item={item} />
-        ))} */}
-      </HStack>
+        ] || []
+      ).length > 0 ? (
+        <HStack overflow="auto" w="full" scrollBehavior="smooth" gap={"16px"}>
+          {data[
+            optionsOfTrendingNow.find(
+              (option) => option.title === selectTrendStatus
+            )?.key
+          ].map((item, index) => (
+            <PersonalNarativesCard
+              key={index}
+              item={item}
+              index={index}
+              type={
+                optionsOfTrendingNow.find(
+                  (option) => option.title === selectTrendStatus
+                )?.key
+              }
+              onClick={() =>
+                navigate(
+                  `/trendsAnalysis/${
+                    item?.name
+                  }?category=${category}&subCategory=${label}&trendType=${
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key
+                  }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
+                )
+              }
+            />
+          ))}
+        </HStack>
+      ) : (
+        <>No data found with the selected filter</>
+      )}
     </Stack>
   );
 }
