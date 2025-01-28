@@ -2,7 +2,8 @@ import { HStack, Stack, Text, Image } from "@chakra-ui/react";
 import CommonDialogBox from "./CommonDialogBox";
 import { useState } from "react";
 import TrendsformationCard from "./TransformationCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ScrollableContainer from "./ScrollableContainer";
 
 const optionsOfTrendingNow = [
   {
@@ -26,8 +27,16 @@ function TransformationContent({ category, label, data, selectedTrend }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectTrendStatus, setSelectTrendStatus] = useState("Popular Trends");
   const navigate = useNavigate();
+
   const handleSelectTrendStatus = (item) => {
     setSelectTrendStatus(item);
+  };
+
+  const getCurrentTrendData = () => {
+    const selectedOption = optionsOfTrendingNow.find(
+      (option) => option.title === selectTrendStatus
+    );
+    return data[selectedOption?.key] || [];
   };
 
   return (
@@ -41,13 +50,9 @@ function TransformationContent({ category, label, data, selectedTrend }) {
         >
           {label}
         </Text>
-        {/* <PricingWidgetsLabel arrow={"up"} value={"-4.5 %"} /> */}
       </HStack>
-      <HStack
-        // ref={dropdownRef}
-        onClick={() => setIsOpen(!isOpen)}
-        position="relative"
-      >
+
+      <HStack onClick={() => setIsOpen(!isOpen)} position="relative">
         <Text fontWeight={"600"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"}>
           {selectTrendStatus}
         </Text>
@@ -60,19 +65,10 @@ function TransformationContent({ category, label, data, selectedTrend }) {
           selectedItem={selectTrendStatus}
         />
       </HStack>
-      {(
-        data[
-          optionsOfTrendingNow.find(
-            (option) => option.title === selectTrendStatus
-          )?.key
-        ] || []
-      ).length > 0 ? (
-        <HStack overflow="auto" w="full" scrollBehavior="smooth" gap={"16px"}>
-          {data[
-            optionsOfTrendingNow.find(
-              (option) => option.title === selectTrendStatus
-            )?.key
-          ].map((item, index) => (
+
+      {getCurrentTrendData().length > 0 ? (
+        <ScrollableContainer>
+          {getCurrentTrendData().map((item, index) => (
             <TrendsformationCard
               key={index}
               item={item}
@@ -95,7 +91,7 @@ function TransformationContent({ category, label, data, selectedTrend }) {
               }
             />
           ))}
-        </HStack>
+        </ScrollableContainer>
       ) : (
         <>No data found with the selected filter</>
       )}

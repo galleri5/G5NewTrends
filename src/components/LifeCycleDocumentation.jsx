@@ -3,6 +3,8 @@ import CommonDialogBox from "./CommonDialogBox";
 import { useState } from "react";
 import TrendsformationCard from "./TransformationCard";
 import { useNavigate } from "react-router-dom";
+import ScrollableContainer from "./ScrollableContainer";
+import PropTypes from "prop-types";
 
 const optionsOfTrendingNow = [
   {
@@ -31,6 +33,13 @@ function LifeCycleDocumentation({ category, label, data, selectedTrend }) {
     setSelectTrendStatus(item);
   };
 
+  const getCurrentTrendData = () => {
+    const selectedOption = optionsOfTrendingNow.find(
+      (option) => option.title === selectTrendStatus
+    );
+    return data[selectedOption?.key] || [];
+  };
+
   return (
     <Stack padding={"20px 24px"}>
       <HStack justifyContent={"space-between"}>
@@ -42,13 +51,9 @@ function LifeCycleDocumentation({ category, label, data, selectedTrend }) {
         >
           {label}
         </Text>
-        {/* <PricingWidgetsLabel arrow={"up"} value={"-4.5 %"} /> */}
       </HStack>
-      <HStack
-        // ref={dropdownRef}
-        onClick={() => setIsOpen(!isOpen)}
-        position="relative"
-      >
+
+      <HStack onClick={() => setIsOpen(!isOpen)} position="relative">
         <Text fontWeight={"600"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"}>
           {selectTrendStatus}
         </Text>
@@ -61,19 +66,10 @@ function LifeCycleDocumentation({ category, label, data, selectedTrend }) {
           selectedItem={selectTrendStatus}
         />
       </HStack>
-      {(
-        data[
-          optionsOfTrendingNow.find(
-            (option) => option.title === selectTrendStatus
-          )?.key
-        ] || []
-      ).length > 0 ? (
-        <HStack overflow="auto" w="full" scrollBehavior="smooth" gap={"16px"}>
-          {data[
-            optionsOfTrendingNow.find(
-              (option) => option.title === selectTrendStatus
-            )?.key
-          ].map((item, index) => (
+
+      {getCurrentTrendData().length > 0 ? (
+        <ScrollableContainer gap="16px">
+          {getCurrentTrendData().map((item, index) => (
             <TrendsformationCard
               key={index}
               item={item}
@@ -83,25 +79,37 @@ function LifeCycleDocumentation({ category, label, data, selectedTrend }) {
                   (option) => option.title === selectTrendStatus
                 )?.key
               }
-              onClick={() =>
-                navigate(
-                  `/trendsAnalysis/${
-                    item?.name
-                  }?category=${category}&subCategory=${label}&trendType=${
+              onClick={() => {
+                const queryParams = new URLSearchParams({
+                  category: category || "",
+                  subCategory: label || "",
+                  trendType:
                     optionsOfTrendingNow.find(
                       (option) => option.title === selectTrendStatus
-                    )?.key
-                  }&selectedTrend=${selectedTrend}&shortCode=${item?.shortcode}`
-                )
-              }
+                    )?.key || "",
+                  selectedTrend: selectedTrend || "",
+                  shortCode: item?.shortcode || "",
+                });
+
+                navigate(
+                  `/trendsAnalysis/${item?.name}?${queryParams.toString()}`
+                );
+              }}
             />
           ))}
-        </HStack>
+        </ScrollableContainer>
       ) : (
-        <>No data found with the selected filter</>
+        <Text>No data found with the selected filter</Text>
       )}
     </Stack>
   );
 }
+
+LifeCycleDocumentation.propTypes = {
+  category: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  selectedTrend: PropTypes.string.isRequired,
+};
 
 export default LifeCycleDocumentation;

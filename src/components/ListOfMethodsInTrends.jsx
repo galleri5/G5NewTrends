@@ -1,5 +1,6 @@
-import { HStack, Stack, Text, VStack, Image, Box } from "@chakra-ui/react";
+import { Stack, Text, VStack, Image, Box } from "@chakra-ui/react";
 import PropTypes from "prop-types";
+import ScrollableContainer from "./ScrollableContainer";
 
 const listOfMethodsInTrends = [
   {
@@ -25,8 +26,8 @@ function ListOfTrendsMethod({
   handleSelectTrendType,
 }) {
   return (
-    <Stack p={"0px 20px"}>
-      <HStack overflowX={"auto"}>
+    <Stack p={"0px 20px"} position="relative">
+      <ScrollableContainer>
         {listOfMethodsInTrends.map((trend) => (
           <VStack
             key={trend?.title}
@@ -54,7 +55,7 @@ function ListOfTrendsMethod({
             )}
           </VStack>
         ))}
-      </HStack>
+      </ScrollableContainer>
     </Stack>
   );
 }
