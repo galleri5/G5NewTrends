@@ -78,6 +78,11 @@ function EducationalContent({ category, label, data, selectedTrend }) {
               borderRadius={"6px"}
               border={"1px solid rgba(0, 0, 0, 1)"}
               width={"100%"}
+              type={
+                optionsOfTrendingNow.find(
+                  (option) => option.title === selectTrendStatus
+                )?.key
+              }
               onClick={() =>
                 navigate(
                   `/trendsAnalysis/${
@@ -109,7 +114,12 @@ function EducationalContent({ category, label, data, selectedTrend }) {
               <HStack>
                 <Image
                   src={
-                    item?.arrow === "up"
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key == "emerging" ||
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key == "popular"
                       ? "/assets/uparrowicon.svg"
                       : "/assets/downarrowicon.svg"
                   }
@@ -121,9 +131,14 @@ function EducationalContent({ category, label, data, selectedTrend }) {
                   fontWeight={"700"}
                   fontSize={"12px"}
                   color={
-                    item?.arrow === "up"
-                      ? "rgba(0, 128, 0, 1)"
-                      : "rgba(255, 0, 0, 1)"
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key == "emerging" ||
+                    optionsOfTrendingNow.find(
+                      (option) => option.title === selectTrendStatus
+                    )?.key == "popular"
+                      ? "rgba(99, 220, 161, 1)"
+                      : "rgba(237, 129, 106, 1)"
                   }
                 >
                   {item?.percentage}%
