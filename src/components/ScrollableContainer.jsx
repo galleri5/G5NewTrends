@@ -36,7 +36,7 @@ const ScrollableContainer = ({ children, gap = "16px" }) => {
   const ScrollButton = ({ direction }) => (
     <VStack
       position="absolute"
-      {...(direction === "left" ? { left: 0 } : { right: 0 })}
+      {...(direction === "left" ? { left: -3 } : { right: -3 })}
       border={"2px solid #ffffff7d"}
       borderRadius={"25%"}
       p="3px"
