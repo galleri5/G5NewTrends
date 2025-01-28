@@ -54,7 +54,14 @@ function PersonalNarratives({ category, label, data, selectedTrend }) {
         </Text>
       </HStack>
 
-      <HStack onClick={() => setIsOpen(!isOpen)} position="relative">
+      <HStack
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        cursor={"pointer"}
+        position="relative"
+      >
         <Text fontWeight={"600"} color={"rgba(0, 0, 0, 1)"} fontSize={"14px"}>
           {selectTrendStatus}
         </Text>
