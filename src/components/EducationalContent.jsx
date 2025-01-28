@@ -41,7 +41,7 @@ function EducationalContent({ category, label, data, selectedTrend }) {
         >
           {label}
         </Text>
-        <PricingWidgetsLabel arrow={"up"} value={"-4.5 %"} />
+        {/* <PricingWidgetsLabel arrow={"up"} value={"-4.5 %"} /> */}
       </HStack>
       <HStack
         // ref={dropdownRef}
