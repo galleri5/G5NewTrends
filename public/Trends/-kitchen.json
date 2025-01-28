@@ -1,0 +1,411 @@
+{
+  "Video Formats": {
+    "Educational Content": {
+      "emerging": [
+        {
+          "name": "Skill Demonstrations",
+          "percentage": 75,
+          "shortcode": "DFM9afsu_WO"
+        }
+      ],
+      "popular": [
+        {
+          "name": "How-To Tutorials",
+          "percentage": 96.9,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Skill Demonstrations",
+          "percentage": 3.1,
+          "shortcode": "DFM9afsu_WO"
+        }
+      ],
+      "declining": [
+        {
+          "name": "How-To Tutorials",
+          "percentage": -16.1,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    },
+    "Lifestyle Documentation": {
+      "emerging": [],
+      "popular": [
+        {
+          "name": "Food Reviews",
+          "percentage": 100.0,
+          "shortcode": "DFPbLT2yT7h"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Food Reviews",
+          "percentage": -75.0,
+          "shortcode": "DFPbLT2yT7h"
+        }
+      ]
+    },
+    "Personal Narratives": {
+      "emerging": [],
+      "popular": [
+        {
+          "name": "Day in My Life",
+          "percentage": 50.0,
+          "shortcode": "DFNSNShPeff"
+        },
+        {
+          "name": "What I Eat in a Day",
+          "percentage": 50.0,
+          "shortcode": "DFQKP4cItba"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Day in My Life",
+          "percentage": -30,
+          "shortcode": "DFNSNShPeff"
+        }
+      ]
+    },
+    "Transformation Content": {
+      "emerging": [],
+      "popular": [],
+      "declining": []
+    }
+  },
+  "Photography Styles": {
+    "Content Presentation": {
+      "emerging": [
+        {
+          "name": "Flat Lays",
+          "percentage": 30,
+          "shortcode": "DFQKP4cItba"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Food Plating",
+          "percentage": 94.1,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Product Styling",
+          "percentage": 2.9,
+          "shortcode": "DFPROzpTNcA"
+        },
+        {
+          "name": "Flat Lays",
+          "percentage": 2.0,
+          "shortcode": "DFQKP4cItba"
+        },
+        {
+          "name": "Progress Tracking",
+          "percentage": 1.0,
+          "shortcode": "DFNUy2jIXlZ"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Progress Tracking",
+          "percentage": -30,
+          "shortcode": "DFNUy2jIXlZ"
+        },
+        {
+          "name": "Food Plating",
+          "percentage": -21.2,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    },
+    "Technical Styles": {
+      "emerging": [
+        {
+          "name": "High Contrast",
+          "percentage": 75,
+          "shortcode": "DFNRqamSlIk"
+        },
+        {
+          "name": "Golden Hour Shots",
+          "percentage": 75,
+          "shortcode": "DFPFy-lurVV"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Golden Hour Shots",
+          "percentage": 62.5,
+          "shortcode": "DFPFy-lurVV"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 37.5,
+          "shortcode": "DFNRqamSlIk"
+        }
+      ],
+      "declining": []
+    },
+    "Composition Trends": {
+      "emerging": [
+        {
+          "name": "Rule of Thirds",
+          "percentage": 30,
+          "shortcode": "DFSRZ5jNAPn"
+        },
+        {
+          "name": "Symmetrical Frames",
+          "percentage": 30,
+          "shortcode": "DFSABZWtsum"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Rule of Thirds",
+          "percentage": 66.7,
+          "shortcode": "DFSRZ5jNAPn"
+        },
+        {
+          "name": "Symmetrical Frames",
+          "percentage": 33.3,
+          "shortcode": "DFSABZWtsum"
+        }
+      ],
+      "declining": []
+    },
+    "Aesthetic Themes": {
+      "emerging": [],
+      "popular": [],
+      "declining": []
+    }
+  },
+  "Visual Elements": {
+    "Color Schemes": {
+      "emerging": [
+        {
+          "name": "Natural Colors",
+          "percentage": 20.0,
+          "shortcode": "DFNUy2jIXlZ"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Earth Tones",
+          "percentage": 88.3,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Natural Colors",
+          "percentage": 10.8,
+          "shortcode": "DFNUy2jIXlZ"
+        },
+        {
+          "name": "High Contrast",
+          "percentage": 0.9,
+          "shortcode": "DFP4QwYIQvK"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Earth Tones",
+          "percentage": -21.2,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    },
+    "Location Settings": {
+      "emerging": [
+        {
+          "name": "Aesthetic Workspaces",
+          "percentage": 30,
+          "shortcode": "DFRhNPZy5lG"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Home Spaces",
+          "percentage": 93.5,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Studio Setups",
+          "percentage": 5.6,
+          "shortcode": "DFMhLWsOnna"
+        },
+        {
+          "name": "Aesthetic Workspaces",
+          "percentage": 0.9,
+          "shortcode": "DFRhNPZy5lG"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Studio Setups",
+          "percentage": -66.7,
+          "shortcode": "DFMhLWsOnna"
+        },
+        {
+          "name": "Home Spaces",
+          "percentage": -17.6,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    },
+    "Prop Elements": {
+      "emerging": [],
+      "popular": [
+        {
+          "name": "Food Styling Props",
+          "percentage": 87.4,
+          "shortcode": "DFPoJ7Vvl_u"
+        },
+        {
+          "name": "Plants and Flowers",
+          "percentage": 12.6,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Lifestyle Products",
+          "percentage": 0.9,
+          "shortcode": "DFPROzpTNcA"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Plants and Flowers",
+          "percentage": -75,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Food Styling Props",
+          "percentage": -6.1,
+          "shortcode": "DFPoJ7Vvl_u"
+        }
+      ]
+    }
+  },
+  "Content Strategies": {
+    "Presentation Formats": {
+      "emerging": [
+        {
+          "name": "Single Image Impact",
+          "percentage": 75,
+          "shortcode": "DFPbLT2yT7h"
+        },
+        {
+          "name": "Tutorial Sequences",
+          "percentage": 75,
+          "shortcode": "DFMzTYOJlBw"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Multi-Slide Carousels",
+          "percentage": 81.8,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Tutorial Sequences",
+          "percentage": 9.1,
+          "shortcode": "DFMzTYOJlBw"
+        },
+        {
+          "name": "Single Image Impact",
+          "percentage": 9.1,
+          "shortcode": "DFPbLT2yT7h"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Multi-Slide Carousels",
+          "percentage": -39.4,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    },
+    "Engagement Elements": {
+      "emerging": [
+        {
+          "name": "Trend Participation",
+          "percentage": 30,
+          "shortcode": "DFRhNPZy5lG"
+        },
+        {
+          "name": "Save-Worthy Tips",
+          "percentage": 4.2,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Save-Worthy Tips",
+          "percentage": 74.3,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Question Prompts",
+          "percentage": 24.8,
+          "shortcode": "DFNVvPXPbI-"
+        },
+        {
+          "name": "Trend Participation",
+          "percentage": 0.9,
+          "shortcode": "DFRhNPZy5lG"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Question Prompts",
+          "percentage": -61.5,
+          "shortcode": "DFNVvPXPbI-"
+        }
+      ]
+    },
+    "Narrative Approaches": {
+      "emerging": [
+        {
+          "name": "Quick Tips and Hacks",
+          "percentage": 30,
+          "shortcode": "DFSRZ5jNAPn"
+        }
+      ],
+      "popular": [
+        {
+          "name": "Process Reveals",
+          "percentage": 94.4,
+          "shortcode": "DFP5IWWpZK6"
+        },
+        {
+          "name": "Success Stories",
+          "percentage": 2.2,
+          "shortcode": "DFPKk91Rs3u"
+        },
+        {
+          "name": "Quick Tips and Hacks",
+          "percentage": 2.2,
+          "shortcode": "DFSRZ5jNAPn"
+        },
+        {
+          "name": "Life Updates",
+          "percentage": 1.1,
+          "shortcode": "DFNSNShPeff"
+        }
+      ],
+      "declining": [
+        {
+          "name": "Life Updates",
+          "percentage": -30,
+          "shortcode": "DFNSNShPeff"
+        },
+        {
+          "name": "Success Stories",
+          "percentage": -30,
+          "shortcode": "DFPKk91Rs3u"
+        },
+        {
+          "name": "Process Reveals",
+          "percentage": -26.7,
+          "shortcode": "DFP5IWWpZK6"
+        }
+      ]
+    }
+  }
+}
