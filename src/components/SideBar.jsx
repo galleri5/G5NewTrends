@@ -14,6 +14,7 @@ import {
   useDisclosure,
   HStack,
   Badge,
+  Stack,
   Image,
 } from "@chakra-ui/react";
 import { Menu, TrendingUp, Clock, ShoppingBag, Home } from "lucide-react";
@@ -92,66 +93,80 @@ const Sidebar = ({ containerRef }) => {
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
+        position={"absolute !important"}
         portalProps={{ containerRef: containerRef }}
       >
         <DrawerOverlay />
-        <DrawerContent position={"absolute !important"} left="-2 !important">
-          <DrawerCloseButton />
-          <DrawerHeader pb={4}>
-            <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
-              {/* CATEGORY */}
-            </Text>
-          </DrawerHeader>
+        <DrawerContent
+          position={"relative !important"}
+          maxW={"480px"}
+          background={"transparent"}
+        >
+          <VStack maxW={"300px"} bg="white" h="100%" position={"relative"}>
+            <DrawerHeader pb={4}>
+              <Text
+                color="gray.500"
+                fontSize="sm"
+                fontWeight="medium"
+                mb={2}
+              ></Text>
+            </DrawerHeader>
+            <DrawerCloseButton
+              position={"absolute !important"}
+              size={"xl"}
+              top={4}
+              right={4}
+            />
 
-          <DrawerBody>
-            <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
-              CATEGORY
-            </Text>
-
-            <VStack spacing={2} align="stretch">
-              {/* <Text fontSize="sm" fontWeight="bold" color="gray.600">
-                Available Now
-              </Text> */}
-              {menuItems
-                .filter((item) => !item.comingSoon)
-                .map((item, index) => (
-                  <MenuItem key={index} item={item} />
-                ))}
-            </VStack>
-
-            <VStack spacing={2} align="stretch" mt={4}>
-              <Text fontSize="sm" fontWeight="bold" color="gray.600">
-                Coming Soon
-              </Text>
-              {menuItems
-                .filter((item) => item.comingSoon)
-                .map((item, index) => (
-                  <MenuItem key={index} item={item} />
-                ))}
-            </VStack>
-
-            <Box position="absolute" bottom="8" left="0" right="0" px={6}>
-              <Text color="gray.500" fontSize="sm" mb={4} textAlign="center">
-                Last updated on 12:47am
-              </Text>
-              <Flex direction="column" align="center">
-                <Text color="gray.500" fontSize="sm">
-                  Powered by
+            <Stack justifyContent={"space-between"} h="100%" mb="4">
+              <Stack>
+                <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
+                  CATEGORY
                 </Text>
-                <HStack justifyContent={"center"} w="100%">
-                  <Image
-                    src="./assets/galleri5logo.svg"
-                    alt="galleri5logo"
-                    mt={"10px"}
-                  />
 
-                  <Text fontSize="xl" fontWeight="semibold">
-                    Trends
+                <VStack spacing={2} align="stretch">
+                  {menuItems
+                    .filter((item) => !item.comingSoon)
+                    .map((item, index) => (
+                      <MenuItem key={index} item={item} />
+                    ))}
+                </VStack>
+
+                <VStack spacing={2} align="stretch" mt={4}>
+                  <Text fontSize="sm" fontWeight="bold" color="gray.600">
+                    Coming Soon
                   </Text>
-                </HStack>
-              </Flex>
-            </Box>
-          </DrawerBody>
+                  {menuItems
+                    .filter((item) => item.comingSoon)
+                    .map((item, index) => (
+                      <MenuItem key={index} item={item} />
+                    ))}
+                </VStack>
+              </Stack>
+              <Box px={6}>
+                <Text color="gray.500" fontSize="sm" mb={4} textAlign="center">
+                  Last updated on 12:47am
+                </Text>
+
+                <Flex direction="column" align="center">
+                  <Text color="gray.500" fontSize="sm">
+                    Powered by
+                  </Text>
+                  <HStack justifyContent={"center"} w="100%">
+                    <Image
+                      src="./assets/galleri5logo.svg"
+                      alt="galleri5logo"
+                      mt={"10px"}
+                    />
+
+                    <Text fontSize="xl" fontWeight="semibold">
+                      Trends
+                    </Text>
+                  </HStack>
+                </Flex>
+              </Box>
+            </Stack>
+          </VStack>
         </DrawerContent>
       </Drawer>
     </>
