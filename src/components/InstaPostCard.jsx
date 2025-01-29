@@ -39,7 +39,17 @@ export const ContentCard = ({ type }) => {
 
   return (
     <>
-      <Card minH="340px" minW="260px" m="10px">
+      <Card
+        minH="340px"
+        minW="260px"
+        m="10px"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerUp}
+        onContextMenu={handleContextMenu}
+        style={{ touchAction: "none" }}
+        draggable={false}
+      >
         <CardBody padding="10px">
           <Flex align="center" mb={3}>
             <Avatar size="sm" src="/api/placeholder/32/32" />
@@ -64,13 +74,8 @@ export const ContentCard = ({ type }) => {
               alt="Content"
               borderRadius="lg"
               w="full"
-              onPointerDown={handlePointerDown}
-              onPointerUp={handlePointerUp}
-              onPointerLeave={handlePointerUp}
-              onContextMenu={handleContextMenu}
-              style={{ touchAction: "none" }}
-              draggable={false}
             />
+
             <Badge
               position="absolute"
               top={2}
