@@ -74,6 +74,9 @@ export const ContentCard = ({ type }) => {
               alt="Content"
               borderRadius="lg"
               w="full"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              style={{ pointerEvents: "none" }}
             />
 
             <Badge
