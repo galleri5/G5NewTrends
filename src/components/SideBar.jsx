@@ -14,6 +14,7 @@ import {
   useDisclosure,
   HStack,
   Badge,
+  Image,
 } from "@chakra-ui/react";
 import { Menu, TrendingUp, Clock, ShoppingBag, Home } from "lucide-react";
 
@@ -40,12 +41,6 @@ const Sidebar = ({ containerRef }) => {
       comingSoon: true,
       bg: "transparent",
     },
-    {
-      name: "Home",
-      icon: <Home size={20} />,
-      comingSoon: false,
-      bg: "transparent",
-    },
   ];
 
   const MenuItem = ({ item }) => (
@@ -57,7 +52,9 @@ const Sidebar = ({ containerRef }) => {
       bg={activeItem === item.name ? item.bg : "transparent"}
       _hover={{ bg: "gray.50" }}
       transition="all 0.2s"
-      onClick={() => setActiveItem(item.name)}
+      onClick={() => {
+        if (!item.comingSoon) setActiveItem(item.name);
+      }}
       opacity={item.comingSoon ? 0.5 : 1}
     >
       <Box mr={4} color={activeItem === item.name ? "black" : "gray.400"}>
@@ -69,11 +66,11 @@ const Sidebar = ({ containerRef }) => {
       >
         {item.name}
       </Text>
-      {item.comingSoon && (
+      {/* {item.comingSoon && (
         <Badge ml="auto" colorScheme="blue" variant="subtle" fontSize="xs">
           COMING SOON
         </Badge>
-      )}
+      )} */}
     </Flex>
   );
 
@@ -101,8 +98,8 @@ const Sidebar = ({ containerRef }) => {
         <DrawerContent position={"absolute !important"} left="-2 !important">
           <DrawerCloseButton />
           <DrawerHeader pb={4}>
-            <Text fontSize="2xl" fontWeight="medium" color="gray.700">
-              Home
+            <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
+              {/* CATEGORY */}
             </Text>
           </DrawerHeader>
 
@@ -112,27 +109,46 @@ const Sidebar = ({ containerRef }) => {
             </Text>
 
             <VStack spacing={2} align="stretch">
-              {menuItems.map((item, index) => (
-                <MenuItem key={index} item={item} />
-              ))}
+              {/* <Text fontSize="sm" fontWeight="bold" color="gray.600">
+                Available Now
+              </Text> */}
+              {menuItems
+                .filter((item) => !item.comingSoon)
+                .map((item, index) => (
+                  <MenuItem key={index} item={item} />
+                ))}
+            </VStack>
+
+            <VStack spacing={2} align="stretch" mt={4}>
+              <Text fontSize="sm" fontWeight="bold" color="gray.600">
+                Coming Soon
+              </Text>
+              {menuItems
+                .filter((item) => item.comingSoon)
+                .map((item, index) => (
+                  <MenuItem key={index} item={item} />
+                ))}
             </VStack>
 
             <Box position="absolute" bottom="8" left="0" right="0" px={6}>
-              <Text color="gray.500" fontSize="sm" mb={4} textAlign="left">
+              <Text color="gray.500" fontSize="sm" mb={4} textAlign="center">
                 Last updated on 12:47am
               </Text>
               <Flex direction="column" align="center">
                 <Text color="gray.500" fontSize="sm">
                   Powered by
                 </Text>
-                <Text
-                  fontSize="lg"
-                  fontWeight="bold"
-                  bgGradient="linear(to-r, yellow.400, yellow.600)"
-                  bgClip="text"
-                >
-                  galleri5 Trends
-                </Text>
+                <HStack justifyContent={"center"} w="100%">
+                  <Image
+                    src="./assets/galleri5logo.svg"
+                    alt="galleri5logo"
+                    mt={"10px"}
+                  />
+
+                  <Text fontSize="xl" fontWeight="semibold">
+                    Trends
+                  </Text>
+                </HStack>
               </Flex>
             </Box>
           </DrawerBody>

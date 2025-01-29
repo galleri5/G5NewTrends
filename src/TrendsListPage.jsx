@@ -238,15 +238,13 @@ const TrendsListPage = () => {
         <Sidebar containerRef={containerRef} />
         <Box px={4} pt={4}>
           <Flex justify="space-between" align="center" mb={6}>
-            <HStack>
-              <Text
-                fontSize="xl"
-                fontWeight="bold"
-                bgGradient="linear(to-r, yellow.400, yellow.600)"
-                bgClip="text"
-              >
-                galleri5
-              </Text>
+            <HStack justifyContent={"center"} w="100%">
+              <Image
+                src="./assets/galleri5logo.svg"
+                alt="galleri5logo"
+                mt={"10px"}
+              />
+
               <Text fontSize="xl" fontWeight="semibold">
                 Trends
               </Text>
