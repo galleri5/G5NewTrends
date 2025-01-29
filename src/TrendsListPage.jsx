@@ -7,7 +7,6 @@ import {
   Flex,
   Text,
   VStack,
-  Stack,
   HStack,
   Badge,
   IconButton,
@@ -164,7 +163,7 @@ const TrendCard = ({
         transition: "all 0.2s",
       }}
     >
-      <Flex justify="space-between" align="center">
+      <Flex justify="space-between" align="center" onClick={onToggle}>
         <HStack spacing={4} justifyContent={"space-between"} w="100%">
           <HStack spacing={4}>
             <Text
@@ -192,7 +191,6 @@ const TrendCard = ({
           icon={
             isExpanded ? <ChevronUp size={18} /> : <ChevronDown size={18} />
           }
-          onClick={onToggle}
           variant="ghost"
           size="sm"
         />
