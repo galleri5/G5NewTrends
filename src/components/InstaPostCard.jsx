@@ -76,7 +76,7 @@ export const ContentCard = ({ type }) => {
               w="full"
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
-              style={{ pointerEvents: "none" }}
+              onTouchStart={(e) => e.preventDefault()}
             />
 
             <Badge
