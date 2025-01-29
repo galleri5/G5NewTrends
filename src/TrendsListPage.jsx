@@ -386,10 +386,13 @@ const TrendsListPage = () => {
               fontSize="xl"
               fontWeight="black"
               letterSpacing="wider"
-              style={{ textTransform: "uppercase" }}
+              style={{
+                fontFamily: "'Rampart One', cursive",
+                textTransform: "uppercase",
+              }}
             >
-              ━━ {selectedTrendType && selectedTrendType.toUpperCase()} TRENDS
-              ━━
+              ---- {selectedTrendType && selectedTrendType.toUpperCase()} TRENDS
+              ----
             </Text>
           </Box>
           <VStack spacing={4} align="stretch" mb={6}>
