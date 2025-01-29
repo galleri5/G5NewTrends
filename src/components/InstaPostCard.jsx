@@ -25,7 +25,7 @@ export const ContentCard = ({ type }) => {
 
   const handlePointerDown = (e) => {
     e.preventDefault();
-    timerRef.current = setTimeout(onOpen, 200);
+    timerRef.current = setTimeout(onOpen, 400);
   };
 
   const handlePointerUp = () => {
