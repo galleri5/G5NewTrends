@@ -23,6 +23,14 @@ const Sidebar = ({ containerRef }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [activeItem, setActiveItem] = React.useState("Content Trends");
 
+  const handleContentClick = (e) => {
+    // If the click target is the DrawerContent itself (not its children),
+    // close the drawer
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   const menuItems = [
     {
       name: "Content Trends",
@@ -67,11 +75,6 @@ const Sidebar = ({ containerRef }) => {
       >
         {item.name}
       </Text>
-      {/* {item.comingSoon && (
-        <Badge ml="auto" colorScheme="blue" variant="subtle" fontSize="xs">
-          COMING SOON
-        </Badge>
-      )} */}
     </Flex>
   );
 
@@ -101,8 +104,15 @@ const Sidebar = ({ containerRef }) => {
           position={"relative !important"}
           maxW={"480px"}
           background={"transparent"}
+          onClick={handleContentClick}
         >
-          <VStack maxW={"300px"} bg="white" h="100%" position={"relative"}>
+          <VStack
+            maxW={"300px"}
+            bg="#fff"
+            h="100%"
+            position={"relative"}
+            borderRightRadius={10}
+          >
             <DrawerHeader pb={4}>
               <Text
                 color="gray.500"
@@ -111,12 +121,12 @@ const Sidebar = ({ containerRef }) => {
                 mb={2}
               ></Text>
             </DrawerHeader>
-            <DrawerCloseButton
+            {/* <DrawerCloseButton
               position={"absolute !important"}
               size={"xl"}
               top={4}
               right={4}
-            />
+            /> */}
 
             <Stack justifyContent={"space-between"} h="100%" mb="4">
               <Stack>
@@ -158,7 +168,6 @@ const Sidebar = ({ containerRef }) => {
                       alt="galleri5logo"
                       mt={"10px"}
                     />
-
                     <Text fontSize="xl" fontWeight="semibold">
                       Trends
                     </Text>
