@@ -77,10 +77,10 @@ const AboutSection = () => (
 );
 
 // Analytics Section Component
-const AnalyticsSection = () => (
+export const AnalyticsSection = () => (
   <VStack spacing={4} align="stretch">
     {/* Posts Chart */}
-    <Box bg="white" borderRadius="xl" p={4}>
+    <Box bg="white" borderRadius="xl">
       <Flex justify="space-between" mb={4}>
         <Text fontSize="lg" fontWeight="bold">
           No. of Posts

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useRef } from "react";
 import {
   Box,
   Flex,
@@ -18,6 +18,7 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Eye, Heart, MessageCircle, ExternalLink } from "lucide-react";
+import { AnalyticsSection } from "@/TrendDetailsPage";
 
 export const ContentCard = ({ type }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -138,9 +139,11 @@ export const ContentCard = ({ type }) => {
               bg="#fff"
               minH="340px"
               minW="260px"
+              maxH="60vh"
               m="10px"
               p="10px"
               borderRadius={"xl"}
+              overflowY={"auto"}
             >
               <Flex align="center" mb={3}>
                 <Avatar size="sm" src="/api/placeholder/32/32" />
@@ -202,6 +205,9 @@ export const ContentCard = ({ type }) => {
                   <Text fontSize="sm">50</Text>
                 </HStack>
               </HStack>
+              <Stack mt="100px">
+                <AnalyticsSection />
+              </Stack>
             </Stack>
           </ModalBody>
         </ModalContent>
