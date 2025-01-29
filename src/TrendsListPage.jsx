@@ -7,6 +7,7 @@ import {
   Flex,
   Text,
   VStack,
+  Stack,
   HStack,
   Badge,
   IconButton,
@@ -210,6 +211,7 @@ const TrendsListPage = () => {
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
+  const containerRef = React.useRef(null);
 
   const toggleCard = (rank, event) => {
     event.stopPropagation();
@@ -224,8 +226,16 @@ const TrendsListPage = () => {
 
   return (
     <Box bg="gray.100" minH="100vh">
-      <Sidebar />
-      <Container maxW="480px" p={0} bg="white" h="100vh" overflow="auto">
+      <Container
+        maxW="480px"
+        p={0}
+        bg="white"
+        h="100vh"
+        overflow="auto"
+        ref={containerRef}
+        position="relative"
+      >
+        <Sidebar containerRef={containerRef} />
         <Box px={4} pt={4}>
           <Flex justify="space-between" align="center" mb={6}>
             <HStack>
