@@ -14,21 +14,14 @@ import {
   HStack,
   VStack,
   Button,
-  Badge,
   IconButton,
   Progress,
   Avatar,
   Card,
   CardBody,
 } from "@chakra-ui/react";
-import {
-  ArrowLeft,
-  Eye,
-  Heart,
-  MessageCircle,
-  Info,
-  ExternalLink,
-} from "lucide-react";
+import InfoPopover from "./components/InfoModal";
+import { ArrowLeft, Info, ExternalLink } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis } from "recharts";
 
 // Sample data for the posts chart
@@ -67,11 +60,9 @@ const AboutSection = () => (
       <Text fontSize="lg" fontWeight="bold">
         About this trend
       </Text>
-      <IconButton
-        icon={<Info size={18} />}
-        variant="ghost"
-        size="sm"
-        colorScheme="gray"
+      <InfoPopover
+        title={"modalData.title"}
+        sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
       />
     </Flex>
     <Text fontSize="sm" color="gray.600" mb={3}>
@@ -94,11 +85,9 @@ const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           No. of Posts
         </Text>
-        <IconButton
-          icon={<Info size={18} />}
-          variant="ghost"
-          size="sm"
-          colorScheme="gray"
+        <InfoPopover
+          title={"modalData.title"}
+          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
       <Box h="200px">
@@ -122,11 +111,9 @@ const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           Location Demographics
         </Text>
-        <IconButton
-          icon={<Info size={18} />}
-          variant="ghost"
-          size="sm"
-          colorScheme="gray"
+        <InfoPopover
+          title={"modalData.title"}
+          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
       <VStack spacing={4} align="stretch">
@@ -153,11 +140,9 @@ const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           Brands Associated
         </Text>
-        <IconButton
-          icon={<Info size={18} />}
-          variant="ghost"
-          size="sm"
-          colorScheme="gray"
+        <InfoPopover
+          title={"modalData.title"}
+          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
       <Flex flexWrap="wrap" gap={2}>
@@ -195,11 +180,9 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Reels Content
           </Text>
-          <IconButton
-            icon={<Info size={18} />}
-            variant="ghost"
-            size="sm"
-            colorScheme="gray"
+          <InfoPopover
+            title={"modalData.title"}
+            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
           />
         </Flex>
         <HStack overflowX={"auto"} w="100%">
@@ -216,11 +199,9 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Posts Content
           </Text>
-          <IconButton
-            icon={<Info size={18} />}
-            variant="ghost"
-            size="sm"
-            colorScheme="gray"
+          <InfoPopover
+            title={"modalData.title"}
+            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
           />
         </Flex>
         <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
@@ -237,11 +218,9 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Creators
           </Text>
-          <IconButton
-            icon={<Info size={18} />}
-            variant="ghost"
-            size="sm"
-            colorScheme="gray"
+          <InfoPopover
+            title={"modalData.title"}
+            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
           />
         </Flex>
         <Flex gap={4} overflowX="auto">
