@@ -147,7 +147,7 @@ export const ContentCard = ({ type }) => {
               p="10px"
               borderRadius={"xl"}
               overflowY={"auto"}
-              overflowX={"none"}
+              overflowX={"hidden"}
             >
               <Flex align="center" mb={3}>
                 <Avatar size="sm" src="/api/placeholder/32/32" />
