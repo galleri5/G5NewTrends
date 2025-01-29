@@ -132,7 +132,6 @@ const TimeRangeDropdown = ({ value, onChange }) => {
   );
 };
 
-// Categories data with updated icons
 const categories = [
   { id: 1, name: "Fashion", icon: "👗" },
   { id: 2, name: "Beauty", icon: "💄" },
@@ -167,13 +166,19 @@ const TrendCard = ({
       }}
     >
       <Flex justify="space-between" align="center">
-        <HStack spacing={4}>
-          <Text fontSize="2xl" fontWeight="bold">
-            {title}
-          </Text>
-          <Text color="green.500" fontSize="sm">
-            {percentage}% ↑
-          </Text>
+        <HStack spacing={4} justifyContent={"space-between"} w="100%">
+          <HStack spacing={4}>
+            <Text
+              fontSize="l"
+              fontWeight="bold"
+              style={{ fontFamily: "'Rammetto One', cursive" }}
+            >
+              {title}
+            </Text>
+            <Text color="green.500" fontSize="sm">
+              {percentage}% ↑
+            </Text>
+          </HStack>
           <Badge
             colorScheme={
               rank === "1st" ? "yellow" : rank === "2nd" ? "gray" : "orange"
@@ -236,25 +241,38 @@ const TrendsListPage = () => {
         position="relative"
       >
         <Sidebar containerRef={containerRef} />
-        <Box px={4} pt={4}>
-          <Flex justify="space-between" align="center" mb={6}>
-            <HStack justifyContent={"center"} w="100%">
-              <Image
-                src="./assets/galleri5logo.svg"
-                alt="galleri5logo"
-                mt={"10px"}
-              />
+        <Flex
+          justify="space-between"
+          align="center"
+          mb={6}
+          backgroundColor={"#FFFAD6"}
+          pt={4}
+          h="120px"
+          borderBottom={"2px solid #000"}
+        >
+          <HStack justifyContent={"center"} w="100%">
+            <Image
+              src="./assets/galleri5logo.svg"
+              alt="galleri5logo"
+              mt={"10px"}
+            />
 
-              <Text fontSize="xl" fontWeight="semibold">
-                Trends
-              </Text>
-            </HStack>
-          </Flex>
-
-          <Text color="gray.500" mb={3} fontSize="sm">
+            <Text fontSize="xl" fontWeight="semibold">
+              Trends
+            </Text>
+          </HStack>
+        </Flex>
+        <Box>
+          <Text color="gray.500" mb={3} fontSize="sm" px={4}>
             CATEGORIES
           </Text>
-          <Box mb={6} overflowX="auto" pb={2}>
+          <Box
+            mb={6}
+            overflowX="auto"
+            borderBottom={"2px solid #000"}
+            px={4}
+            pb={3}
+          >
             <HStack spacing={4}>
               {categories.map((category) => (
                 <Flex
@@ -309,10 +327,10 @@ const TrendsListPage = () => {
             </HStack>
           </Box>
 
-          <Text color="gray.500" mb={3} fontSize="sm">
+          <Text color="gray.500" mb={3} fontSize="sm" px={4}>
             FILTERS
           </Text>
-          <Flex mb={6} gap={4}>
+          <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #000"}>
             <Box flex={1}>
               <FilterDropdown
                 value={selectedTrendType}
@@ -327,9 +345,11 @@ const TrendsListPage = () => {
 
           <Box
             textAlign="center"
+            mt={2}
             mb={6}
-            py={3}
-            bg="yellow.50"
+            py={8}
+            bg="#FFFAD6"
+            mx={1}
             borderRadius="xl"
           >
             <Text
@@ -341,11 +361,11 @@ const TrendsListPage = () => {
                 textTransform: "uppercase",
               }}
             >
-              ---- {selectedTrendType && selectedTrendType.toUpperCase()} TRENDS
-              ----
+              -------- {selectedTrendType && selectedTrendType.toUpperCase()}{" "}
+              TRENDS --------
             </Text>
           </Box>
-          <VStack spacing={4} align="stretch" mb={6}>
+          <VStack spacing={4} align="stretch" mb={6} px={4}>
             <TrendCard
               rank="1st"
               title="ASMR"
