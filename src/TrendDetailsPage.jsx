@@ -187,8 +187,8 @@ const AnalyticsSection = () => (
 // Content Section Component
 const ContentSection = () => {
   const ContentCard = ({ type }) => (
-    <Card>
-      <CardBody>
+    <Card minH="340px" minW="260px" m="10px">
+      <CardBody padding={"10px"}>
         <Flex align="center" mb={3}>
           <Avatar size="sm" src="/api/placeholder/32/32" />
           <Box ml={2} flex={1}>
@@ -205,7 +205,7 @@ const ContentSection = () => {
             size="sm"
           />
         </Flex>
-        <Box position="relative" mb={3}>
+        <Box position="relative" mb={3} h="238px">
           <Image
             src="/api/placeholder/400/500"
             alt="Content"
@@ -244,9 +244,9 @@ const ContentSection = () => {
   );
 
   return (
-    <VStack spacing={6} align="stretch">
+    <VStack spacing={6} align="stretch" h="100%" border="2px solid red">
       {/* Top Reels Content */}
-      <Box>
+      <Box h="100%">
         <Flex justify="space-between" mb={4}>
           <Text fontSize="lg" fontWeight="bold">
             Top Reels Content
@@ -258,14 +258,16 @@ const ContentSection = () => {
             colorScheme="gray"
           />
         </Flex>
-        <VStack spacing={4}>
+        <HStack overflowX={"auto"} w="100%">
           <ContentCard type="VIDEO" />
           <ContentCard type="VIDEO" />
-        </VStack>
+          <ContentCard type="VIDEO" />
+          <ContentCard type="VIDEO" />
+        </HStack>
       </Box>
 
       {/* Top Posts Content */}
-      <Box>
+      <Box h="100%">
         <Flex justify="space-between" mb={4}>
           <Text fontSize="lg" fontWeight="bold">
             Top Posts Content
@@ -277,10 +279,12 @@ const ContentSection = () => {
             colorScheme="gray"
           />
         </Flex>
-        <VStack spacing={4}>
+        <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
           <ContentCard type="PHOTO" />
           <ContentCard type="PHOTO" />
-        </VStack>
+          <ContentCard type="PHOTO" />
+          <ContentCard type="PHOTO" />
+        </HStack>
       </Box>
 
       {/* Top Creators */}
