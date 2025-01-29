@@ -244,7 +244,7 @@ const ContentSection = () => {
   );
 
   return (
-    <VStack spacing={6} align="stretch" h="100%" border="2px solid red">
+    <VStack spacing={6} align="stretch" h="100%">
       {/* Top Reels Content */}
       <Box h="100%">
         <Flex justify="space-between" mb={4}>
