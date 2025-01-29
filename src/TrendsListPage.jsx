@@ -24,6 +24,7 @@ import {
   TrendingUp,
   TrendingDown,
 } from "lucide-react";
+import Sidebar from "./components/SideBar";
 
 const images = [
   "/api/placeholder/400/500",
@@ -31,8 +32,6 @@ const images = [
   "/api/placeholder/400/500",
   "/api/placeholder/400/500",
 ];
-// Keep your existing components (FilterDropdown, TimeRangeDropdown, categories data)
-// ...
 const FilterDropdown = ({ value, onChange }) => {
   const options = [
     {
@@ -149,7 +148,6 @@ const TrendCard = ({
   onToggle,
   onClick,
 }) => {
-  // Your existing TrendCard implementation with added onClick
   return (
     <Box
       borderWidth="1px"
@@ -166,7 +164,6 @@ const TrendCard = ({
         transition: "all 0.2s",
       }}
     >
-      {/* Rest of your TrendCard implementation */}
       <Flex justify="space-between" align="center">
         <HStack spacing={4}>
           <Text fontSize="2xl" fontWeight="bold">
@@ -273,7 +270,7 @@ const TrendsListPage = () => {
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
 
   const toggleCard = (rank, event) => {
-    event.stopPropagation(); // Prevent triggering navigation when expanding
+    event.stopPropagation();
     setExpandedCards((prev) =>
       prev.includes(rank) ? prev.filter((r) => r !== rank) : [...prev, rank]
     );
@@ -283,11 +280,10 @@ const TrendsListPage = () => {
     navigate(`/trend/${encodeURIComponent(title.toLowerCase())}`);
   };
 
-  // Rest of your existing App component return statement
   return (
     <Box bg="gray.100" minH="100vh">
+      <Sidebar />
       <Container maxW="480px" p={0} bg="white" h="100vh" overflow="auto">
-        {/* Your existing JSX */}
         <Box px={4} pt={4}>
           <Flex justify="space-between" align="center" mb={6}>
             <HStack>
