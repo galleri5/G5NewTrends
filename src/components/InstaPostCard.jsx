@@ -22,7 +22,8 @@ export const ContentCard = ({ type }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const timerRef = useRef(null);
 
-  const handlePointerDown = () => {
+  const handlePointerDown = (e) => {
+    e.preventDefault();
     timerRef.current = setTimeout(onOpen, 500);
   };
 
@@ -30,6 +31,10 @@ export const ContentCard = ({ type }) => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
     }
+  };
+
+  const handleContextMenu = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -62,6 +67,9 @@ export const ContentCard = ({ type }) => {
               onPointerDown={handlePointerDown}
               onPointerUp={handlePointerUp}
               onPointerLeave={handlePointerUp}
+              onContextMenu={handleContextMenu}
+              style={{ touchAction: "none" }}
+              draggable={false}
             />
             <Badge
               position="absolute"
@@ -102,6 +110,8 @@ export const ContentCard = ({ type }) => {
               src="assets/transformationimage.svg"
               alt="Content"
               borderRadius="lg"
+              onContextMenu={handleContextMenu}
+              draggable={false}
             />
           </ModalBody>
         </ModalContent>
