@@ -136,7 +136,9 @@ export const ContentCard = ({ type }) => {
         <ModalContent bg="transparent" boxShadow="none" h="400px">
           <ModalBody p={0} display="flex" justifyContent="center">
             <Stack
-              bg="#fff"
+              backdropFilter="blur(10px)"
+              backgroundBlendMode="overlay"
+              backgroundColor="#ffffff7d"
               minH="340px"
               minW="260px"
               maxH="60vh"
