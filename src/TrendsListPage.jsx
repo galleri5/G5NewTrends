@@ -1,6 +1,7 @@
 // TrendsListPage.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { ContentCard } from "./components/InstaPostCard";
 import {
   Box,
   Flex,
@@ -193,70 +194,11 @@ const TrendCard = ({
       </Flex>
 
       {isExpanded && (
-        <Box mt={4}>
-          <Flex align="center" mb={4}>
-            <Image
-              src="/api/placeholder/40/40"
-              alt="Profile"
-              borderRadius="full"
-              boxSize="40px"
-            />
-            <Text ml={3} fontSize="sm">
-              @{username}
-            </Text>
-          </Flex>
-          <Box mb={4}>
-            <Box
-              overflowX="auto"
-              css={{
-                "&::-webkit-scrollbar": {
-                  display: "none",
-                },
-                scrollbarWidth: "none",
-              }}
-            >
-              <Flex gap={2}>
-                {images.map((image, index) => (
-                  <Box
-                    key={index}
-                    position="relative"
-                    flexShrink={0}
-                    borderRadius="xl"
-                    overflow="hidden"
-                  >
-                    <Image
-                      src={image}
-                      alt={`Trend content ${index + 1}`}
-                      w="300px"
-                      h="400px"
-                      objectFit="cover"
-                    />
-                    {index === 0 && (
-                      <Badge
-                        position="absolute"
-                        top={2}
-                        right={2}
-                        bg="yellow.400"
-                        color="black"
-                        fontSize="xs"
-                        px={2}
-                        py={1}
-                        borderRadius="md"
-                      >
-                        PHOTO
-                      </Badge>
-                    )}
-                  </Box>
-                ))}
-              </Flex>
-            </Box>
-            <HStack spacing={6} color="gray.500">
-              <Text fontSize="sm">👁️ 10k</Text>
-              <Text fontSize="sm">❤️ 566</Text>
-              <Text fontSize="sm">💬 50</Text>
-            </HStack>
-          </Box>
-        </Box>
+        <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
+          <ContentCard type={"photo"} />
+          <ContentCard type={"photo"} />
+          <ContentCard type={"photo"} />
+        </HStack>
       )}
     </Box>
   );
