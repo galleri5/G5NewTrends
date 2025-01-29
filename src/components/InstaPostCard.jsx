@@ -136,6 +136,7 @@ export const ContentCard = ({ type }) => {
         <ModalContent bg="transparent" boxShadow="none" h="400px">
           <ModalBody p={0} display="flex" justifyContent="center">
             <Stack
+              w="100%"
               backdropFilter="blur(10px)"
               backgroundBlendMode="overlay"
               backgroundColor="#ffffff7d"
@@ -146,6 +147,7 @@ export const ContentCard = ({ type }) => {
               p="10px"
               borderRadius={"xl"}
               overflowY={"auto"}
+              overflowX={"none"}
             >
               <Flex align="center" mb={3}>
                 <Avatar size="sm" src="/api/placeholder/32/32" />
@@ -165,12 +167,19 @@ export const ContentCard = ({ type }) => {
                 />
               </Flex>
 
-              <Box position="relative" mb={3} h="238px">
+              <Box
+                position="relative"
+                mb={3}
+                // maxH="238px"
+                // border="2px solid red"
+                objectFit={"fill"}
+              >
                 <Image
                   src="assets/transformationimage.svg"
                   alt="Content"
                   borderRadius="lg"
-                  w="full"
+                  //   maxH="238px"
+                  w="100%"
                   draggable={false}
                   style={{
                     WebkitUserSelect: "none",
@@ -207,7 +216,7 @@ export const ContentCard = ({ type }) => {
                   <Text fontSize="sm">50</Text>
                 </HStack>
               </HStack>
-              <Stack mt="100px">
+              <Stack mt="4">
                 <AnalyticsSection />
               </Stack>
             </Stack>
