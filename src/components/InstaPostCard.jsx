@@ -41,7 +41,6 @@ export const ContentCard = ({ type }) => {
   return (
     <>
       <Box position="relative">
-        {/* Transparent overlay for handling all touch/pointer events */}
         <Box
           position="absolute"
           top="0"
@@ -53,9 +52,7 @@ export const ContentCard = ({ type }) => {
           onPointerUp={handlePointerUp}
           onPointerLeave={handlePointerUp}
           onContextMenu={handleContextMenu}
-          onTouchStart={(e) => e.preventDefault()}
           style={{
-            touchAction: "none",
             background: "transparent",
             WebkitTapHighlightColor: "transparent",
           }}
