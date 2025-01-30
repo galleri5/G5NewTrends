@@ -235,17 +235,17 @@ export const ContentCard = ({ type, post }) => {
 
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
-        <ModalContent bg="transparent" boxShadow="none" h="400px">
+        <ModalContent bg="transparent" boxShadow="none">
           <ModalBody p={0} display="flex" justifyContent="center">
             <Stack
               w="100%"
               backdropFilter="blur(10px)"
               backgroundBlendMode="overlay"
               backgroundColor="#ffffff7d"
-              minH="340px"
-              minW="260px"
-              maxH="420px"
-              maxW="380px"
+              // minH="340px"
+              // minW="260px"
+              // // maxH="420px"
+              // maxW="380px"
               m="10px"
               p="10px"
               borderRadius={"xl"}
@@ -295,13 +295,14 @@ export const ContentCard = ({ type, post }) => {
               <Box
                 position="relative"
                 mb={4}
-                h="238px"
                 w="100%"
                 overflow={"hidden"}
+                maxH={"50vh"}
               >
                 <Skeleton isLoaded={!isLoading} w="full" h="full">
                   <Image
                     src={fetchedData}
+                    // h="100%"
                     alt="Content"
                     w="full"
                     draggable={false}
