@@ -218,12 +218,45 @@ const TrendsListPage = () => {
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
+  const [isLoading, setIsLoading] = React.useState(false);
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
 
+  const dataCache = React.useRef({});
+  const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
+
+  const getCacheKey = (category, timeRange) => `${category}-${timeRange}`;
+
   console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
-  const fetchData = async () => {
+  const isCacheValid = (cacheKey) => {
+    const cachedItem = dataCache.current[cacheKey];
+    if (!cachedItem) return false;
+
+    const now = Date.now();
+    const isExpired = now - cachedItem.timestamp > CACHE_EXPIRATION;
+
+    // If cache is expired, clean it up
+    if (isExpired) {
+      delete dataCache.current[cacheKey];
+      return false;
+    }
+
+    return true;
+  };
+
+  const fetchData = React.useCallback(async () => {
+    const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
+
+    // Check if we have cached data
+    if (isCacheValid(cacheKey)) {
+      console.log("Using cached data for:", cacheKey);
+      setData(dataCache.current[cacheKey].data);
+      return;
+    }
+
+    setIsLoading(true);
+
     try {
       const response = await fetch(
         "https://amazon-api.indianetailer.in/amazon/homepage",
@@ -244,17 +277,43 @@ const TrendsListPage = () => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const fetchData = await response.json();
-      setData(fetchData);
-      console.log("Response Data:", data);
+      const fetchedData = await response.json();
+
+      // Store in cache with timestamp
+      dataCache.current[cacheKey] = {
+        data: fetchedData,
+        timestamp: Date.now(),
+      };
+
+      setData(fetchedData);
     } catch (error) {
       console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
     }
-  };
+  }, [selectedCategory, selectedTimeRange]);
+
+  // Clear expired cache entries periodically
+  React.useEffect(() => {
+    const cleanupInterval = setInterval(() => {
+      const now = Date.now();
+      Object.keys(dataCache.current).forEach((key) => {
+        const cachedItem = dataCache.current[key];
+        if (now - cachedItem.timestamp > CACHE_EXPIRATION) {
+          delete dataCache.current[key];
+        }
+      });
+    }, CACHE_EXPIRATION);
+
+    return () => {
+      clearInterval(cleanupInterval);
+      dataCache.current = {};
+    };
+  }, []);
 
   useEffect(() => {
     fetchData();
-  }, [selectedCategory, selectedTimeRange]);
+  }, [fetchData]);
 
   const toggleCard = (rank, event) => {
     event.stopPropagation();
@@ -420,7 +479,13 @@ const TrendsListPage = () => {
 
   return (
     <VStack h="100vh" w="100vw" justifyContent={"center"}>
-      <Text>loading....</Text>
+      <HStack justifyContent={"center"} w="100%">
+        <Image src="./assets/galleri5logo.svg" alt="galleri5logo" mt={"10px"} />
+
+        <Text fontSize="xl" fontWeight="semibold">
+          Trends
+        </Text>
+      </HStack>
     </VStack>
   );
 };
