@@ -235,11 +235,12 @@ const TrendsListPage = () => {
         maxW="480px"
         p={0}
         bg="white"
-        h="100vh"
+        minH="100dvh"
+        h={"100vh"}
         overflow="auto"
         ref={containerRef}
         position="relative"
-        pb="10"
+        pb="100px"
       >
         <Sidebar containerRef={containerRef} />
         <Flex
