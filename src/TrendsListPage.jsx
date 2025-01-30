@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContentCard } from "./components/InstaPostCard";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+
 import {
   Box,
   Flex,
@@ -456,7 +458,7 @@ const TrendsListPage = () => {
             </Box>
           </Box>
         </Box>
-        <Skeleton isLoaded={data} h="100%">
+        {false ? (
           <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
             {data &&
               data[selectedTrendType].map((item, index) => (
@@ -477,7 +479,22 @@ const TrendsListPage = () => {
                 </Skeleton>
               ))}
           </VStack>
-        </Skeleton>
+        ) : (
+          <VStack justifyContent={"center"} alignItems={"center"} h="60%">
+            <VStack>
+              {/* <DotLottieReact
+              src="https://lottie.host/78c57106-bf84-434f-8e9f-48d39587e3a0/DfqF6gOC9i.lottie"
+              loop
+              autoplay
+            /> */}
+              <DotLottieReact
+                src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
+                loop
+                autoplay
+              />
+            </VStack>
+          </VStack>
+        )}
       </Container>
     </Box>
   );
