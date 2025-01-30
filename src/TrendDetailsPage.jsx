@@ -15,6 +15,7 @@ import {
   VStack,
   Button,
   IconButton,
+  Tooltip,
   Progress,
   Avatar,
   Card,
@@ -23,7 +24,14 @@ import {
 } from "@chakra-ui/react";
 import InfoPopover from "./components/InfoModal";
 import { ExternalLink, ChevronLeft } from "lucide-react";
-import { LineChart, Line, XAxis, YAxis } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip as RechartsTooltip,
+} from "recharts";
 
 // Sample data for the posts chart
 const postData = [
@@ -33,6 +41,14 @@ const postData = [
   { month: "Apr", posts: 60 },
   { month: "May", posts: 80 },
   { month: "Jun", posts: 37 },
+];
+
+const data = [
+  { name: "Jan", value: 5 },
+  { name: "Feb", value: 20 },
+  { name: "Mar", value: 40 },
+  { name: "Apr", value: 80 },
+  { name: "May", value: 37 }, // Last point
 ];
 
 // Sample data for locations
@@ -99,23 +115,26 @@ export const AnalyticsSection = () => (
           sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
-      <Box h="200px">
-        <LineChart width={350} height={200} data={postData}>
-          <XAxis dataKey="month" />
-          <YAxis />
+
+      <Box border="1px solid black" borderRadius="12px" p={4} width="100%">
+        <LineChart width={340} height={290} data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" hide />
+          <YAxis domain={[0, 100]} />
+          <RechartsTooltip />
           <Line
             type="monotone"
-            dataKey="posts"
-            stroke="#ECC94B"
-            strokeWidth={2}
-            dot={false}
+            dataKey="value"
+            stroke="gold"
+            strokeWidth={3}
+            dot={{ fill: "black", r: 6 }}
           />
         </LineChart>
       </Box>
     </Box>
 
     {/* Location Demographics */}
-    <Box bg="white" borderRadius="xl" p={4}>
+    <Box bg="white" borderRadius="xl">
       <Flex justify="space-between" mb={4}>
         <Text fontSize="lg" fontWeight="bold">
           Location Demographics
@@ -125,7 +144,13 @@ export const AnalyticsSection = () => (
           sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
-      <VStack spacing={4} align="stretch">
+      <VStack
+        spacing={4}
+        align="stretch"
+        border="1px solid #000"
+        p="12px"
+        borderRadius={"lg"}
+      >
         {locationData.map((location, index) => (
           <Box key={index}>
             <Flex justify="space-between" mb={1}>
@@ -234,10 +259,32 @@ const ContentSection = () => {
         </Flex>
         <Flex gap={4} overflowX="auto">
           {[1, 2, 3].map((index) => (
-            <Card key={index} minW="200px">
-              <CardBody>
-                <Flex align="center">
-                  <Avatar size="md" src={`/api/placeholder/48/48`} />
+            <Card
+              key={index}
+              minW="142px"
+              maxW="142px"
+              minH="173px"
+              maxH="173px"
+              onClick={() => window.alert("redirect to creator profile")}
+            >
+              <CardBody
+                border="1px solid #111111"
+                borderRadius={"lg"}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
+              >
+                <Stack align="center">
+                  <Box position={"relative"}>
+                    <Avatar size="sm" src="/api/placeholder/32/32" />
+                    <Image
+                      src="../../assets/insta.png"
+                      alt="insta"
+                      position={"absolute"}
+                      bottom={"0"}
+                      right="0"
+                    />
+                  </Box>
                   <Box ml={3}>
                     <Text fontSize="sm" fontWeight="bold">
                       Kitty Herman
@@ -253,9 +300,11 @@ const ContentSection = () => {
                     icon={<ExternalLink size={16} />}
                     variant="ghost"
                     size="sm"
-                    ml="auto"
+                    position={"absolute"}
+                    right={2}
+                    top={2}
                   />
-                </Flex>
+                </Stack>
               </CardBody>
             </Card>
           ))}
