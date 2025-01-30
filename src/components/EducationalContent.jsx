@@ -37,7 +37,7 @@ function EducationalContent({ category, label, data, selectedTrend }) {
           fontWeight={"800"}
           fontSize={"16px"}
           color={"rgba(0, 0, 0, 1)"}
-          fontFamily={"Montserrat"}
+          fontFamily={"Poppins"}
         >
           {label}
         </Text>

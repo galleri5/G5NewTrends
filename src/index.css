@@ -7,8 +7,8 @@
 }
 
 body {
-  background-color: black; 
-  margin: 0; 
+  background-color: black;
+  margin: 0;
 }
 
 .main-wrapper {
@@ -25,9 +25,13 @@ body {
 }
 
 * {
-  font-family: "Montserrat";
+  font-family: "Poppins";
 }
 
 * {
   scrollbar-width: none;
+}
+
+.css-1lu46l5 {
+  background-color: #ffca06 !important;
 }
