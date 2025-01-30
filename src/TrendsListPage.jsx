@@ -17,6 +17,7 @@ import {
   Stack,
   Button,
   Image,
+  Skeleton,
 } from "@chakra-ui/react";
 import {
   ChevronDown,
@@ -325,168 +326,160 @@ const TrendsListPage = () => {
   const handleTrendClick = (title) => {
     navigate(`/trend/${encodeURIComponent(title.toLowerCase())}`);
   };
-  if (data)
-    return (
-      <Box bg="gray.100" minH="100vh">
-        <Container
-          maxW="480px"
-          p={0}
-          bg="white"
-          minH="100dvh"
-          h={"100vh"}
-          overflow="auto"
-          ref={containerRef}
-          position="relative"
-          pb="100px"
-        >
-          <Sidebar containerRef={containerRef} />
-          <Flex
-            justify="space-between"
-            align="center"
-            backgroundColor={"#FFFAD6"}
-            pt={4}
-            h="120px"
-          >
-            <HStack justifyContent={"center"} w="100%">
-              <Image
-                src="./assets/galleri5logo.svg"
-                alt="galleri5logo"
-                mt={"10px"}
-              />
-
-              <Text fontSize="xl" fontWeight="semibold">
-                Trends
-              </Text>
-            </HStack>
-          </Flex>
-
-          <Text
-            color="gray.500"
-            mb={3}
-            fontSize="10px"
-            fontWeight={"700"}
-            px={4}
-            pt="4"
-          >
-            CATEGORIES
-          </Text>
-          <Box px={4}>
-            <HStack
-              spacing={4}
-              overflowX="auto"
-              pt="2"
-              // paddingRight={"20px"}
-              // border={"2px solid red"}
-            >
-              {categories?.map((category) => (
-                <Flex
-                  key={category.id}
-                  direction="column"
-                  align="center"
-                  bg={
-                    selectedCategory === category.name ? "#FFFAD6" : "gray.50"
-                  }
-                  p={3}
-                  borderRadius="xl"
-                  minW="70px"
-                  cursor="pointer"
-                  onClick={() =>
-                    setSelectedCategory(
-                      selectedCategory === category.name ? null : category.name
-                    )
-                  }
-                  position="relative"
-                  transition="all 0.2s"
-                  _hover={{
-                    bg: "yellow.50",
-                    transform: "translateY(-2px)",
-                  }}
-                  border={
-                    selectedCategory === category.name
-                      ? "2px solid #fffad6a5"
-                      : "2px solid transparent"
-                  }
-                  gap="1"
-                >
-                  <Image src={category.icon} w="21px" h="16px" />
-                  <Text
-                    fontSize="xs"
-                    mt={1}
-                    fontWeight={
-                      selectedCategory === category.name ? "bold" : "normal"
-                    }
-                  >
-                    {category.name}
-                  </Text>
-                </Flex>
-              ))}
-            </HStack>
-          </Box>
-          <Box
-            pt="4"
-            position={"sticky !important"}
-            top="0"
-            zIndex={"999"}
-            backdropFilter="blur(10px)"
-            backgroundBlendMode="overlay"
-            backgroundColor="#ffffff7d"
-          >
-            <Box>
-              <Box>
-                <Text
-                  color="gray.500"
-                  mb={3}
-                  fontSize="10px"
-                  fontWeight={"700"}
-                  px={4}
-                >
-                  FILTERS
-                </Text>
-                <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #e4e4e4"}>
-                  <Box flex={1}>
-                    <FilterDropdown
-                      value={selectedTrendType}
-                      onChange={setSelectedTrendType}
-                    />
-                  </Box>
-                  <TimeRangeDropdown
-                    value={selectedTimeRange}
-                    onChange={setSelectedTimeRange}
-                  />
-                </Flex>
-              </Box>
-            </Box>
-          </Box>
-          <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
-            {data[selectedTrendType].map((item, index) => (
-              <TrendCard
-                key={item.id}
-                rank={index + 1}
-                title={item.name}
-                percentage={item.growth}
-                isExpanded={expandedCards?.includes(index)}
-                onToggle={(e) => toggleCard(index, e)}
-                onClick={() => handleTrendClick(item?.name)}
-                posts={item.posts}
-                selectedTimeRange={selectedTimeRange}
-                selectedTrendType={selectedTrendType}
-              />
-            ))}
-          </VStack>
-        </Container>
-      </Box>
-    );
 
   return (
-    <VStack h="100vh" w="100vw" justifyContent={"center"}>
-      <HStack justifyContent={"center"} w="100%">
-        <Image src="./assets/galleri5logo.svg" alt="galleri5logo" mt={"10px"} />
+    <Box bg="gray.100" minH="100vh">
+      <Container
+        maxW="480px"
+        p={0}
+        bg="white"
+        minH="100dvh"
+        h={"100vh"}
+        overflow="auto"
+        ref={containerRef}
+        position="relative"
+        pb="100px"
+      >
+        <Sidebar containerRef={containerRef} />
+        <Flex
+          justify="space-between"
+          align="center"
+          backgroundColor={"#FFFAD6"}
+          pt={4}
+          h="120px"
+        >
+          <HStack justifyContent={"center"} w="100%">
+            <Image
+              src="./assets/galleri5logo.svg"
+              alt="galleri5logo"
+              mt={"10px"}
+            />
 
-        <Text fontSize="xl" fontWeight="semibold">
-          Trends
+            <Text fontSize="xl" fontWeight="semibold">
+              Trends
+            </Text>
+          </HStack>
+        </Flex>
+
+        <Text
+          color="gray.500"
+          mb={3}
+          fontSize="10px"
+          fontWeight={"700"}
+          px={4}
+          pt="4"
+        >
+          CATEGORIES
         </Text>
-      </HStack>
-    </VStack>
+        <Box px={4}>
+          <HStack
+            spacing={4}
+            overflowX="auto"
+            pt="2"
+            // paddingRight={"20px"}
+            // border={"2px solid red"}
+          >
+            {categories?.map((category) => (
+              <Flex
+                key={category.id}
+                direction="column"
+                align="center"
+                bg={selectedCategory === category.name ? "#FFFAD6" : "gray.50"}
+                p={3}
+                borderRadius="xl"
+                minW="70px"
+                cursor="pointer"
+                onClick={() =>
+                  setSelectedCategory(
+                    selectedCategory === category.name ? null : category.name
+                  )
+                }
+                position="relative"
+                transition="all 0.2s"
+                _hover={{
+                  bg: "yellow.50",
+                  transform: "translateY(-2px)",
+                }}
+                border={
+                  selectedCategory === category.name
+                    ? "2px solid #fffad6a5"
+                    : "2px solid transparent"
+                }
+                gap="1"
+              >
+                <Image src={category.icon} w="21px" h="16px" />
+                <Text
+                  fontSize="xs"
+                  mt={1}
+                  fontWeight={
+                    selectedCategory === category.name ? "bold" : "normal"
+                  }
+                >
+                  {category.name}
+                </Text>
+              </Flex>
+            ))}
+          </HStack>
+        </Box>
+        <Box
+          pt="4"
+          position={"sticky !important"}
+          top="0"
+          zIndex={"999"}
+          backdropFilter="blur(10px)"
+          backgroundBlendMode="overlay"
+          backgroundColor="#ffffff7d"
+        >
+          <Box>
+            <Box>
+              <Text
+                color="gray.500"
+                mb={3}
+                fontSize="10px"
+                fontWeight={"700"}
+                px={4}
+              >
+                FILTERS
+              </Text>
+              <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #e4e4e4"}>
+                <Box flex={1}>
+                  <FilterDropdown
+                    value={selectedTrendType}
+                    onChange={setSelectedTrendType}
+                  />
+                </Box>
+                <TimeRangeDropdown
+                  value={selectedTimeRange}
+                  onChange={setSelectedTimeRange}
+                />
+              </Flex>
+            </Box>
+          </Box>
+        </Box>
+        <Skeleton isLoaded={data} h="100%">
+          <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
+            {data &&
+              data[selectedTrendType].map((item, index) => (
+                <Skeleton key={item.id} isLoaded={!isLoading}>
+                  <TrendCard
+                    key={item.id}
+                    rank={index + 1}
+                    title={item.name}
+                    percentage={item.growth}
+                    isExpanded={expandedCards?.includes(index)}
+                    onToggle={(e) => toggleCard(index, e)}
+                    onClick={() => handleTrendClick(item?.name)}
+                    posts={item.posts}
+                    selectedTimeRange={selectedTimeRange}
+                    selectedTrendType={selectedTrendType}
+                    loading={isLoading}
+                  />
+                </Skeleton>
+              ))}
+          </VStack>
+        </Skeleton>
+      </Container>
+    </Box>
   );
 };
 
