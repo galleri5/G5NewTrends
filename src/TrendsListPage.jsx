@@ -1,14 +1,15 @@
 // TrendsListPage.jsx
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContentCard } from "./components/InstaPostCard";
+import fashion from "../public/fashion.json";
+
 import {
   Box,
   Flex,
   Text,
   VStack,
   HStack,
-  Badge,
   IconButton,
   Container,
   Menu,
@@ -131,17 +132,21 @@ const categories = [
   { id: 2, name: "Beauty", icon: "/assets/beautyimage.svg" },
   { id: 3, name: "Home", icon: "/assets/homeimage.svg" },
   { id: 4, name: "Kitchen", icon: "/assets/kitchenimage.svg" },
-  { id: 5, name: "Lifestyle", icon: "./assets/lifestyleimage.svg" },
+  { id: 5, name: "Lifestyle", icon: "/assets/lifestyleimage.svg" },
+  { id: 6, name: "Pets", icon: "/assets/petsimage.svg" },
+  { id: 7, name: "Parenting", icon: "/assets/parentingimage.svg" },
+  { id: 8, name: "Fitness", icon: "/assets/fitnessimage.svg" },
 ];
 
 const TrendCard = ({
-  rank,
   title,
-  username,
   percentage,
   isExpanded,
   onToggle,
   onClick,
+  posts,
+  selectedTimeRange,
+  selectedTrendType,
 }) => {
   return (
     <Box
@@ -164,8 +169,19 @@ const TrendCard = ({
             <Text fontSize="l" fontWeight="bold">
               {title}
             </Text>
-            <Text color="green.500" fontSize="sm">
-              {percentage}% ↑ {"increase in a week"}
+            <Text
+              color={
+                selectedTrendType === "declining" ? "red.500" : "green.500"
+              }
+              fontSize="sm"
+            >
+              {percentage}{" "}
+              {selectedTrendType === "declining" ? "decrease" : "increase"} in{" "}
+              {selectedTimeRange === "7d"
+                ? "a week"
+                : selectedTimeRange === "15d"
+                ? "the last 15 days"
+                : "a month"}{" "}
             </Text>
           </Stack>
           <Button
@@ -177,15 +193,6 @@ const TrendCard = ({
           >
             View Trend
           </Button>
-          {/* <Badge
-            colorScheme={
-              rank === "1st" ? "yellow" : rank === "2nd" ? "gray" : "orange"
-            }
-            borderRadius="md"
-            px={2}
-          >
-            {rank}
-          </Badge> */}
         </HStack>
         <IconButton
           icon={
@@ -198,12 +205,9 @@ const TrendCard = ({
 
       {isExpanded && (
         <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
-          <ContentCard type={"photo"} />
-          <ContentCard type={"photo"} />
-          <ContentCard type={"photo"} />
-          <ContentCard type={"photo"} />
-          <ContentCard type={"photo"} />
-          <ContentCard type={"photo"} />
+          {posts?.map((post, index) => (
+            <ContentCard key={index} type={"video"} post={post} />
+          ))}
         </HStack>
       )}
     </Box>
@@ -217,7 +221,11 @@ const TrendsListPage = () => {
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
   const containerRef = React.useRef(null);
+  const [data, setData] = React.useState(fashion);
+  // useEffect(() => {
 
+  // }, [fashion]);
+  console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
   const toggleCard = (rank, event) => {
     event.stopPropagation();
     setExpandedCards((prev) =>
@@ -228,7 +236,7 @@ const TrendsListPage = () => {
   const handleTrendClick = (title) => {
     navigate(`/trend/${encodeURIComponent(title.toLowerCase())}`);
   };
-
+  console.log(data[selectedTrendType][0].posts[0]);
   return (
     <Box bg="gray.100" minH="100vh">
       <Container
@@ -249,7 +257,6 @@ const TrendsListPage = () => {
           backgroundColor={"#FFFAD6"}
           pt={4}
           h="120px"
-          // borderBottom={"2px solid #000"}
         >
           <HStack justifyContent={"center"} w="100%">
             <Image
@@ -276,7 +283,7 @@ const TrendsListPage = () => {
         </Text>
         <Box overflowX="auto" px={4}>
           <HStack spacing={4} pt="2">
-            {categories.map((category) => (
+            {categories?.map((category) => (
               <Flex
                 key={category.id}
                 direction="column"
@@ -352,186 +359,22 @@ const TrendsListPage = () => {
               </Flex>
             </Box>
           </Box>
-          {/* <Box
-            textAlign="center"
-            mt={2}
-            mb={6}
-            py={8}
-            // bg="#FFFAD6"
-            backdropFilter="blur(10px)"
-            backgroundBlendMode="overlay"
-            backgroundColor="#fffad6a5"
-            mx={1}
-            borderRadius="xl"
-          >
-            <Text
-              fontSize="xl"
-              fontWeight="black"
-              letterSpacing="wider"
-              style={{
-                fontFamily: "'Rampart One', cursive",
-                textTransform: "uppercase",
-              }}
-            >
-              -------- {selectedTrendType && selectedTrendType.toUpperCase()}{" "}
-              TRENDS --------
-            </Text>
-          </Box> */}
         </Box>
         <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
-          <TrendCard
-            rank="1st"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("1st")}
-            onToggle={(e) => toggleCard("1st", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="1st"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("1st")}
-            onToggle={(e) => toggleCard("1st", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="1st"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("1st")}
-            onToggle={(e) => toggleCard("1st", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />{" "}
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="1st"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("1st")}
-            onToggle={(e) => toggleCard("1st", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="1st"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("1st")}
-            onToggle={(e) => toggleCard("1st", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
-          <TrendCard
-            rank="2nd"
-            title="GRWM"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("2nd")}
-            onToggle={(e) => toggleCard("2nd", e)}
-            onClick={() => handleTrendClick("GRWM")}
-          />
-          <TrendCard
-            rank="3rd"
-            title="ASMR"
-            username="g5SkylarVoss"
-            percentage="15.6"
-            isExpanded={expandedCards.includes("3rd")}
-            onToggle={(e) => toggleCard("3rd", e)}
-            onClick={() => handleTrendClick("ASMR")}
-          />
+          {data[selectedTrendType].map((item, index) => (
+            <TrendCard
+              key={item.id}
+              rank={index + 1}
+              title={item.name}
+              percentage={item.growth}
+              isExpanded={expandedCards?.includes(index)}
+              onToggle={(e) => toggleCard(index, e)}
+              onClick={() => handleTrendClick(item?.name)}
+              posts={item.posts}
+              selectedTimeRange={selectedTimeRange}
+              selectedTrendType={selectedTrendType}
+            />
+          ))}
         </VStack>
       </Container>
     </Box>
