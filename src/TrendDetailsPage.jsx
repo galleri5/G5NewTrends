@@ -263,9 +263,27 @@ const TrendDetailsPage = () => {
 
   return (
     <Box bg="gray.100" minH="100vh">
-      <Container maxW="480px" p={0} bg="white" h="100vh" overflow="auto">
+      <Container
+        maxW="480px"
+        p={0}
+        bg="white"
+        h="100vh"
+        overflow="auto"
+        pb="10"
+      >
         {/* Header */}
-        <Box p={4} borderBottomWidth="1px" bg="white">
+        <Box
+          p={4}
+          borderBottomWidth="1px"
+          bg="white"
+          pt="4"
+          position={"sticky !important"}
+          top="0"
+          zIndex={"999"}
+          backdropFilter="blur(10px)"
+          backgroundBlendMode="overlay"
+          backgroundColor="#ffffff7d"
+        >
           <Flex align="center" justify="space-between">
             <HStack spacing={4}>
               <IconButton
@@ -286,7 +304,16 @@ const TrendDetailsPage = () => {
 
         {/* Tabs */}
         <Tabs colorScheme="yellow">
-          <TabList px={4}>
+          <TabList
+            px={4}
+            pt="4"
+            position={"sticky !important"}
+            top="16"
+            zIndex={"999"}
+            backdropFilter="blur(10px)"
+            backgroundBlendMode="overlay"
+            backgroundColor="#ffffff7d"
+          >
             <Tab>About</Tab>
             <Tab>Analytics</Tab>
             <Tab>Content</Tab>
