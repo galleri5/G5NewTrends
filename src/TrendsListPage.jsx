@@ -458,7 +458,7 @@ const TrendsListPage = () => {
             </Box>
           </Box>
         </Box>
-        {false ? (
+        {data ? (
           <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
             {data &&
               data[selectedTrendType].map((item, index) => (
