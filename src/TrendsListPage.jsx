@@ -132,11 +132,11 @@ const TimeRangeDropdown = ({ value, onChange }) => {
 };
 
 const categories = [
-  { id: 1, name: "Fashion", icon: "👗" },
-  { id: 2, name: "Beauty", icon: "💄" },
-  { id: 3, name: "Home", icon: "🏠" },
-  { id: 4, name: "Kitchen", icon: "🍳" },
-  { id: 5, name: "Lifestyle", icon: "✨" },
+  { id: 1, name: "Fashion", icon: "/assets/fashionimage.svg" },
+  { id: 2, name: "Beauty", icon: "/assets/beautyimage.svg" },
+  { id: 3, name: "Home", icon: "/assets/homeimage.svg" },
+  { id: 4, name: "Kitchen", icon: "/assets/kitchenimage.svg" },
+  { id: 5, name: "Lifestyle", icon: "./assets/lifestyleimage.svg" },
 ];
 
 const TrendCard = ({
@@ -269,80 +269,78 @@ const TrendsListPage = () => {
           </HStack>
         </Flex>
         <Box>
+          <Text color="gray.500" mb={3} fontSize="10px" fontWeight={"700"} px={4}>
+            CATEGORIES
+          </Text>
           <Box
-            position={"sticky"}
+            mb={6}
+            overflowX="auto"
+            borderBottom={"2px solid #000"}
+            px={4}
+            pb={3}
+          >
+            <HStack spacing={4}>
+              {categories.map((category) => (
+                <Flex
+                  key={category.id}
+                  direction="column"
+                  align="center"
+                  bg={
+                    selectedCategory === category.name
+                      ? "yellow.100"
+                      : "gray.50"
+                  }
+                  p={3}
+                  borderRadius="xl"
+                  minW="70px"
+                  cursor="pointer"
+                  onClick={() =>
+                    setSelectedCategory(
+                      selectedCategory === category.name
+                        ? null
+                        : category.name
+                    )
+                  }
+                  position="relative"
+                  transition="all 0.2s"
+                  _hover={{
+                    bg: "yellow.50",
+                    transform: "translateY(-2px)",
+                  }}
+                >
+                  <Image src={category.icon} w="24px" h="24px" />
+                  <Text
+                    fontSize="xs"
+                    mt={1}
+                    fontWeight={
+                      selectedCategory === category.name ? "bold" : "normal"
+                    }
+                  >
+                    {category.name}
+                  </Text>
+                  {selectedCategory === category.name && (
+                    <Box
+                      position="absolute"
+                      bottom="-2px"
+                      left="50%"
+                      transform="translateX(-50%)"
+                      w="20px"
+                      h="2px"
+                      bg="yellow.400"
+                      borderRadius="full"
+                    />
+                  )}
+                </Flex>
+              ))}
+            </HStack>
+          </Box>
+          <Box position={"sticky !important"}
             top="0"
             zIndex={"999"}
             backdropFilter="blur(10px)"
             backgroundBlendMode="overlay"
-            backgroundColor="#ffffff7d"
-          >
-            <Text color="gray.500" mb={3} fontSize="sm" px={4}>
-              CATEGORIES
-            </Text>
-            <Box
-              mb={6}
-              overflowX="auto"
-              borderBottom={"2px solid #000"}
-              px={4}
-              pb={3}
-            >
-              <HStack spacing={4}>
-                {categories.map((category) => (
-                  <Flex
-                    key={category.id}
-                    direction="column"
-                    align="center"
-                    bg={
-                      selectedCategory === category.name
-                        ? "yellow.100"
-                        : "gray.50"
-                    }
-                    p={3}
-                    borderRadius="xl"
-                    minW="70px"
-                    cursor="pointer"
-                    onClick={() =>
-                      setSelectedCategory(
-                        selectedCategory === category.name
-                          ? null
-                          : category.name
-                      )
-                    }
-                    position="relative"
-                    transition="all 0.2s"
-                    _hover={{
-                      bg: "yellow.50",
-                      transform: "translateY(-2px)",
-                    }}
-                  >
-                    <Text fontSize="xl">{category.icon}</Text>
-                    <Text
-                      fontSize="xs"
-                      mt={1}
-                      fontWeight={
-                        selectedCategory === category.name ? "bold" : "normal"
-                      }
-                    >
-                      {category.name}
-                    </Text>
-                    {selectedCategory === category.name && (
-                      <Box
-                        position="absolute"
-                        bottom="-2px"
-                        left="50%"
-                        transform="translateX(-50%)"
-                        w="20px"
-                        h="2px"
-                        bg="yellow.400"
-                        borderRadius="full"
-                      />
-                    )}
-                  </Flex>
-                ))}
-              </HStack>
-            </Box>
-            <Text color="gray.500" mb={3} fontSize="sm" px={4}>
+            backgroundColor="#ffffff7d">
+            <Text color="gray.500" mb={3} fontSize="10px" fontWeight={"700"} px={4}>
               FILTERS
             </Text>
             <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #000"}>
@@ -358,7 +356,8 @@ const TrendsListPage = () => {
               />
             </Flex>
           </Box>
-          <Box
+
+          {/* <Box
             textAlign="center"
             mt={2}
             mb={6}
@@ -382,7 +381,7 @@ const TrendsListPage = () => {
               -------- {selectedTrendType && selectedTrendType.toUpperCase()}{" "}
               TRENDS --------
             </Text>
-          </Box>
+          </Box> */}
 
           <VStack spacing={4} align="stretch" mb={6} px={4}>
             <TrendCard
