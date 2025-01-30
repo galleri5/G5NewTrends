@@ -33,7 +33,7 @@ const Sidebar = ({ containerRef }) => {
       name: "Content Trends",
       icon: <NotebookTabs size={18} />,
       comingSoon: false,
-      bg: "yellow.50",
+      bg: "#FFFAD6",
     },
     {
       name: "Topic Trends",

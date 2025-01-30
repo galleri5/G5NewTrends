@@ -179,7 +179,7 @@ export const AnalyticsSection = () => (
           sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
         />
       </Flex>
-      <Flex flexWrap="wrap" gap={2}>
+      <Flex flexWrap="wrap" gap={2} justifyContent={"space-around"}>
         {brandsData.map((brand, index) => (
           <Box
             key={index}

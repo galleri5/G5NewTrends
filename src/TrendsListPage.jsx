@@ -248,7 +248,7 @@ const TrendsListPage = () => {
           backgroundColor={"#FFFAD6"}
           pt={4}
           h="120px"
-          borderBottom={"2px solid #000"}
+          // borderBottom={"2px solid #000"}
         >
           <HStack justifyContent={"center"} w="100%">
             <Image
@@ -262,6 +262,61 @@ const TrendsListPage = () => {
             </Text>
           </HStack>
         </Flex>
+
+        <Text
+          color="gray.500"
+          mb={3}
+          fontSize="10px"
+          fontWeight={"700"}
+          px={4}
+          pt="4"
+        >
+          CATEGORIES
+        </Text>
+        <Box overflowX="auto" px={4}>
+          <HStack spacing={4} pt="2">
+            {categories.map((category) => (
+              <Flex
+                key={category.id}
+                direction="column"
+                align="center"
+                bg={selectedCategory === category.name ? "#FFFAD6" : "gray.50"}
+                p={3}
+                borderRadius="xl"
+                minW="70px"
+                cursor="pointer"
+                onClick={() =>
+                  setSelectedCategory(
+                    selectedCategory === category.name ? null : category.name
+                  )
+                }
+                position="relative"
+                transition="all 0.2s"
+                _hover={{
+                  bg: "yellow.50",
+                  transform: "translateY(-2px)",
+                }}
+                border={
+                  selectedCategory === category.name
+                    ? "2px solid #fffad6a5"
+                    : "2px solid transparent"
+                }
+                gap="1"
+              >
+                <Image src={category.icon} w="21px" h="16px" />
+                <Text
+                  fontSize="xs"
+                  mt={1}
+                  fontWeight={
+                    selectedCategory === category.name ? "bold" : "normal"
+                  }
+                >
+                  {category.name}
+                </Text>
+              </Flex>
+            ))}
+          </HStack>
+        </Box>
         <Box
           pt="4"
           position={"sticky !important"}
@@ -272,78 +327,6 @@ const TrendsListPage = () => {
           backgroundColor="#ffffff7d"
         >
           <Box>
-            <Text
-              color="gray.500"
-              mb={3}
-              fontSize="10px"
-              fontWeight={"700"}
-              px={4}
-            >
-              CATEGORIES
-            </Text>
-            <Box
-              mb={6}
-              overflowX="auto"
-              borderBottom={"2px solid #000"}
-              px={4}
-              pb={3}
-            >
-              <HStack spacing={4}>
-                {categories.map((category) => (
-                  <Flex
-                    key={category.id}
-                    direction="column"
-                    align="center"
-                    bg={
-                      selectedCategory === category.name
-                        ? "yellow.100"
-                        : "gray.50"
-                    }
-                    p={3}
-                    borderRadius="xl"
-                    minW="70px"
-                    cursor="pointer"
-                    onClick={() =>
-                      setSelectedCategory(
-                        selectedCategory === category.name
-                          ? null
-                          : category.name
-                      )
-                    }
-                    position="relative"
-                    transition="all 0.2s"
-                    _hover={{
-                      bg: "yellow.50",
-                      transform: "translateY(-2px)",
-                    }}
-                    gap="1"
-                  >
-                    <Image src={category.icon} w="21px" h="16px" />
-                    <Text
-                      fontSize="xs"
-                      mt={1}
-                      fontWeight={
-                        selectedCategory === category.name ? "bold" : "normal"
-                      }
-                    >
-                      {category.name}
-                    </Text>
-                    {selectedCategory === category.name && (
-                      <Box
-                        position="absolute"
-                        bottom="-2px"
-                        left="50%"
-                        transform="translateX(-50%)"
-                        w="20px"
-                        h="2px"
-                        bg="yellow.400"
-                        borderRadius="full"
-                      />
-                    )}
-                  </Flex>
-                ))}
-              </HStack>
-            </Box>
             <Box>
               <Text
                 color="gray.500"
@@ -354,7 +337,7 @@ const TrendsListPage = () => {
               >
                 FILTERS
               </Text>
-              <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #000"}>
+              <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #e4e4e4"}>
                 <Box flex={1}>
                   <FilterDropdown
                     value={selectedTrendType}
