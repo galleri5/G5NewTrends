@@ -192,7 +192,7 @@ export const ContentCard = ({ type, post }) => {
                   alignItems={"center"}
                   gap={1}
                 >
-                  <Images size="10px" /> {post?.p}
+                  <Images size="10px" /> {post?.p === "FEED" ? "POST" : "REEL"}
                 </Badge>
                 <Badge
                   bg="#4BDB93"
@@ -244,21 +244,44 @@ export const ContentCard = ({ type, post }) => {
               backgroundColor="#ffffff7d"
               minH="340px"
               minW="260px"
-              maxH="60vh"
+              maxH="420px"
+              maxW="380px"
               m="10px"
               p="10px"
               borderRadius={"xl"}
               overflowY={"auto"}
               overflowX={"hidden"}
             >
-              <Flex align="center" mb={3}>
-                <Avatar size="sm" src="/api/placeholder/32/32" />
+              <Flex
+                align="center"
+                mb={3}
+                px={4}
+                onClick={() =>
+                  window.open(
+                    `https://www.instagram.com/p/${post?.s}`,
+                    "_blank"
+                  )
+                }
+              >
+                <Box position={"relative"}>
+                  <Avatar
+                    size="sm"
+                    src={`https://gallerify.s3-us-west-2.amazonaws.com/ipics/${post?.ou}.jpg`}
+                  />
+                  <Image
+                    src="../../assets/insta.png"
+                    alt="insta"
+                    position={"absolute"}
+                    bottom={"0"}
+                    right="0"
+                  />
+                </Box>
                 <Box ml={2} flex={1}>
                   <Text fontSize="sm" fontWeight="bold">
-                    Skylar Voss
+                    {post?.name || ""}
                   </Text>
                   <Text fontSize="xs" color="gray.500">
-                    @g5SkylarVoss
+                    @{post?.ou || ""}
                   </Text>
                 </Box>
                 <IconButton
@@ -269,48 +292,77 @@ export const ContentCard = ({ type, post }) => {
                 />
               </Flex>
 
-              <Box position="relative" mb={3} objectFit={"fill"}>
-                <Image
-                  src="assets/transformationimage.svg"
-                  alt="Content"
-                  borderRadius="lg"
-                  w="100%"
-                  draggable={false}
-                  style={{
-                    WebkitUserSelect: "none",
-                    userSelect: "none",
-                  }}
-                />
-
-                <Badge
-                  position="absolute"
-                  top={2}
-                  right={2}
-                  bg="yellow.400"
-                  color="black"
-                  fontSize="xs"
-                  px={2}
-                  py={1}
-                  zIndex="1"
-                >
-                  {type}
-                </Badge>
+              <Box
+                position="relative"
+                mb={4}
+                h="238px"
+                w="100%"
+                overflow={"hidden"}
+              >
+                <Skeleton isLoaded={!isLoading} w="full" h="full">
+                  <Image
+                    src={fetchedData}
+                    alt="Content"
+                    w="full"
+                    draggable={false}
+                    style={{
+                      WebkitUserSelect: "none",
+                      userSelect: "none",
+                    }}
+                  />
+                </Skeleton>
+                <Stack position="absolute" bottom={0} left={-1} gap="1">
+                  <Badge
+                    bg="#FAC912"
+                    color="black"
+                    fontSize="8.61px"
+                    px={2}
+                    py={1}
+                    zIndex="1"
+                    maxW="63px"
+                    borderRadius={"6px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                    gap={1}
+                  >
+                    <Images size="10px" />{" "}
+                    {post?.p === "FEED" ? "POST" : "REEL"}
+                  </Badge>
+                  <Badge
+                    bg="#4BDB93"
+                    color="black"
+                    fontSize="8.61px"
+                    px={2}
+                    py={1}
+                    zIndex="1"
+                    borderRadius={"6px"}
+                    display={"flex"}
+                    alignItems={"center"}
+                    gap={1}
+                  >
+                    <Star size="10px" fill="#000000" /> Aesthetic score -{" "}
+                    {post?.score}/10{" "}
+                  </Badge>
+                </Stack>
               </Box>
 
-              <HStack spacing={6} color="gray.500">
-                {/* <HStack spacing={1}>
-                  <Eye size={14} />
-                  <Text fontSize="sm">10k</Text>
-                </HStack> */}
+              <HStack spacing={6} color="gray.500" px={4}>
                 <HStack spacing={1}>
                   <Heart size={14} fill="#5A5B5F" />
-                  <Text fontSize="sm">566</Text>
+                  <Text fontSize="sm" color="#5A5B5F">
+                    {post?.l}
+                  </Text>
                 </HStack>
                 <HStack spacing={1}>
                   <MessageSquare size={14} fill="#5A5B5F" />
-                  <Text fontSize="sm">50</Text>
+                  <Text fontSize="sm" color="#5A5B5F">
+                    {post?.c}
+                  </Text>
                 </HStack>
               </HStack>
+              <Text fontWeight={"400"} fontSize={"12.27px"} mt={1} px={4}>
+                {(post?.ca || "").slice(0, 90)} ...
+              </Text>
             </Stack>
           </ModalBody>
         </ModalContent>
