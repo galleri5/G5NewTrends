@@ -192,7 +192,7 @@ export const ContentCard = ({ type, post }) => {
                   alignItems={"center"}
                   gap={1}
                 >
-                  <Images size="10px" /> {type}
+                  <Images size="10px" /> {post?.p}
                 </Badge>
                 <Badge
                   bg="#4BDB93"
