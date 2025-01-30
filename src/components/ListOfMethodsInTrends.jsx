@@ -46,7 +46,7 @@ function ListOfTrendsMethod({
               }
               fontSize={"12px"}
               color={"rgba(0, 0, 0, 1)"}
-              fontFamily={"Montserrat"}
+              fontFamily={"Poppins"}
             >
               {trend.title}
             </Text>

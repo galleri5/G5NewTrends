@@ -6,18 +6,15 @@ import {
   Text,
   VStack,
   Drawer,
-  DrawerBody,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   useDisclosure,
   HStack,
-  Badge,
   Stack,
   Image,
 } from "@chakra-ui/react";
-import { Menu, TrendingUp, Clock, ShoppingBag, Home } from "lucide-react";
+import { Menu, TrendingUp, Contact, NotebookTabs } from "lucide-react";
 
 const Sidebar = ({ containerRef }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,19 +31,19 @@ const Sidebar = ({ containerRef }) => {
   const menuItems = [
     {
       name: "Content Trends",
-      icon: <TrendingUp size={20} />,
+      icon: <NotebookTabs size={18} />,
       comingSoon: false,
       bg: "yellow.50",
     },
     {
       name: "Topic Trends",
-      icon: <Clock size={20} />,
+      icon: <TrendingUp size={18} />,
       comingSoon: true,
       bg: "transparent",
     },
     {
       name: "Product Trends",
-      icon: <ShoppingBag size={20} />,
+      icon: <Contact size={18} />,
       comingSoon: true,
       bg: "transparent",
     },
@@ -143,8 +140,8 @@ const Sidebar = ({ containerRef }) => {
                 </VStack>
 
                 <VStack spacing={2} align="stretch" mt={4}>
-                  <Text fontSize="sm" fontWeight="bold" color="gray.600">
-                    Coming Soon
+                  <Text fontSize="sm" color="gray.400">
+                    COMING SOON{" "}
                   </Text>
                   {menuItems
                     .filter((item) => item.comingSoon)

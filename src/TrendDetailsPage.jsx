@@ -18,10 +18,11 @@ import {
   Progress,
   Avatar,
   Card,
+  Stack,
   CardBody,
 } from "@chakra-ui/react";
 import InfoPopover from "./components/InfoModal";
-import { ArrowLeft, Info, ExternalLink } from "lucide-react";
+import { ExternalLink, ChevronLeft } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis } from "recharts";
 
 // Sample data for the posts chart
@@ -65,14 +66,22 @@ const AboutSection = () => (
         sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
       />
     </Flex>
-    <Text fontSize="sm" color="gray.600" mb={3}>
-      Bold and oversized blazers dominate this season, blending structure with
-      comfort. Paired with sleek trousers or casual jeans, this versatile trend
-      redefines power dressing, adding a chic edge look.
-    </Text>
-    <Button variant="link" colorScheme="yellow" size="sm">
-      See More
-    </Button>
+    <Stack
+      border="1px solid #000"
+      p="2"
+      borderRadius="lg"
+      alignItems={"flex-start"}
+    >
+      <Text fontSize="sm" color="gray.600" mb={3}>
+        {"Bold and oversized blazers dominate this season, blending structure with comfort. Paired with sleek trousers or casual jeans, this versatile trend redefines power dressing, adding a chic edge look.".slice(
+          0,
+          300
+        )}
+      </Text>
+      <Button variant="link" color="#CFA817" size="sm" textAlign={"left"}>
+        See More
+      </Button>
+    </Stack>
   </Box>
 );
 
@@ -273,10 +282,8 @@ const TrendDetailsPage = () => {
       >
         {/* Header */}
         <Box
-          p={4}
           borderBottomWidth="1px"
           bg="white"
-          pt="4"
           position={"sticky !important"}
           top="0"
           zIndex={"999"}
@@ -284,35 +291,50 @@ const TrendDetailsPage = () => {
           backgroundBlendMode="overlay"
           backgroundColor="#ffffff7d"
         >
-          <Flex align="center" justify="space-between">
-            <HStack spacing={4}>
-              <IconButton
-                icon={<ArrowLeft size={20} />}
-                variant="ghost"
-                aria-label="Back"
-                onClick={() => navigate(-1)}
-              />
+          <HStack
+            pt="8"
+            pb="6"
+            align="center"
+            zIndex={"999"}
+            backdropFilter="blur(10px)"
+            backgroundBlendMode="overlay"
+            bg="#FFFAD6"
+            position={"relative"}
+            justifyContent={"center"}
+          >
+            <IconButton
+              icon={<ChevronLeft size={24} />}
+              variant="ghost"
+              aria-label="Back"
+              onClick={() => navigate(-1)}
+              position={"absolute"}
+              left="2"
+            />
+            <Stack alignItems={"center"} gap="0">
               <Text fontSize="2xl" fontWeight="bold">
-                {trendName?.toUpperCase() || "ASMR"}
+                {trendName?.toUpperCase()}
               </Text>
-            </HStack>
-            <Text color="green.500" fontSize="sm">
-              15.6% ↑
-            </Text>
-          </Flex>
+              <Text color="#00AB55" fontSize="sm">
+                15.6% ↑ increase in a week
+              </Text>
+            </Stack>
+          </HStack>
         </Box>
 
         {/* Tabs */}
         <Tabs colorScheme="yellow">
           <TabList
-            px={4}
+            px={6}
             pt="4"
             position={"sticky !important"}
-            top="16"
+            top="28"
             zIndex={"999"}
             backdropFilter="blur(10px)"
             backgroundBlendMode="overlay"
             backgroundColor="#ffffff7d"
+            border={"none"}
+            display={"flex"}
+            justifyContent={"space-between"}
           >
             <Tab>About</Tab>
             <Tab>Analytics</Tab>

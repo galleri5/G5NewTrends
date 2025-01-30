@@ -15,6 +15,7 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Stack,
   Button,
   Image,
 } from "@chakra-ui/react";
@@ -27,12 +28,6 @@ import {
 } from "lucide-react";
 import Sidebar from "./components/SideBar";
 
-const images = [
-  "/api/placeholder/400/500",
-  "/api/placeholder/400/500",
-  "/api/placeholder/400/500",
-  "/api/placeholder/400/500",
-];
 const FilterDropdown = ({ value, onChange }) => {
   const options = [
     {
@@ -165,19 +160,24 @@ const TrendCard = ({
     >
       <Flex justify="space-between" align="center" onClick={onToggle}>
         <HStack spacing={4} justifyContent={"space-between"} w="100%">
-          <HStack spacing={4}>
-            <Text
-              fontSize="l"
-              fontWeight="bold"
-              style={{ fontFamily: "'Rammetto One', cursive" }}
-            >
+          <Stack spacing={0}>
+            <Text fontSize="l" fontWeight="bold">
               {title}
             </Text>
             <Text color="green.500" fontSize="sm">
-              {percentage}% ↑
+              {percentage}% ↑ {"increase in a week"}
             </Text>
-          </HStack>
-          <Badge
+          </Stack>
+          <Button
+            bg="black"
+            color="white"
+            fontSize={"sm"}
+            _hover={{ bg: "#FFFAD6", color: "#000" }}
+            onClick={onClick}
+          >
+            View Trend
+          </Button>
+          {/* <Badge
             colorScheme={
               rank === "1st" ? "yellow" : rank === "2nd" ? "gray" : "orange"
             }
@@ -185,7 +185,7 @@ const TrendCard = ({
             px={2}
           >
             {rank}
-          </Badge>
+          </Badge> */}
         </HStack>
         <IconButton
           icon={
@@ -197,13 +197,7 @@ const TrendCard = ({
       </Flex>
 
       {isExpanded && (
-        <HStack
-          spacing={4}
-          overflowX={"auto"}
-          w="100%"
-          h="100%"
-          onClick={onClick}
-        >
+        <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
           <ContentCard type={"photo"} />
           <ContentCard type={"photo"} />
           <ContentCard type={"photo"} />
@@ -322,8 +316,9 @@ const TrendsListPage = () => {
                       bg: "yellow.50",
                       transform: "translateY(-2px)",
                     }}
+                    gap="1"
                   >
-                    <Image src={category.icon} w="24px" h="24px" />
+                    <Image src={category.icon} w="21px" h="16px" />
                     <Text
                       fontSize="xs"
                       mt={1}

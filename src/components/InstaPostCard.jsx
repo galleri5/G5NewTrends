@@ -17,7 +17,7 @@ import {
   useDisclosure,
   Stack,
 } from "@chakra-ui/react";
-import { Eye, Heart, MessageCircle, ExternalLink } from "lucide-react";
+import { Heart, MessageSquare, ExternalLink, Images, Star } from "lucide-react";
 
 export const ContentCard = ({ type }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -43,7 +43,7 @@ export const ContentCard = ({ type }) => {
       <Box position="relative">
         <Box
           position="absolute"
-          top="0"
+          top="20"
           left="0"
           right="0"
           bottom="0"
@@ -64,10 +64,27 @@ export const ContentCard = ({ type }) => {
           m="10px"
           position="relative"
           draggable={false}
+          border="1px solid #000000"
         >
-          <CardBody padding="10px">
-            <Flex align="center" mb={3}>
-              <Avatar size="sm" src="/api/placeholder/32/32" />
+          <CardBody paddingY="10px" paddingX="0px">
+            <Flex
+              align="center"
+              mb={3}
+              px={4}
+              onClick={() => {
+                window.alert("will redirect to insta");
+              }}
+            >
+              <Box position={"relative"}>
+                <Avatar size="sm" src="/api/placeholder/32/32" />
+                <Image
+                  src="../../assets/insta.png"
+                  alt="insta"
+                  position={"absolute"}
+                  bottom={"0"}
+                  right="0"
+                />
+              </Box>
               <Box ml={2} flex={1}>
                 <Text fontSize="sm" fontWeight="bold">
                   Skylar Voss
@@ -80,15 +97,20 @@ export const ContentCard = ({ type }) => {
                 icon={<ExternalLink size={16} />}
                 variant="ghost"
                 size="sm"
-                zIndex="3" // Make sure the button is above the overlay
+                zIndex="3"
               />
             </Flex>
 
-            <Box position="relative" mb={3} h="238px">
+            <Box
+              position="relative"
+              mb={4}
+              h="238px"
+              w="100%"
+              overflow={"hidden"}
+            >
               <Image
-                src="assets/transformationimage.svg"
+                src="../../assets/demo.png"
                 alt="Content"
-                borderRadius="lg"
                 w="full"
                 draggable={false}
                 style={{
@@ -96,36 +118,60 @@ export const ContentCard = ({ type }) => {
                   userSelect: "none",
                 }}
               />
-
-              <Badge
-                position="absolute"
-                top={2}
-                right={2}
-                bg="yellow.400"
-                color="black"
-                fontSize="xs"
-                px={2}
-                py={1}
-                zIndex="1"
-              >
-                {type}
-              </Badge>
+              <Stack position="absolute" bottom={0} left={-1} gap="1">
+                <Badge
+                  bg="#FAC912"
+                  color="black"
+                  fontSize="8.61px"
+                  px={2}
+                  py={1}
+                  zIndex="1"
+                  maxW="63px"
+                  borderRadius={"6px"}
+                  display={"flex"}
+                  alignItems={"center"}
+                  gap={1}
+                >
+                  <Images size="10px" /> {type}
+                </Badge>
+                <Badge
+                  bg="#4BDB93"
+                  color="black"
+                  fontSize="8.61px"
+                  px={2}
+                  py={1}
+                  zIndex="1"
+                  borderRadius={"6px"}
+                  display={"flex"}
+                  alignItems={"center"}
+                  gap={1}
+                >
+                  <Star size="10px" fill="#000000" /> Aesthetic score - 9.5{" "}
+                </Badge>
+              </Stack>
             </Box>
 
-            <HStack spacing={6} color="gray.500">
+            <HStack spacing={6} color="gray.500" pt={4} px={4}>
               <HStack spacing={1}>
-                <Eye size={14} />
-                <Text fontSize="sm">10k</Text>
+                <Heart size={14} fill="#5A5B5F" />
+                <Text fontSize="sm" color="#5A5B5F">
+                  566
+                </Text>
               </HStack>
               <HStack spacing={1}>
-                <Heart size={14} />
-                <Text fontSize="sm">566</Text>
-              </HStack>
-              <HStack spacing={1}>
-                <MessageCircle size={14} />
-                <Text fontSize="sm">50</Text>
+                <MessageSquare size={14} fill="#5A5B5F" />
+                <Text fontSize="sm" color="#5A5B5F">
+                  50
+                </Text>
               </HStack>
             </HStack>
+            <Text fontWeight={"400"} fontSize={"12.27px"} mt={1} px={4}>
+              {"Lorem ipsum dolor sit amet, consect adipiscing elit. Erat sempersagittis".slice(
+                0,
+                90
+              )}
+              ...
+            </Text>
           </CardBody>
         </Card>
       </Box>
@@ -162,22 +208,15 @@ export const ContentCard = ({ type }) => {
                   icon={<ExternalLink size={16} />}
                   variant="ghost"
                   size="sm"
-                  zIndex="3" // Make sure the button is above the overlay
+                  zIndex="3"
                 />
               </Flex>
 
-              <Box
-                position="relative"
-                mb={3}
-                // maxH="238px"
-                // border="2px solid red"
-                objectFit={"fill"}
-              >
+              <Box position="relative" mb={3} objectFit={"fill"}>
                 <Image
                   src="assets/transformationimage.svg"
                   alt="Content"
                   borderRadius="lg"
-                  //   maxH="238px"
                   w="100%"
                   draggable={false}
                   style={{
@@ -202,16 +241,16 @@ export const ContentCard = ({ type }) => {
               </Box>
 
               <HStack spacing={6} color="gray.500">
-                <HStack spacing={1}>
+                {/* <HStack spacing={1}>
                   <Eye size={14} />
                   <Text fontSize="sm">10k</Text>
-                </HStack>
+                </HStack> */}
                 <HStack spacing={1}>
-                  <Heart size={14} />
+                  <Heart size={14} fill="#5A5B5F" />
                   <Text fontSize="sm">566</Text>
                 </HStack>
                 <HStack spacing={1}>
-                  <MessageCircle size={14} />
+                  <MessageSquare size={14} fill="#5A5B5F" />
                   <Text fontSize="sm">50</Text>
                 </HStack>
               </HStack>
