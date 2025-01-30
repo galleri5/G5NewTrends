@@ -84,7 +84,7 @@ const AboutSection = () => (
     </Flex>
     <Stack
       border="1px solid #000"
-      p="2"
+      p="3"
       borderRadius="lg"
       alignItems={"flex-start"}
     >
