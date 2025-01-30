@@ -18,7 +18,6 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Eye, Heart, MessageCircle, ExternalLink } from "lucide-react";
-import { AnalyticsSection } from "@/TrendDetailsPage";
 
 export const ContentCard = ({ type }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -216,9 +215,6 @@ export const ContentCard = ({ type }) => {
                   <Text fontSize="sm">50</Text>
                 </HStack>
               </HStack>
-              <Stack mt="4">
-                <AnalyticsSection />
-              </Stack>
             </Stack>
           </ModalBody>
         </ModalContent>
