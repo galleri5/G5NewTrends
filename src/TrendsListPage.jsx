@@ -223,7 +223,7 @@ const TrendCard = ({
 
 const TrendsListPage = () => {
   const navigate = useNavigate();
-  const [expandedCards, setExpandedCards] = React.useState([]);
+  const [expandedCards, setExpandedCards] = React.useState([0]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
