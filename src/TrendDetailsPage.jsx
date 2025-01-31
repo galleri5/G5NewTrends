@@ -105,16 +105,21 @@ export const AnalyticsSection = () => (
 
       <Box border="1px solid black" borderRadius="12px" p={4} width="100%">
         <LineChart width={340} height={290} data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" hide />
+          {/* <CartesianGrid strokeDasharray="3 3" /> */}
+          <XAxis
+            dataKey="name"
+            tickFormatter={(value, index) =>
+              index === 0 || index === data.length - 1 ? value : ""
+            }
+          />
           <YAxis domain={[0, 100]} />
-          <RechartsTooltip />
+          {/* <RechartsTooltip /> */}
           <Line
             type="monotone"
             dataKey="value"
             stroke="gold"
             strokeWidth={3}
-            dot={{ fill: "black", r: 6 }}
+            dot={false}
           />
         </LineChart>
       </Box>
