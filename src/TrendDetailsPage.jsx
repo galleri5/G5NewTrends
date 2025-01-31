@@ -65,10 +65,12 @@ const AboutSection = () => (
       <Text fontSize="lg" fontWeight="bold">
         About this trend
       </Text>
-      <InfoPopover
-        title={"modalData.title"}
-        sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-      />
+
+      <InfoPopover>
+        <Text fontSize="sm" color="gray.600">
+          Hello
+        </Text>
+      </InfoPopover>
     </Flex>
     <Stack
       border="1px solid #000"
@@ -98,10 +100,12 @@ export const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           No. of Posts
         </Text>
-        <InfoPopover
-          title={"modalData.title"}
-          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-        />
+
+        <InfoPopover>
+          <Text fontSize="sm" color="gray.600">
+            Hello
+          </Text>
+        </InfoPopover>
       </Flex>
 
       <Box
@@ -139,10 +143,11 @@ export const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           Location Demographics
         </Text>
-        <InfoPopover
-          title={"modalData.title"}
-          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-        />
+        <InfoPopover>
+          <Text fontSize="sm" color="gray.600">
+            Hello
+          </Text>
+        </InfoPopover>
       </Flex>
       <VStack
         spacing={4}
@@ -174,10 +179,11 @@ export const AnalyticsSection = () => (
         <Text fontSize="lg" fontWeight="bold">
           Brands Associated
         </Text>
-        <InfoPopover
-          title={"modalData.title"}
-          sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-        />
+        <InfoPopover>
+          <Text fontSize="sm" color="gray.600">
+            Hello
+          </Text>
+        </InfoPopover>
       </Flex>
       <Flex flexWrap="wrap" gap={2} justifyContent={"space-around"}>
         {brandsData.map((brand, index) => (
@@ -214,10 +220,11 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Reels Content
           </Text>
-          <InfoPopover
-            title={"modalData.title"}
-            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-          />
+          <InfoPopover>
+            <Text fontSize="sm" color="gray.600">
+              Hello
+            </Text>
+          </InfoPopover>
         </Flex>
         <HStack overflowX={"auto"} w="100%">
           <ContentCard type="VIDEO" />
@@ -233,10 +240,11 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Posts Content
           </Text>
-          <InfoPopover
-            title={"modalData.title"}
-            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-          />
+          <InfoPopover>
+            <Text fontSize="sm" color="gray.600">
+              Hello
+            </Text>
+          </InfoPopover>
         </Flex>
         <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
           <ContentCard type="PHOTO" />
@@ -252,10 +260,11 @@ const ContentSection = () => {
           <Text fontSize="lg" fontWeight="bold">
             Top Creators
           </Text>
-          <InfoPopover
-            title={"modalData.title"}
-            sections={[{ header: "Alpha", content: "ihibibkjbijbijbibibibib" }]}
-          />
+          <InfoPopover>
+            <Text fontSize="sm" color="gray.600">
+              Hello
+            </Text>
+          </InfoPopover>
         </Flex>
         <Flex gap={4} overflowX="auto">
           {[1, 2, 3].map((index) => (

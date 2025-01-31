@@ -443,7 +443,7 @@ const TrendsListPage = () => {
               >
                 FILTERS
               </Text>
-              <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #e4e4e4"}>
+              <Flex pb={3} gap={4} px={4} borderBottom={"1px solid #e4e4e4a1"}>
                 <Box flex={1}>
                   <FilterDropdown
                     value={selectedTrendType}
