@@ -339,11 +339,7 @@ const TrendsListPage = () => {
       growth: growth,
     });
 
-    navigate(
-      `/trend/${encodeURIComponent(
-        title.toLowerCase()
-      )}?${queryParams.toString()}`
-    );
+    navigate(`/trend/${encodeURIComponent(title)}?${queryParams.toString()}`);
   };
 
   return (
