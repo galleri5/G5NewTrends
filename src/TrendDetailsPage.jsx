@@ -217,7 +217,7 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
               justifyContent="center"
             >
               <Image src={brand.logo} alt={brand.name} boxSize="40px" mb={2} />
-              <Text fontSize="xs" textAlign="center">
+              <Text fontSize="xs" textAlign="center" fontWeight={"700"}>
                 {brand}
               </Text>
             </Box>
@@ -320,16 +320,7 @@ const ContentSection = ({ content, creators }) => {
                       size="md"
                       src={`https://gallerify.s3-us-west-2.amazonaws.com/ipics/${creator?.ou}.jpg`}
                       border="1px solid grey"
-                    >
-                      {/* <Image
-                        src={`https://gallerify.s3-us-west-2.amazonaws.com/ipics/${creator?.ou}.jpg`}
-                        // alt="insta"
-                        position={"absolute"}
-                        borderRadius={"50%"}
-                        bottom={"0"}
-                        right="0"
-                      /> */}
-                    </Avatar>
+                    ></Avatar>
                   </Box>
                   <Stack>
                     <Text
