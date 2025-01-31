@@ -61,37 +61,46 @@ const brandsData = [
 ];
 
 // About Section Component
-const AboutSection = () => (
-  <Box bg="white" borderRadius="xl" p={4}>
-    <Flex justify="space-between" mb={4}>
-      <Text fontSize="lg" fontWeight="bold">
-        About this trend
-      </Text>
+const AboutSection = ({ about }) => {
+  const [isExpanded, setIsExpanded] = React.useState(false);
 
-      <InfoPopover>
-        <Text fontSize="sm" color="gray.600">
-          Hello
+  return (
+    <Box bg="white" borderRadius="xl" p={4}>
+      <Flex justify="space-between" mb={4}>
+        <Text fontSize="lg" fontWeight="bold">
+          About this trend
         </Text>
-      </InfoPopover>
-    </Flex>
-    <Stack
-      border="1px solid #000"
-      p="3"
-      borderRadius="lg"
-      alignItems={"flex-start"}
-    >
-      <Text fontSize="sm" color="gray.600" mb={3}>
-        {"Bold and oversized blazers dominate this season, blending structure with comfort. Paired with sleek trousers or casual jeans, this versatile trend redefines power dressing, adding a chic edge look.".slice(
-          0,
-          300
+        <InfoPopover>
+          <Text fontSize="sm" color="gray.600">
+            Hello
+          </Text>
+        </InfoPopover>
+      </Flex>
+      <Stack
+        border="1px solid #000"
+        p="3"
+        borderRadius="lg"
+        alignItems="flex-start"
+      >
+        <Text fontSize="sm" color="gray.600" mb={3}>
+          {isExpanded ? about : about?.slice(0, 300)}
+          {!isExpanded && about?.length > 300 && "..."}
+        </Text>
+        {about?.length > 300 && (
+          <Button
+            variant="link"
+            color="#CFA817"
+            size="sm"
+            textAlign="left"
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
+            {isExpanded ? "See Less" : "See More"}
+          </Button>
         )}
-      </Text>
-      <Button variant="link" color="#CFA817" size="sm" textAlign={"left"}>
-        See More
-      </Button>
-    </Stack>
-  </Box>
-);
+      </Stack>
+    </Box>
+  );
+};
 
 // Analytics Section Component
 export const AnalyticsSection = ({ graphData, locData, brands }) => {
@@ -558,7 +567,7 @@ const TrendDetailsPage = () => {
           {data ? (
             <TabPanels>
               <TabPanel>
-                <AboutSection />
+                <AboutSection about={data?.about} />
               </TabPanel>
               <TabPanel>
                 <AnalyticsSection
