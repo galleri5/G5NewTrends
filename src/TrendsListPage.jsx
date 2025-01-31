@@ -170,19 +170,19 @@ const TrendCard = ({
             <Text fontSize="l" fontWeight="bold">
               {title}
             </Text>
+            {/* {selectedTrendType === "declining" ? "decrease" : "increase"} */}
             <Text
               color={
                 selectedTrendType === "declining" ? "red.500" : "green.500"
               }
               fontSize="sm"
             >
-              {percentage}{" "}
-              {selectedTrendType === "declining" ? "decrease" : "increase"} in{" "}
+              {percentage} change in{" "}
               {selectedTimeRange === "7d"
-                ? "a week"
+                ? "the last week"
                 : selectedTimeRange === "15d"
                 ? "the last 15 days"
-                : "a month"}{" "}
+                : "the last 30 days"}{" "}
             </Text>
           </Stack>
           <Button
