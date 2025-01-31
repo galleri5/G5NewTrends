@@ -216,7 +216,7 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
               alignItems="center"
               justifyContent="center"
             >
-              <Image src={brand.logo} alt={brand.name} boxSize="40px" mb={2} />
+              {/* <Image src={brand.logo} alt={brand.name} boxSize="40px" mb={2} /> */}
               <Text fontSize="xs" textAlign="center" fontWeight={"700"}>
                 {brand}
               </Text>
