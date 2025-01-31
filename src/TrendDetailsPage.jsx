@@ -509,7 +509,7 @@ const TrendDetailsPage = () => {
               icon={<ChevronLeft size={24} />}
               variant="ghost"
               aria-label="Back"
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/")}
               position={"absolute"}
               left="2"
             />
