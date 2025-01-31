@@ -191,6 +191,7 @@ const TrendCard = ({
             fontSize={"sm"}
             _hover={{ bg: "#FFFAD6", color: "#000" }}
             onClick={onClick}
+            minW={"92px"}
           >
             View Trend
           </Button>
@@ -393,7 +394,9 @@ const TrendsListPage = () => {
                 cursor="pointer"
                 onClick={() =>
                   setSelectedCategory(
-                    selectedCategory === category.name ? null : category.name
+                    selectedCategory === category.name
+                      ? category.name
+                      : category.name
                   )
                 }
                 position="relative"

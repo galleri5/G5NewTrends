@@ -369,12 +369,14 @@ const TrendDetailsPage = () => {
               left="2"
             />
             <Stack alignItems={"center"} gap="0">
-              <Text fontSize="2xl" fontWeight="bold">
-                {trendName?.toUpperCase()}
-              </Text>
-              <Text color="#00AB55" fontSize="sm">
-                15.6% ↑ increase in a week
-              </Text>
+              <Stack maxW="90%" alignItems={"center"}>
+                <Text fontSize="2xl" fontWeight="bold" textAlign={"center"}>
+                  {trendName?.toUpperCase()}
+                </Text>
+                <Text color="#00AB55" fontSize="sm">
+                  15.6% ↑ increase in a week
+                </Text>
+              </Stack>
             </Stack>
           </HStack>
         </Box>
