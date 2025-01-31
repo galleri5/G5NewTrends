@@ -369,7 +369,7 @@ const TrendDetailsPage = () => {
               left="2"
             />
             <Stack alignItems={"center"} gap="0">
-              <Stack maxW="90%" alignItems={"center"}>
+              <Stack maxW="96%" alignItems={"center"}>
                 <Text fontSize="2xl" fontWeight="bold" textAlign={"center"}>
                   {trendName?.toUpperCase()}
                 </Text>
