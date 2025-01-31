@@ -230,17 +230,55 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
 
 // Content Section Component
 const ContentSection = ({ content, creators }) => {
-  const formatNumber = (number) => {
-    if (number >= 1e9) {
-      return (number / 1e9).toFixed(1) + "B";
-    } else if (number >= 1e6) {
-      return (number / 1e6).toFixed(1) + "M";
-    } else if (number >= 1e3) {
-      return (number / 1e3).toFixed(1) + "K";
-    } else {
-      return number.toString();
+  const [visibleReels, setVisibleReels] = React.useState(5);
+  const [visibleFeed, setVisibleFeed] = React.useState(5);
+
+  const observerRef = React.useRef(null);
+  const feedObserverRef = React.useRef(null);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const lastEntry = entries[0];
+        if (lastEntry.isIntersecting) {
+          setVisibleReels((prev) => Math.min(prev + 5, content?.reels?.length)); // Load next 5 images
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
     }
-  };
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, [content?.reels]);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const lastEntry = entries[0];
+        if (lastEntry.isIntersecting) {
+          setVisibleFeed((prev) => Math.min(prev + 5, content?.feed?.length)); // Load next 5 images
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observer.unobserve(observerRef.current);
+      }
+    };
+  }, [content?.feed]);
   return (
     <VStack spacing={6} align="stretch" h="100%">
       {/* Top Reels Content */}
@@ -257,9 +295,13 @@ const ContentSection = ({ content, creators }) => {
         </Flex>
         {content?.reels.length > 0 ? (
           <HStack overflowX={"auto"} w="100%">
-            {content?.reels?.map((post, index) => (
-              <ContentCard key={index} type={"video"} post={post} />
+            {content?.reels.slice(0, visibleReels).map((post, index) => (
+              <ContentCard key={index} type="video" post={post} />
             ))}
+            <div
+              ref={observerRef}
+              style={{ width: "10px", height: "10px" }}
+            ></div>
           </HStack>
         ) : (
           <Text>No Reels Content Found</Text>
@@ -279,10 +321,14 @@ const ContentSection = ({ content, creators }) => {
           </InfoPopover>
         </Flex>
         {content?.feed?.length > 0 ? (
-          <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
-            {content?.feed?.map((post, index) => (
-              <ContentCard key={index} type={"video"} post={post} />
+          <HStack spacing={4} overflowX="auto" w="100%" h="100%">
+            {content?.feed.slice(0, visibleFeed).map((post, index) => (
+              <ContentCard key={index} type="video" post={post} />
             ))}
+            <div
+              ref={feedObserverRef}
+              style={{ width: "10px", height: "10px" }}
+            ></div>
           </HStack>
         ) : (
           <Text>No Posts Content Found</Text>
@@ -367,6 +413,18 @@ const ContentSection = ({ content, creators }) => {
       </Box>
     </VStack>
   );
+};
+
+const formatNumber = (number) => {
+  if (number >= 1e9) {
+    return (number / 1e9).toFixed(1) + "B";
+  } else if (number >= 1e6) {
+    return (number / 1e6).toFixed(1) + "M";
+  } else if (number >= 1e3) {
+    return (number / 1e3).toFixed(1) + "K";
+  } else {
+    return number.toString();
+  }
 };
 
 // Main TrendDetailsPage Component
@@ -465,6 +523,7 @@ const TrendDetailsPage = () => {
                     selectedTrendType === "declining" ? "red.500" : "green.500"
                   }
                   fontSize="sm"
+                  textAlign={"center"}
                 >
                   {growth} change in{" "}
                   {selectedTimeRange === "7d"
