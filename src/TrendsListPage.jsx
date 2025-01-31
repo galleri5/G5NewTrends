@@ -406,7 +406,8 @@ const TrendsListPage = () => {
                 position="relative"
                 transition="all 0.2s"
                 _hover={{
-                  bg: "yellow.50",
+                  bg: "#FFFAD6",
+                  borderColor: "yellow.200",
                   transform: "translateY(-2px)",
                 }}
                 border={
