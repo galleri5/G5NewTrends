@@ -255,11 +255,15 @@ const ContentSection = ({ content, creators }) => {
             </Text>
           </InfoPopover>
         </Flex>
-        <HStack overflowX={"auto"} w="100%">
-          {content?.reels?.map((post, index) => (
-            <ContentCard key={index} type={"video"} post={post} />
-          ))}
-        </HStack>
+        {content?.reels.length > 0 ? (
+          <HStack overflowX={"auto"} w="100%">
+            {content?.reels?.map((post, index) => (
+              <ContentCard key={index} type={"video"} post={post} />
+            ))}
+          </HStack>
+        ) : (
+          <Text>No Reels Content Found</Text>
+        )}
       </Box>
 
       {/* Top Posts Content */}
@@ -274,11 +278,15 @@ const ContentSection = ({ content, creators }) => {
             </Text>
           </InfoPopover>
         </Flex>
-        <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
-          {content?.feed?.map((post, index) => (
-            <ContentCard key={index} type={"video"} post={post} />
-          ))}
-        </HStack>
+        {content?.feed?.length > 0 ? (
+          <HStack spacing={4} overflowX={"auto"} w="100%" h="100%">
+            {content?.feed?.map((post, index) => (
+              <ContentCard key={index} type={"video"} post={post} />
+            ))}
+          </HStack>
+        ) : (
+          <Text>No Posts Content Found</Text>
+        )}
       </Box>
 
       {/* Top Creators */}
