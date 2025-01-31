@@ -72,6 +72,8 @@ const FilterDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            _hover={{ bg: "gray.50" }}
           >
             <HStack spacing={3}>
               {option.icon}
@@ -119,6 +121,8 @@ const TimeRangeDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            _hover={{ bg: "gray.50" }}
           >
             {option.label}
           </MenuItem>
