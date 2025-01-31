@@ -157,7 +157,7 @@ const TrendCard = ({
     <Box
       borderWidth="1px"
       borderRadius="xl"
-      p={4}
+      p={3}
       mb={3}
       bg="white"
       w="100%"
@@ -169,7 +169,7 @@ const TrendCard = ({
       }}
     >
       <Flex justify="space-between" align="center" onClick={onToggle}>
-        <HStack spacing={4} justifyContent={"space-between"} w="100%">
+        <HStack spacing={2} justifyContent={"space-between"} w="100%">
           <Stack spacing={0}>
             <Text fontSize="l" fontWeight="bold">
               {title}
@@ -206,6 +206,7 @@ const TrendCard = ({
           }
           variant="ghost"
           size="sm"
+          marginLeft={"auto"}
         />
       </Flex>
 
