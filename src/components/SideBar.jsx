@@ -105,7 +105,9 @@ const Sidebar = ({ containerRef }) => {
         >
           <VStack
             maxW={"300px"}
-            bg="#fff"
+            backdropFilter="blur(10px)"
+            backgroundBlendMode="overlay"
+            backgroundColor="#ffffffe0"
             h="100%"
             position={"relative"}
             borderRightRadius={10}
