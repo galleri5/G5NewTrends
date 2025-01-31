@@ -115,7 +115,8 @@ export const ContentCard = ({ type, post }) => {
         <Card
           h="436px"
           w="270px"
-          m="10px"
+          mr="10px"
+          my="10px"
           position="relative"
           draggable={false}
           border="1px solid #000000"

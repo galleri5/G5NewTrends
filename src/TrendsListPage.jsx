@@ -331,8 +331,19 @@ const TrendsListPage = () => {
     );
   };
 
-  const handleTrendClick = (title) => {
-    navigate(`/trend/${encodeURIComponent(title.toLowerCase())}`);
+  const handleTrendClick = (title, growth) => {
+    const queryParams = new URLSearchParams({
+      selectedCategory: selectedCategory,
+      selectedTimeRange: selectedTimeRange,
+      selectedTrendType: selectedTrendType,
+      growth: growth,
+    });
+
+    navigate(
+      `/trend/${encodeURIComponent(
+        title.toLowerCase()
+      )}?${queryParams.toString()}`
+    );
   };
 
   return (
@@ -483,7 +494,7 @@ const TrendsListPage = () => {
                     }}
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleTrendClick(item?.name);
+                      handleTrendClick(item?.name, item.growth);
                     }}
                     posts={item.posts}
                     selectedTimeRange={selectedTimeRange}

@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { ContentCard } from "./components/InstaPostCard";
 import {
   Box,
@@ -327,7 +327,12 @@ const ContentSection = () => {
 const TrendDetailsPage = () => {
   const { trendName } = useParams();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const selectedCategory = queryParams.get("selectedCategory");
+  const selectedTimeRange = queryParams.get("selectedTimeRange");
+  const selectedTrendType = queryParams.get("selectedTrendType");
+  const growth = queryParams.get("growth");
   return (
     <Box bg="gray.100" minH="100vh">
       <Container
@@ -373,8 +378,18 @@ const TrendDetailsPage = () => {
                 <Text fontSize="2xl" fontWeight="bold" textAlign={"center"}>
                   {trendName?.toUpperCase()}
                 </Text>
-                <Text color="#00AB55" fontSize="sm">
-                  15.6% ↑ increase in a week
+                <Text
+                  color={
+                    selectedTrendType === "declining" ? "red.500" : "green.500"
+                  }
+                  fontSize="sm"
+                >
+                  {growth} change in{" "}
+                  {selectedTimeRange === "7d"
+                    ? "the last week"
+                    : selectedTimeRange === "15d"
+                    ? "the last 15 days"
+                    : "the last 30 days"}{" "}
                 </Text>
               </Stack>
             </Stack>
