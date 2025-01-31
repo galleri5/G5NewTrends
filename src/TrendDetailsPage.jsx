@@ -321,7 +321,8 @@ const ContentSection = ({ content, creators }) => {
           </InfoPopover>
         </Flex>
         {content?.feed?.length > 0 ? (
-          <HStack spacing={4} overflowX="auto" w="100%" h="100%">
+          <HStack overflowX={"auto"} overflowY={"hidden"} w="100%">
+            {" "}
             {content?.feed.slice(0, visibleFeed).map((post, index) => (
               <ContentCard key={index} type="video" post={post} />
             ))}
@@ -474,20 +475,19 @@ const TrendDetailsPage = () => {
     }
   });
   return (
-    <Box bg="gray.100" minH="100vh">
+    <Box bg="gray.100" h="100vh">
       <Container
         maxW="480px"
         p={0}
         bg="white"
-        minH="100dvh"
-        h={"100vh"}
+        minH="100vh"
+        maxH={"100vh"}
         overflow="auto"
         pb="100px"
       >
         <Box
           borderBottomWidth="1px"
           bg="white"
-          position={"sticky !important"}
           top="0"
           zIndex={"999"}
           backdropFilter="blur(10px)"
@@ -542,12 +542,11 @@ const TrendDetailsPage = () => {
             px={6}
             pt="4"
             position={"sticky !important"}
-            top="28"
+            top="0"
             zIndex={"999"}
             backdropFilter="blur(10px)"
             backgroundBlendMode="overlay"
             backgroundColor="#ffffff7d"
-            border={"none"}
             display={"flex"}
             justifyContent={"space-between"}
           >
