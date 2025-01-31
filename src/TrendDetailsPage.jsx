@@ -15,7 +15,6 @@ import {
   VStack,
   Button,
   IconButton,
-  Tooltip,
   Progress,
   Avatar,
   Card,
@@ -33,25 +32,14 @@ import {
   Tooltip as RechartsTooltip,
 } from "recharts";
 
-// Sample data for the posts chart
-const postData = [
-  { month: "Jan", posts: 0 },
-  { month: "Feb", posts: 20 },
-  { month: "Mar", posts: 40 },
-  { month: "Apr", posts: 60 },
-  { month: "May", posts: 80 },
-  { month: "Jun", posts: 37 },
-];
-
 const data = [
   { name: "Jan", value: 5 },
   { name: "Feb", value: 20 },
   { name: "Mar", value: 40 },
   { name: "Apr", value: 80 },
-  { name: "May", value: 37 }, // Last point
+  { name: "May", value: 37 },
 ];
 
-// Sample data for locations
 const locationData = [
   { city: "Bangalore", percentage: 75 },
   { city: "Mumbai", percentage: 50 },
@@ -60,7 +48,6 @@ const locationData = [
   { city: "Pune", percentage: 25 },
 ];
 
-// Sample data for brands
 const brandsData = [
   { name: "Synergy", logo: "/api/placeholder/40/40" },
   { name: "Procter & Gamble", logo: "/api/placeholder/40/40" },
@@ -330,7 +317,6 @@ const TrendDetailsPage = () => {
         overflow="auto"
         pb="100px"
       >
-        {/* Header */}
         <Box
           borderBottomWidth="1px"
           bg="white"
@@ -371,7 +357,6 @@ const TrendDetailsPage = () => {
           </HStack>
         </Box>
 
-        {/* Tabs */}
         <Tabs colorScheme="yellow">
           <TabList
             px={6}

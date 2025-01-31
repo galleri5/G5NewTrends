@@ -348,7 +348,7 @@ const TrendsListPage = () => {
           align="center"
           backgroundColor={"#FFFAD6"}
           pt={4}
-          h="120px"
+          h="100px"
         >
           <HStack justifyContent={"center"} w="100%">
             <Image
@@ -469,8 +469,13 @@ const TrendsListPage = () => {
                     title={item.name}
                     percentage={item.growth}
                     isExpanded={expandedCards?.includes(index)}
-                    onToggle={(e) => toggleCard(index, e)}
-                    onClick={() => handleTrendClick(item?.name)}
+                    onToggle={(e) => {
+                      toggleCard(index, e);
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleTrendClick(item?.name);
+                    }}
                     posts={item.posts}
                     selectedTimeRange={selectedTimeRange}
                     selectedTrendType={selectedTrendType}
@@ -482,11 +487,6 @@ const TrendsListPage = () => {
         ) : (
           <VStack justifyContent={"center"} alignItems={"center"} h="60%">
             <VStack>
-              {/* <DotLottieReact
-              src="https://lottie.host/78c57106-bf84-434f-8e9f-48d39587e3a0/DfqF6gOC9i.lottie"
-              loop
-              autoplay
-            /> */}
               <DotLottieReact
                 src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
                 loop
@@ -496,6 +496,11 @@ const TrendsListPage = () => {
           </VStack>
         )}
       </Container>
+      {/* <DotLottieReact
+        src="https://lottie.host/bea42e64-8379-460c-a3a0-a57d6b5177ce/m9Z1lgFlkN.lottie"
+        loop
+        autoplay
+      /> */}
     </Box>
   );
 };

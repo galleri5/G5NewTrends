@@ -84,7 +84,7 @@ const Sidebar = ({ containerRef }) => {
         size="lg"
         aria-label="Open Menu"
         position="absolute"
-        top="10"
+        top="8"
         left="4"
         zIndex="10"
       />
