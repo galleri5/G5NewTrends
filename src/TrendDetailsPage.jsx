@@ -70,11 +70,11 @@ const AboutSection = ({ about }) => {
         <Text fontSize="lg" fontWeight="bold">
           About this trend
         </Text>
-        <InfoPopover>
+        {/* <InfoPopover>
           <Text fontSize="sm" color="gray.600">
             Hello
           </Text>
-        </InfoPopover>
+        </InfoPopover> */}
       </Flex>
       <Stack
         border="1px solid #000"
