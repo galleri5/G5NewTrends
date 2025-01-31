@@ -30,6 +30,7 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip as RechartsTooltip,
+  ResponsiveContainer,
 } from "recharts";
 
 const data = [
@@ -103,25 +104,32 @@ export const AnalyticsSection = () => (
         />
       </Flex>
 
-      <Box border="1px solid black" borderRadius="12px" p={4} width="100%">
-        <LineChart width={340} height={290} data={data}>
-          {/* <CartesianGrid strokeDasharray="3 3" /> */}
-          <XAxis
-            dataKey="name"
-            tickFormatter={(value, index) =>
-              index === 0 || index === data.length - 1 ? value : ""
-            }
-          />
-          <YAxis domain={[0, 100]} />
-          {/* <RechartsTooltip /> */}
-          <Line
-            type="monotone"
-            dataKey="value"
-            stroke="gold"
-            strokeWidth={3}
-            dot={false}
-          />
-        </LineChart>
+      <Box
+        border="1px solid black"
+        borderRadius="12px"
+        py={4}
+        paddingRight={10}
+        width="100%"
+      >
+        <ResponsiveContainer width="100%" height={290}>
+          <LineChart data={data}>
+            <CartesianGrid vertical={false} horizontal={true} />
+            <XAxis
+              dataKey="name"
+              tickFormatter={(value, index) =>
+                index === 0 || index === data.length - 1 ? value : ""
+              }
+            />
+            <YAxis domain={[0, 100]} />
+            <Line
+              type="monotone"
+              dataKey="value"
+              stroke="gold"
+              strokeWidth={3}
+              dot={false}
+            />
+          </LineChart>
+        </ResponsiveContainer>
       </Box>
     </Box>
 
