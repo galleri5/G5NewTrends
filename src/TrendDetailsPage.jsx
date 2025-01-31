@@ -112,8 +112,8 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
           </Text>
 
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Hello
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Trend line shows how the trend is doing in the given duration
             </Text>
           </InfoPopover>
         </Flex>
@@ -156,8 +156,8 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
             Location Demographics
           </Text>
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Info
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Shows what all the location it is trending
             </Text>
           </InfoPopover>
         </Flex>
@@ -197,8 +197,8 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
             Brands Associated
           </Text>
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Hello
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Brands which are involved with the trend
             </Text>
           </InfoPopover>
         </Flex>
@@ -288,8 +288,8 @@ const ContentSection = ({ content, creators }) => {
             Top Reels Content
           </Text>
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Info
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Popular reel content across the trend
             </Text>
           </InfoPopover>
         </Flex>
@@ -315,8 +315,8 @@ const ContentSection = ({ content, creators }) => {
             Top Posts Content
           </Text>
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Hello
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Popular post content across the trend
             </Text>
           </InfoPopover>
         </Flex>
@@ -343,8 +343,8 @@ const ContentSection = ({ content, creators }) => {
             Top Creators
           </Text>
           <InfoPopover>
-            <Text fontSize="sm" color="gray.600">
-              Hello
+            <Text fontSize="sm" color="gray.600" p={"20px"}>
+              Popular creators leading the trend
             </Text>
           </InfoPopover>
         </Flex>
@@ -529,8 +529,8 @@ const TrendDetailsPage = () => {
                   {selectedTimeRange === "7d"
                     ? "the last week"
                     : selectedTimeRange === "15d"
-                    ? "the last 15 days"
-                    : "the last 30 days"}{" "}
+                      ? "the last 15 days"
+                      : "the last 30 days"}{" "}
                 </Text>
               </Stack>
             </Stack>
