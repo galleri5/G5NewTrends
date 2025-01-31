@@ -316,15 +316,20 @@ const ContentSection = ({ content, creators }) => {
               >
                 <Stack align="center" overflow={"hidden"}>
                   <Box position={"relative"}>
-                    <Avatar size="sm" src="/api/placeholder/32/32" />
-                    <Image
+                    <Avatar
+                      size="md"
                       src={`https://gallerify.s3-us-west-2.amazonaws.com/ipics/${creator?.ou}.jpg`}
-                      // alt="insta"
-                      position={"absolute"}
-                      borderRadius={"50%"}
-                      bottom={"0"}
-                      right="0"
-                    />
+                      border="1px solid grey"
+                    >
+                      {/* <Image
+                        src={`https://gallerify.s3-us-west-2.amazonaws.com/ipics/${creator?.ou}.jpg`}
+                        // alt="insta"
+                        position={"absolute"}
+                        borderRadius={"50%"}
+                        bottom={"0"}
+                        right="0"
+                      /> */}
+                    </Avatar>
                   </Box>
                   <Stack>
                     <Text
