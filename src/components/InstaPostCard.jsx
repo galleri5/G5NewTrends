@@ -113,9 +113,10 @@ export const ContentCard = ({ type, post }) => {
         />
 
         <Card
-          minH="400px"
-          minW="260px"
-          m="10px"
+          h="436px"
+          w="270px"
+          mr="10px"
+          my="10px"
           position="relative"
           draggable={false}
           border="1px solid #000000"
@@ -142,11 +143,19 @@ export const ContentCard = ({ type, post }) => {
                   right="0"
                 />
               </Box>
-              <Box ml={2} flex={1}>
-                <Text fontSize="sm" fontWeight="bold">
+              <Box ml={2} flex={1} overflow={"hidden"}>
+                <Text
+                  fontSize="sm"
+                  fontWeight="bold"
+                  style={{
+                    whiteSpace: "nowrap",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                  }}
+                >
                   {post?.name || ""}
                 </Text>
-                {/* //need to be changed */}
+
                 <Text fontSize="xs" color="gray.500">
                   @{post?.ou || ""}
                 </Text>
@@ -162,7 +171,7 @@ export const ContentCard = ({ type, post }) => {
             <Box
               position="relative"
               mb={4}
-              h="238px"
+              h="260px"
               w="100%"
               overflow={"hidden"}
             >

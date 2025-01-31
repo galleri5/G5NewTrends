@@ -84,7 +84,7 @@ const Sidebar = ({ containerRef }) => {
         size="lg"
         aria-label="Open Menu"
         position="absolute"
-        top="10"
+        top="8"
         left="4"
         zIndex="10"
       />
@@ -105,7 +105,9 @@ const Sidebar = ({ containerRef }) => {
         >
           <VStack
             maxW={"300px"}
-            bg="#fff"
+            backdropFilter="blur(10px)"
+            backgroundBlendMode="overlay"
+            backgroundColor="#ffffffe0"
             h="100%"
             position={"relative"}
             borderRightRadius={10}

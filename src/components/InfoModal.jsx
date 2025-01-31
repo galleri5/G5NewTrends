@@ -15,7 +15,7 @@ import {
 import { useState } from "react";
 import { Info } from "lucide-react";
 
-export const InfoPopover = ({ title, sections }) => {
+export const InfoPopover = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -56,21 +56,10 @@ export const InfoPopover = ({ title, sections }) => {
         >
           <PopoverArrow />
           <PopoverCloseButton />
-          <PopoverHeader fontWeight="bold" fontSize="18px" textAlign="center">
-            {title}
-          </PopoverHeader>
+
           <PopoverBody>
             <VStack align="start" spacing={4}>
-              {sections.map((section, index) => (
-                <Box key={index}>
-                  <Text fontSize={"16px"} fontWeight={"800"} color={"#111111"}>
-                    {section.header}
-                  </Text>
-                  <Text fontSize={"16px"} fontWeight={"400"} color={"#111111"}>
-                    {section.content}
-                  </Text>
-                </Box>
-              ))}
+              {children}
             </VStack>
           </PopoverBody>
         </PopoverContent>

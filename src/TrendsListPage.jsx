@@ -72,6 +72,8 @@ const FilterDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            _hover={{ bg: "gray.50" }}
           >
             <HStack spacing={3}>
               {option.icon}
@@ -119,6 +121,8 @@ const TimeRangeDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            _hover={{ bg: "gray.50" }}
           >
             {option.label}
           </MenuItem>
@@ -153,7 +157,7 @@ const TrendCard = ({
     <Box
       borderWidth="1px"
       borderRadius="xl"
-      p={4}
+      p={3}
       mb={3}
       bg="white"
       w="100%"
@@ -165,24 +169,24 @@ const TrendCard = ({
       }}
     >
       <Flex justify="space-between" align="center" onClick={onToggle}>
-        <HStack spacing={4} justifyContent={"space-between"} w="100%">
+        <HStack spacing={2} justifyContent={"space-between"} w="100%">
           <Stack spacing={0}>
             <Text fontSize="l" fontWeight="bold">
               {title}
             </Text>
+            {/* {selectedTrendType === "declining" ? "decrease" : "increase"} */}
             <Text
               color={
                 selectedTrendType === "declining" ? "red.500" : "green.500"
               }
               fontSize="sm"
             >
-              {percentage}{" "}
-              {selectedTrendType === "declining" ? "decrease" : "increase"} in{" "}
+              {percentage} change in{" "}
               {selectedTimeRange === "7d"
-                ? "a week"
+                ? "the last week"
                 : selectedTimeRange === "15d"
                 ? "the last 15 days"
-                : "a month"}{" "}
+                : "the last 30 days"}{" "}
             </Text>
           </Stack>
           <Button
@@ -191,6 +195,7 @@ const TrendCard = ({
             fontSize={"sm"}
             _hover={{ bg: "#FFFAD6", color: "#000" }}
             onClick={onClick}
+            minW={"92px"}
           >
             View Trend
           </Button>
@@ -201,6 +206,7 @@ const TrendCard = ({
           }
           variant="ghost"
           size="sm"
+          marginLeft={"auto"}
         />
       </Flex>
 
@@ -217,7 +223,7 @@ const TrendCard = ({
 
 const TrendsListPage = () => {
   const navigate = useNavigate();
-  const [expandedCards, setExpandedCards] = React.useState([]);
+  const [expandedCards, setExpandedCards] = React.useState([0]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
@@ -325,8 +331,15 @@ const TrendsListPage = () => {
     );
   };
 
-  const handleTrendClick = (title) => {
-    navigate(`/trend/${encodeURIComponent(title.toLowerCase())}`);
+  const handleTrendClick = (title, growth) => {
+    const queryParams = new URLSearchParams({
+      selectedCategory: selectedCategory,
+      selectedTimeRange: selectedTimeRange,
+      selectedTrendType: selectedTrendType,
+      growth: growth,
+    });
+
+    navigate(`/trend/${encodeURIComponent(title)}?${queryParams.toString()}`);
   };
 
   return (
@@ -348,7 +361,7 @@ const TrendsListPage = () => {
           align="center"
           backgroundColor={"#FFFAD6"}
           pt={4}
-          h="120px"
+          h="100px"
         >
           <HStack justifyContent={"center"} w="100%">
             <Image
@@ -393,13 +406,16 @@ const TrendsListPage = () => {
                 cursor="pointer"
                 onClick={() =>
                   setSelectedCategory(
-                    selectedCategory === category.name ? null : category.name
+                    selectedCategory === category.name
+                      ? category.name
+                      : category.name
                   )
                 }
                 position="relative"
                 transition="all 0.2s"
                 _hover={{
-                  bg: "yellow.50",
+                  bg: "#FFFAD6",
+                  borderColor: "yellow.200",
                   transform: "translateY(-2px)",
                 }}
                 border={
@@ -443,7 +459,7 @@ const TrendsListPage = () => {
               >
                 FILTERS
               </Text>
-              <Flex pb={3} gap={4} px={4} borderBottom={"2px solid #e4e4e4"}>
+              <Flex pb={3} gap={4} px={4} borderBottom={"1px solid #e4e4e4a1"}>
                 <Box flex={1}>
                   <FilterDropdown
                     value={selectedTrendType}
@@ -469,8 +485,13 @@ const TrendsListPage = () => {
                     title={item.name}
                     percentage={item.growth}
                     isExpanded={expandedCards?.includes(index)}
-                    onToggle={(e) => toggleCard(index, e)}
-                    onClick={() => handleTrendClick(item?.name)}
+                    onToggle={(e) => {
+                      toggleCard(index, e);
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleTrendClick(item?.name, item.growth);
+                    }}
                     posts={item.posts}
                     selectedTimeRange={selectedTimeRange}
                     selectedTrendType={selectedTrendType}
@@ -482,11 +503,6 @@ const TrendsListPage = () => {
         ) : (
           <VStack justifyContent={"center"} alignItems={"center"} h="60%">
             <VStack>
-              {/* <DotLottieReact
-              src="https://lottie.host/78c57106-bf84-434f-8e9f-48d39587e3a0/DfqF6gOC9i.lottie"
-              loop
-              autoplay
-            /> */}
               <DotLottieReact
                 src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
                 loop
@@ -496,6 +512,11 @@ const TrendsListPage = () => {
           </VStack>
         )}
       </Container>
+      {/* <DotLottieReact
+        src="https://lottie.host/bea42e64-8379-460c-a3a0-a57d6b5177ce/m9Z1lgFlkN.lottie"
+        loop
+        autoplay
+      /> */}
     </Box>
   );
 };
