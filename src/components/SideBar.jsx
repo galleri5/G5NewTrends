@@ -153,8 +153,22 @@ const Sidebar = ({ containerRef }) => {
                 </VStack>
               </Stack>
               <Box px={6}>
-                <Text color="gray.500" fontSize="sm" mb={4} textAlign="center">
-                  Last updated on 12:47am
+                <Text
+                  color="gray.500"
+                  fontSize="sm"
+                  mb={4}
+                  textAlign="center"
+                  maxW="200px"
+                >
+                  Last updated on{" "}
+                  {new Date(2025, 0, 28, 16, 47).toLocaleDateString("en-US", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
                 </Text>
 
                 <Flex direction="column" align="center">
