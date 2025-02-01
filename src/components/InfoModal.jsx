@@ -41,19 +41,15 @@ export const InfoPopover = ({ children }) => {
         <PopoverTrigger>
           <HStack cursor={"pointer"} onClick={() => setIsOpen((prev) => !prev)}>
             <IconButton
-              icon={<Info size={18} />}
+              icon={<Info size={24} />}
               variant="ghost"
               size="sm"
               colorScheme="gray"
+              cursor={"pointer"}
             />
           </HStack>
         </PopoverTrigger>
-        <PopoverContent
-          zIndex={20}
-          //   maxW={"50%"}
-          fontFamily={"Teachers"}
-          minW="400px"
-        >
+        <PopoverContent zIndex={20} fontFamily={"Teachers"} minW="320px">
           <PopoverArrow />
           <PopoverCloseButton />
 
