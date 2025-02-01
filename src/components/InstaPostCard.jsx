@@ -175,7 +175,12 @@ export const ContentCard = ({ type, post }) => {
               w="100%"
               overflow={"hidden"}
             >
-              <Skeleton isLoaded={!isLoading} w="full" h="full">
+              <Skeleton
+                isLoaded={!isLoading}
+                w="full"
+                h="full"
+                endColor="#fac812aa"
+              >
                 <Image
                   src={fetchedData}
                   alt="Content"
@@ -308,7 +313,12 @@ export const ContentCard = ({ type, post }) => {
                 overflow={"hidden"}
                 maxH={"50vh"}
               >
-                <Skeleton isLoaded={!isLoading} w="full" h="full">
+                <Skeleton
+                  isLoaded={!isLoading}
+                  w="full"
+                  h="full"
+                  endColor="#fac812aa"
+                >
                   <Image
                     src={fetchedData}
                     // h="100%"

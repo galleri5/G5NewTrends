@@ -478,7 +478,11 @@ const TrendsListPage = () => {
           <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
             {data &&
               data[selectedTrendType].map((item, index) => (
-                <Skeleton key={item.id} isLoaded={!isLoading}>
+                <Skeleton
+                  key={item.id}
+                  isLoaded={!isLoading}
+                  endColor="#fac812aa"
+                >
                   <TrendCard
                     key={item.id}
                     rank={index + 1}
