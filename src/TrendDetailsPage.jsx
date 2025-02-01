@@ -478,20 +478,22 @@ const TrendDetailsPage = () => {
 
       const fetchedData = await response.json();
       setData(fetchedData);
-      console.log(fetchedData);
+      // console.log(fetchedData);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   });
   return (
-    <Box bg="gray.100" h="100vh">
+    <Box bg="gray.100" h="100vh" overflow={"hidden"}>
       <Container
         maxW="480px"
         p={0}
         bg="white"
         minH="100vh"
-        maxH={"100vh"}
-        overflow="auto"
+        h="100%"
+        // maxH={"100vh"}
+        overflowY="auto"
+        overflowX="hidden"
         pb="100px"
       >
         <Box
@@ -538,15 +540,15 @@ const TrendDetailsPage = () => {
                   {selectedTimeRange === "7d"
                     ? "the last week"
                     : selectedTimeRange === "15d"
-                      ? "the last 15 days"
-                      : "the last 30 days"}{" "}
+                    ? "the last 15 days"
+                    : "the last 30 days"}{" "}
                 </Text>
               </Stack>
             </Stack>
           </HStack>
         </Box>
-
-        <Tabs colorScheme="yellow" h="100%">
+        {/* <VStack border="1px solid red" h="100%"> */}
+        <Tabs colorScheme="yellow">
           <TabList
             px={6}
             pt="4"
@@ -564,7 +566,7 @@ const TrendDetailsPage = () => {
             <Tab>Content</Tab>
           </TabList>
 
-          {data ? (
+          {data && (
             <TabPanels>
               <TabPanel>
                 <AboutSection about={data?.about} />
@@ -583,18 +585,21 @@ const TrendDetailsPage = () => {
                 />
               </TabPanel>
             </TabPanels>
-          ) : (
-            <VStack justifyContent={"center"} alignItems={"center"} h="80%">
-              <VStack>
-                <DotLottieReact
-                  src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
-                  loop
-                  autoplay
-                />
-              </VStack>
-            </VStack>
           )}
         </Tabs>
+        {/* </VStack> */}
+
+        {!data && (
+          <VStack justifyContent={"center"} alignItems={"end"} h="80%">
+            <VStack>
+              <DotLottieReact
+                src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
+                loop
+                autoplay
+              />
+            </VStack>
+          </VStack>
+        )}
       </Container>
     </Box>
   );

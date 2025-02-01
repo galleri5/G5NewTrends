@@ -236,7 +236,7 @@ const TrendsListPage = () => {
 
   const getCacheKey = (category, timeRange) => `${category}-${timeRange}`;
 
-  console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
+  // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
   const isCacheValid = (cacheKey) => {
     const cachedItem = dataCache.current[cacheKey];

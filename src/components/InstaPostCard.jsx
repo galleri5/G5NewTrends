@@ -375,6 +375,26 @@ export const ContentCard = ({ type, post }) => {
               </Text>
             </Stack>
           </ModalBody>
+          <HStack
+            justifyContent={"center"}
+            cursor={"pointer"}
+            onClick={onClose}
+          >
+            <Text
+              textColor={"red.400"}
+              fontWeight={"600"}
+              textAlign={"center"}
+              backdropFilter="blur(10px)"
+              backgroundBlendMode="overlay"
+              backgroundColor="#ffffff7d"
+              display={"inline"}
+              maxW="100px"
+              paddingX={"2"}
+              borderRadius={"xl"}
+            >
+              Close
+            </Text>
+          </HStack>
         </ModalContent>
       </Modal>
     </>
