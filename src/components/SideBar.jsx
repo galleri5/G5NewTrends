@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { Menu, TrendingUp, Contact, NotebookTabs } from "lucide-react";
 import { createPortal } from "react-dom";
+import {
+  IconButton,
+  Box,
+  Text,
+  VStack,
+  HStack,
+  Stack,
+  Image,
+  Flex,
+} from "@chakra-ui/react";
 import "./Sidebar.css";
 
 const Sidebar = ({ containerRef }) => {
@@ -70,32 +80,47 @@ const Sidebar = ({ containerRef }) => {
   ];
 
   const MenuItem = ({ item }) => (
-    <div
-      className={`menu-item ${activeItem === item.name ? "active" : ""} ${
-        item.comingSoon ? "coming-soon" : ""
-      } ${item.bg === "amber" ? "amber-bg" : ""}`}
+    <Flex
+      align="center"
+      p={3}
+      cursor="pointer"
+      borderRadius="xl"
+      bg={
+        activeItem === item.name && item.bg === "amber"
+          ? "#FFFAD6"
+          : "transparent"
+      }
+      _hover={{ bg: "gray.50" }}
+      transition="all 0.2s"
       onClick={() => {
         if (!item.comingSoon) setActiveItem(item.name);
       }}
+      opacity={item.comingSoon ? 0.5 : 1}
     >
-      <div className={`menu-icon ${activeItem === item.name ? "active" : ""}`}>
+      <Box mr={4} color={activeItem === item.name ? "black" : "gray.400"}>
         {item.icon}
-      </div>
-      <span className={`menu-text ${activeItem === item.name ? "active" : ""}`}>
+      </Box>
+      <Text
+        fontWeight={activeItem === item.name ? "medium" : "normal"}
+        color={activeItem === item.name ? "black" : "gray.500"}
+      >
         {item.name}
-      </span>
-    </div>
+      </Text>
+    </Flex>
   );
 
   const SidebarContent = () => (
     <>
-      <button
+      <IconButton
+        icon={<Menu size={24} />}
         onClick={() => setIsOpen(true)}
-        className="menu-trigger"
+        position="absolute"
+        top={8}
+        left={4}
+        variant="ghost"
         aria-label="Open Menu"
-      >
-        <Menu size={24} />
-      </button>
+        zIndex={10}
+      />
 
       <div
         className={`backdrop ${isOpen ? "active" : ""}`}
@@ -106,64 +131,85 @@ const Sidebar = ({ containerRef }) => {
         className={`drawer ${isOpen ? "active" : ""}`}
         onClick={handleContentClick}
       >
-        <div className="drawer-content">
-          <div className="drawer-header">
-            <div className="header-text"></div>
-          </div>
+        <Box
+          className="drawer-content"
+          bg="white"
+          opacity={1}
+          backdropFilter="blur(100px)"
+          borderRightRadius="lg"
+          borderRight="1px solid"
+          borderRightColor="gray.200"
+        >
+          <Box p={4} />
 
-          <div className="drawer-body">
-            <div className="category-section">
-              <div className="category-header">CATEGORY</div>
+          <Stack justify="space-between" h="calc(100% - 4rem)" p={4}>
+            <Stack>
+              <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
+                CATEGORY
+              </Text>
 
-              <div className="menu-list">
+              <VStack spacing={2} align="stretch">
                 {menuItems
                   .filter((item) => !item.comingSoon)
                   .map((item, index) => (
                     <MenuItem key={index} item={item} />
                   ))}
-              </div>
+              </VStack>
 
-              <div className="coming-soon-section">
-                <div className="coming-soon-header">COMING SOON</div>
+              <VStack spacing={2} align="stretch" mt={4}>
+                <Text fontSize="sm" color="gray.400">
+                  COMING SOON
+                </Text>
                 {menuItems
                   .filter((item) => item.comingSoon)
                   .map((item, index) => (
                     <MenuItem key={index} item={item} />
                   ))}
-              </div>
-            </div>
+              </VStack>
+            </Stack>
 
-            <div className="drawer-footer">
-              <p className="last-updated">
+            <Box px={6}>
+              <Text
+                color="gray.500"
+                fontSize="sm"
+                mb={4}
+                textAlign="center"
+                maxW="200px"
+                mx="auto"
+              >
                 Last updated on Jan 28, 2025, 04:47 PM
-              </p>
+              </Text>
 
-              <div className="powered-by">
-                <span className="powered-by-text">Powered by</span>
-                <div className="logo-container">
-                  <img
+              <Flex direction="column" align="center">
+                <Text color="gray.500" fontSize="sm">
+                  Powered by
+                </Text>
+                <HStack justify="center" w="100%" mt={2}>
+                  <Image
                     src="./assets/galleri5logo.svg"
                     alt="galleri5logo"
-                    className="logo"
+                    mt={2}
                   />
-                  <span className="brand-text">Trends</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                  <Text fontSize="xl" fontWeight="semibold">
+                    Trends
+                  </Text>
+                </HStack>
+              </Flex>
+            </Box>
+          </Stack>
+        </Box>
       </div>
     </>
   );
 
   return (
-    <div className="sidebar-wrapper">
+    <Box className="sidebar-wrapper">
       {containerRef?.current ? (
         createPortal(<SidebarContent />, containerRef.current)
       ) : (
         <SidebarContent />
       )}
-    </div>
+    </Box>
   );
 };
 
