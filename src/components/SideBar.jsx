@@ -1,197 +1,169 @@
-import React from "react";
-import {
-  Box,
-  Flex,
-  IconButton,
-  Text,
-  VStack,
-  Drawer,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  useDisclosure,
-  HStack,
-  Stack,
-  Image,
-} from "@chakra-ui/react";
+import React, { useState, useEffect } from "react";
 import { Menu, TrendingUp, Contact, NotebookTabs } from "lucide-react";
+import { createPortal } from "react-dom";
+import "./Sidebar.css";
 
 const Sidebar = ({ containerRef }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [activeItem, setActiveItem] = React.useState("Content Trends");
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState("Content Trends");
+
+  useEffect(() => {
+    if (!containerRef?.current) return;
+
+    if (isOpen) {
+      const scrollY = containerRef.current.scrollTop;
+      containerRef.current.style.overflow = "hidden";
+      containerRef.current.style.top = `-${scrollY}px`;
+    } else {
+      const scrollY = containerRef.current.style.top;
+      containerRef.current.style.overflow = "auto";
+      containerRef.current.style.position = "relative";
+      containerRef.current.style.top = "";
+      containerRef.current.scrollTop = parseInt(scrollY || "0") * -1;
+    }
+  }, [isOpen, containerRef]);
+
+  useEffect(() => {
+    return () => {
+      if (containerRef?.current) {
+        containerRef.current.style.overflow = "auto";
+        containerRef.current.style.position = "relative";
+        containerRef.current.style.top = "";
+      }
+    };
+  }, [containerRef]);
+
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
 
   const handleContentClick = (e) => {
-    // If the click target is the DrawerContent itself (not its children),
-    // close the drawer
     if (e.target === e.currentTarget) {
-      onClose();
+      setIsOpen(false);
     }
   };
 
   const menuItems = [
     {
       name: "Content Trends",
-      icon: <NotebookTabs size={18} />,
+      icon: <NotebookTabs size={16} />,
       comingSoon: false,
-      bg: "#FFFAD6",
+      bg: "amber",
     },
     {
       name: "Topic Trends",
-      icon: <TrendingUp size={18} />,
+      icon: <TrendingUp size={16} />,
       comingSoon: true,
       bg: "transparent",
     },
     {
       name: "Product Trends",
-      icon: <Contact size={18} />,
+      icon: <Contact size={16} />,
       comingSoon: true,
       bg: "transparent",
     },
   ];
 
   const MenuItem = ({ item }) => (
-    <Flex
-      align="center"
-      p={3}
-      cursor="pointer"
-      borderRadius="xl"
-      bg={activeItem === item.name ? item.bg : "transparent"}
-      _hover={{ bg: "gray.50" }}
-      transition="all 0.2s"
+    <div
+      className={`menu-item ${activeItem === item.name ? "active" : ""} ${
+        item.comingSoon ? "coming-soon" : ""
+      } ${item.bg === "amber" ? "amber-bg" : ""}`}
       onClick={() => {
         if (!item.comingSoon) setActiveItem(item.name);
       }}
-      opacity={item.comingSoon ? 0.5 : 1}
     >
-      <Box mr={4} color={activeItem === item.name ? "black" : "gray.400"}>
+      <div className={`menu-icon ${activeItem === item.name ? "active" : ""}`}>
         {item.icon}
-      </Box>
-      <Text
-        fontWeight={activeItem === item.name ? "medium" : "normal"}
-        color={activeItem === item.name ? "black" : "gray.500"}
-      >
+      </div>
+      <span className={`menu-text ${activeItem === item.name ? "active" : ""}`}>
         {item.name}
-      </Text>
-    </Flex>
+      </span>
+    </div>
+  );
+
+  const SidebarContent = () => (
+    <>
+      <button
+        onClick={() => setIsOpen(true)}
+        className="menu-trigger"
+        aria-label="Open Menu"
+      >
+        <Menu size={24} />
+      </button>
+
+      <div
+        className={`backdrop ${isOpen ? "active" : ""}`}
+        onClick={() => setIsOpen(false)}
+      />
+
+      <div
+        className={`drawer ${isOpen ? "active" : ""}`}
+        onClick={handleContentClick}
+      >
+        <div className="drawer-content">
+          <div className="drawer-header">
+            <div className="header-text"></div>
+          </div>
+
+          <div className="drawer-body">
+            <div className="category-section">
+              <div className="category-header">CATEGORY</div>
+
+              <div className="menu-list">
+                {menuItems
+                  .filter((item) => !item.comingSoon)
+                  .map((item, index) => (
+                    <MenuItem key={index} item={item} />
+                  ))}
+              </div>
+
+              <div className="coming-soon-section">
+                <div className="coming-soon-header">COMING SOON</div>
+                {menuItems
+                  .filter((item) => item.comingSoon)
+                  .map((item, index) => (
+                    <MenuItem key={index} item={item} />
+                  ))}
+              </div>
+            </div>
+
+            <div className="drawer-footer">
+              <p className="last-updated">
+                Last updated on Jan 28, 2025, 04:47 PM
+              </p>
+
+              <div className="powered-by">
+                <span className="powered-by-text">Powered by</span>
+                <div className="logo-container">
+                  <img
+                    src="./assets/galleri5logo.svg"
+                    alt="galleri5logo"
+                    className="logo"
+                  />
+                  <span className="brand-text">Trends</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 
   return (
-    <>
-      <IconButton
-        icon={<Menu />}
-        onClick={onOpen}
-        variant="ghost"
-        size="lg"
-        aria-label="Open Menu"
-        position="absolute"
-        top="8"
-        left="4"
-        zIndex="10"
-      />
-
-      <Drawer
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        position={"absolute !important"}
-        portalProps={{ containerRef: containerRef }}
-      >
-        <DrawerOverlay />
-        <DrawerContent
-          position={"relative !important"}
-          maxW={"480px"}
-          background={"transparent"}
-          onClick={handleContentClick}
-        >
-          <VStack
-            maxW={"300px"}
-            backdropFilter="blur(10px)"
-            backgroundBlendMode="overlay"
-            backgroundColor="#ffffffe0"
-            h="100%"
-            position={"relative"}
-            borderRightRadius={10}
-          >
-            <DrawerHeader pb={4}>
-              <Text
-                color="gray.500"
-                fontSize="sm"
-                fontWeight="medium"
-                mb={2}
-              ></Text>
-            </DrawerHeader>
-            {/* <DrawerCloseButton
-              position={"absolute !important"}
-              size={"xl"}
-              top={4}
-              right={4}
-            /> */}
-
-            <Stack justifyContent={"space-between"} h="100%" mb="4">
-              <Stack>
-                <Text color="gray.500" fontSize="sm" fontWeight="medium" mb={2}>
-                  CATEGORY
-                </Text>
-
-                <VStack spacing={2} align="stretch">
-                  {menuItems
-                    .filter((item) => !item.comingSoon)
-                    .map((item, index) => (
-                      <MenuItem key={index} item={item} />
-                    ))}
-                </VStack>
-
-                <VStack spacing={2} align="stretch" mt={4}>
-                  <Text fontSize="sm" color="gray.400">
-                    COMING SOON{" "}
-                  </Text>
-                  {menuItems
-                    .filter((item) => item.comingSoon)
-                    .map((item, index) => (
-                      <MenuItem key={index} item={item} />
-                    ))}
-                </VStack>
-              </Stack>
-              <Box px={6}>
-                <Text
-                  color="gray.500"
-                  fontSize="sm"
-                  mb={4}
-                  textAlign="center"
-                  maxW="200px"
-                >
-                  Last updated on{" "}
-                  {new Date(2025, 0, 28, 16, 47).toLocaleDateString("en-US", {
-                    day: "2-digit",
-                    month: "short",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: true,
-                  })}
-                </Text>
-
-                <Flex direction="column" align="center">
-                  <Text color="gray.500" fontSize="sm">
-                    Powered by
-                  </Text>
-                  <HStack justifyContent={"center"} w="100%">
-                    <Image
-                      src="./assets/galleri5logo.svg"
-                      alt="galleri5logo"
-                      mt={"10px"}
-                    />
-                    <Text fontSize="xl" fontWeight="semibold">
-                      Trends
-                    </Text>
-                  </HStack>
-                </Flex>
-              </Box>
-            </Stack>
-          </VStack>
-        </DrawerContent>
-      </Drawer>
-    </>
+    <div className="sidebar-wrapper">
+      {containerRef?.current ? (
+        createPortal(<SidebarContent />, containerRef.current)
+      ) : (
+        <SidebarContent />
+      )}
+    </div>
   );
 };
 
