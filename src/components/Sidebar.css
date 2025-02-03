@@ -1,0 +1,41 @@
+.sidebar-wrapper {
+  position: relative;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.drawer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 480px;
+  max-width: 100%;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  z-index: 999;
+}
+
+.drawer.active {
+  transform: translateX(0);
+}
+
+.drawer-content {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  max-width: 70%;
+}
