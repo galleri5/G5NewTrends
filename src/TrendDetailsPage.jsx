@@ -12,7 +12,6 @@ import {
   TabPanels,
   Tab,
   TabPanel,
-  Image,
   HStack,
   VStack,
   Button,
@@ -31,34 +30,9 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip as RechartsTooltip,
   ResponsiveContainer,
 } from "recharts";
 import React from "react";
-const data = [
-  { name: "Jan", value: 5 },
-  { name: "Feb", value: 20 },
-  { name: "Mar", value: 40 },
-  { name: "Apr", value: 80 },
-  { name: "May", value: 37 },
-];
-
-const locationData = [
-  { city: "Bangalore", percentage: 75 },
-  { city: "Mumbai", percentage: 50 },
-  { city: "New Delhi", percentage: 25 },
-  { city: "Jaipur", percentage: 5 },
-  { city: "Pune", percentage: 25 },
-];
-
-const brandsData = [
-  { name: "Synergy", logo: "/api/placeholder/40/40" },
-  { name: "Procter & Gamble", logo: "/api/placeholder/40/40" },
-  { name: "Pepsi", logo: "/api/placeholder/40/40" },
-  { name: "McDonalds", logo: "/api/placeholder/40/40" },
-  { name: "Synergy", logo: "/api/placeholder/40/40" },
-  { name: "P&G", logo: "/api/placeholder/40/40" },
-];
 
 // About Section Component
 const AboutSection = ({ about }) => {
