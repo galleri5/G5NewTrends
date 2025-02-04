@@ -86,7 +86,6 @@ const FilterDropdown = ({ value, onChange }) => {
   );
 };
 
-// Time Range Dropdown Component
 const TimeRangeDropdown = ({ value, onChange }) => {
   const options = [
     { label: "7 days", value: "7d" },
@@ -153,7 +152,7 @@ const TrendCard = ({
   selectedTimeRange,
   selectedTrendType,
 }) => {
-  return (
+  return posts?.length > 0 ? (
     <Box
       borderWidth="1px"
       borderRadius="xl"
@@ -218,6 +217,8 @@ const TrendCard = ({
         </HStack>
       )}
     </Box>
+  ) : (
+    <></>
   );
 };
 
@@ -245,7 +246,6 @@ const TrendsListPage = () => {
     const now = Date.now();
     const isExpired = now - cachedItem.timestamp > CACHE_EXPIRATION;
 
-    // If cache is expired, clean it up
     if (isExpired) {
       delete dataCache.current[cacheKey];
       return false;
@@ -257,7 +257,6 @@ const TrendsListPage = () => {
   const fetchData = React.useCallback(async () => {
     const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
 
-    // Check if we have cached data
     if (isCacheValid(cacheKey)) {
       console.log("Using cached data for:", cacheKey);
       setData(dataCache.current[cacheKey].data);
@@ -288,7 +287,6 @@ const TrendsListPage = () => {
 
       const fetchedData = await response.json();
 
-      // Store in cache with timestamp
       dataCache.current[cacheKey] = {
         data: fetchedData,
         timestamp: Date.now(),
@@ -302,7 +300,6 @@ const TrendsListPage = () => {
     }
   }, [selectedCategory, selectedTimeRange]);
 
-  // Clear expired cache entries periodically
   React.useEffect(() => {
     const cleanupInterval = setInterval(() => {
       const now = Date.now();
@@ -387,13 +384,7 @@ const TrendsListPage = () => {
           CATEGORIES
         </Text>
         <Box px={4}>
-          <HStack
-            spacing={4}
-            overflowX="auto"
-            pt="2"
-            // paddingRight={"20px"}
-            // border={"2px solid red"}
-          >
+          <HStack spacing={4} overflowX="auto" pt="2">
             {categories?.map((category) => (
               <Flex
                 key={category.id}
@@ -518,21 +509,21 @@ const TrendsListPage = () => {
           </VStack>
         ) : (
           <VStack justifyContent={"center"} alignItems={"center"} h="60%">
-            <VStack>
+            <VStack alignItems={"center"} w="100%">
               <DotLottieReact
                 src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
                 loop
                 autoplay
               />
+              {/* <Image
+                src="../../assets/loading.gif"
+                alt="loading"
+                maxH="240px"
+              /> */}
             </VStack>
           </VStack>
         )}
       </Container>
-      {/* <DotLottieReact
-        src="https://lottie.host/bea42e64-8379-460c-a3a0-a57d6b5177ce/m9Z1lgFlkN.lottie"
-        loop
-        autoplay
-      /> */}
     </Box>
   );
 };
