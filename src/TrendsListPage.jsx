@@ -474,66 +474,74 @@ const TrendsListPage = () => {
             </Box>
           </Box>
         </Box>
-        <Stack pb="100px" h="100%">
-          {data ? (
-            <VStack spacing={4} align="stretch" mb={6} px={4} pt="4" h="100%">
-              {data &&
-              data[selectedTrendType] &&
-              data[selectedTrendType].length > 0 ? (
-                data[selectedTrendType].map((item, index) => (
-                  <Skeleton
+        {/* <Stack pb="100px" minH="100%"> */}
+        {data ? (
+          <VStack
+            spacing={4}
+            align="stretch"
+            mb={6}
+            px={4}
+            pt="4"
+            minH="100%"
+            pb="100px"
+          >
+            {data &&
+            data[selectedTrendType] &&
+            data[selectedTrendType].length > 0 ? (
+              data[selectedTrendType].map((item, index) => (
+                <Skeleton
+                  key={item.id}
+                  isLoaded={!isLoading}
+                  endColor="#fac812aa"
+                >
+                  <TrendCard
                     key={item.id}
-                    isLoaded={!isLoading}
-                    endColor="#fac812aa"
-                  >
-                    <TrendCard
-                      key={item.id}
-                      rank={index + 1}
-                      title={item.name}
-                      percentage={item.growth}
-                      isExpanded={expandedCards?.includes(index)}
-                      onToggle={(e) => {
-                        toggleCard(index, e);
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleTrendClick(item?.name, item.growth);
-                      }}
-                      posts={item.posts}
-                      selectedTimeRange={selectedTimeRange}
-                      selectedTrendType={selectedTrendType}
-                      loading={isLoading}
-                    />
-                  </Skeleton>
-                ))
-              ) : (
-                <VStack h="50%" alignItems={"center"} justifyContent={"center"}>
-                  <Text textAlign={"center"}>
-                    No data available for the selected filters:{" "}
-                    {selectedTrendType} Trend and selected time range (
-                    {selectedTimeRange}).
-                  </Text>
-                  <Text> Please try changing the filters.</Text>
-                </VStack>
-              )}
-            </VStack>
-          ) : (
-            <VStack justifyContent={"center"} alignItems={"center"} h="60%">
-              <VStack alignItems={"center"} w="100%">
-                <DotLottieReact
-                  src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
-                  loop
-                  autoplay
-                />
-                {/* <Image
+                    rank={index + 1}
+                    title={item.name}
+                    percentage={item.growth}
+                    isExpanded={expandedCards?.includes(index)}
+                    onToggle={(e) => {
+                      toggleCard(index, e);
+                    }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleTrendClick(item?.name, item.growth);
+                    }}
+                    posts={item.posts}
+                    selectedTimeRange={selectedTimeRange}
+                    selectedTrendType={selectedTrendType}
+                    loading={isLoading}
+                  />
+                </Skeleton>
+              ))
+            ) : (
+              <VStack h="50%" alignItems={"center"} justifyContent={"center"}>
+                <Text textAlign={"center"}>
+                  No data available for the selected filters:{" "}
+                  {selectedTrendType} Trend and selected time range (
+                  {selectedTimeRange}).
+                </Text>
+                <Text> Please try changing the filters.</Text>
+              </VStack>
+            )}
+          </VStack>
+        ) : (
+          <VStack justifyContent={"center"} alignItems={"center"} h="50%">
+            <VStack alignItems={"center"} w="100%">
+              <DotLottieReact
+                src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
+                loop
+                autoplay
+              />
+              {/* <Image
                 src="../../assets/loading.gif"
                 alt="loading"
                 maxH="240px"
               /> */}
-              </VStack>
             </VStack>
-          )}
-        </Stack>
+          </VStack>
+        )}
+        {/* </Stack> */}
       </Container>
     </Box>
   );
