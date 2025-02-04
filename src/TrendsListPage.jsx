@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ContentCard } from "./components/InstaPostCard";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-
+import { useSearchParams } from "react-router-dom";
 import {
   Box,
   Flex,
@@ -227,11 +227,13 @@ const TrendsListPage = () => {
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
-  const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryFromQuery = searchParams.get("q") || "Fashion";
+  const [selectedCategory, setSelectedCategory] =
+    React.useState(categoryFromQuery);
   const [isLoading, setIsLoading] = React.useState(false);
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
-
   const dataCache = React.useRef({});
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
 
@@ -253,6 +255,10 @@ const TrendsListPage = () => {
 
     return true;
   };
+
+  useEffect(() => {
+    setSearchParams({ q: selectedCategory });
+  }, [selectedCategory]);
 
   const fetchData = React.useCallback(async () => {
     const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
