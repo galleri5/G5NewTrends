@@ -567,11 +567,16 @@ const TrendDetailsPage = () => {
         {!data && (
           <VStack justifyContent={"center"} alignItems={"end"} h="80%">
             <VStack alignItems={"center"} w="100%">
-              <Image
+              <DotLottieReact
+                src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
+                loop
+                autoplay
+              />
+              {/* <Image
                 src="../../assets/loading.gif"
                 alt="loading"
                 maxH="240px"
-              />
+              /> */}
             </VStack>
           </VStack>
         )}
