@@ -224,7 +224,7 @@ const TrendCard = ({
 
 const TrendsListPage = () => {
   const navigate = useNavigate();
-  const [expandedCards, setExpandedCards] = React.useState([0]);
+  const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [selectedCategory, setSelectedCategory] = React.useState("Fashion");
@@ -262,7 +262,7 @@ const TrendsListPage = () => {
       setData(dataCache.current[cacheKey].data);
       return;
     }
-
+    setExpandedCards([]);
     setIsLoading(true);
 
     try {
@@ -297,6 +297,7 @@ const TrendsListPage = () => {
       console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false);
+      setExpandedCards([0]);
     }
   }, [selectedCategory, selectedTimeRange]);
 

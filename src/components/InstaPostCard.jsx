@@ -19,6 +19,7 @@ import {
   Skeleton,
 } from "@chakra-ui/react";
 import { Heart, MessageSquare, ExternalLink, Images, Star } from "lucide-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const thumbnailCache = new Map();
 
@@ -175,23 +176,31 @@ export const ContentCard = ({ type, post }) => {
               w="100%"
               overflow={"hidden"}
             >
-              <Skeleton
-                isLoaded={!isLoading}
-                w="full"
-                h="full"
-                endColor="#fac812aa"
-              >
-                <Image
-                  src={fetchedData}
-                  alt="Content"
-                  w="full"
-                  draggable={false}
-                  style={{
-                    WebkitUserSelect: "none",
-                    userSelect: "none",
-                  }}
+              {isLoading ? (
+                <DotLottieReact
+                  src="https://lottie.host/eece49fe-be1b-4719-bf9e-b9c05b7041d4/UwkV2RqYci.lottie"
+                  loop
+                  autoplay
                 />
-              </Skeleton>
+              ) : (
+                <Skeleton
+                  isLoaded={!isLoading}
+                  w="full"
+                  h="full"
+                  endColor="#fac812aa"
+                >
+                  <Image
+                    src={fetchedData}
+                    alt="Content"
+                    w="full"
+                    draggable={false}
+                    style={{
+                      WebkitUserSelect: "none",
+                      userSelect: "none",
+                    }}
+                  />
+                </Skeleton>
+              )}
               <Stack position="absolute" bottom={0} left={-1} gap="1">
                 <Badge
                   bg="#FAC912"
