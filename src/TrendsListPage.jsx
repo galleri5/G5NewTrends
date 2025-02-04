@@ -506,12 +506,7 @@ const TrendsListPage = () => {
                 </Skeleton>
               ))
             ) : (
-              <VStack
-                h="50%"
-                alignItems={"center"}
-                justifyContent={"center"}
-                border="2px solid red"
-              >
+              <VStack h="50%" alignItems={"center"} justifyContent={"center"}>
                 <Text textAlign={"center"}>
                   No data available for the selected filters:{" "}
                   {selectedTrendType} Trend and selected time range (
