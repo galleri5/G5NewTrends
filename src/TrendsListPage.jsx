@@ -475,8 +475,10 @@ const TrendsListPage = () => {
           </Box>
         </Box>
         {data ? (
-          <VStack spacing={4} align="stretch" mb={6} px={4} pt="4">
+          <VStack spacing={4} align="stretch" mb={6} px={4} pt="4" h="100%">
             {data &&
+            data[selectedTrendType] &&
+            data[selectedTrendType].length > 0 ? (
               data[selectedTrendType].map((item, index) => (
                 <Skeleton
                   key={item.id}
@@ -502,7 +504,22 @@ const TrendsListPage = () => {
                     loading={isLoading}
                   />
                 </Skeleton>
-              ))}
+              ))
+            ) : (
+              <VStack
+                h="50%"
+                alignItems={"center"}
+                justifyContent={"center"}
+                border="2px solid red"
+              >
+                <Text textAlign={"center"}>
+                  No data available for the selected filters:{" "}
+                  {selectedTrendType} Trend and selected time range (
+                  {selectedTimeRange}).
+                </Text>
+                <Text> Please try changing the filters.</Text>
+              </VStack>
+            )}
           </VStack>
         ) : (
           <VStack justifyContent={"center"} alignItems={"center"} h="60%">
