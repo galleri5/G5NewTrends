@@ -229,8 +229,11 @@ const TrendsListPage = () => {
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFromQuery = searchParams.get("q") || "Fashion";
+  const normalizedCategory =
+    categoryFromQuery?.charAt(0)?.toUpperCase() +
+    categoryFromQuery?.slice(1)?.toLowerCase();
   const [selectedCategory, setSelectedCategory] =
-    React.useState(categoryFromQuery);
+    React.useState(normalizedCategory);
   const [isLoading, setIsLoading] = React.useState(false);
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
@@ -471,7 +474,7 @@ const TrendsListPage = () => {
             </Box>
           </Box>
         </Box>
-        <Stack pb="100px">
+        <Stack pb="100px" h="100%">
           {data ? (
             <VStack spacing={4} align="stretch" mb={6} px={4} pt="4" h="100%">
               {data &&
