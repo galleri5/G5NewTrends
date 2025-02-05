@@ -232,8 +232,14 @@ const TrendsListPage = () => {
   const normalizedCategory =
     categoryFromQuery?.charAt(0)?.toUpperCase() +
     categoryFromQuery?.slice(1)?.toLowerCase();
-  const [selectedCategory, setSelectedCategory] =
-    React.useState(normalizedCategory);
+  const isValidCategory = categories.some(
+    (category) =>
+      category.name.toLowerCase() === normalizedCategory.toLowerCase()
+  );
+  const [selectedCategory, setSelectedCategory] = React.useState(
+    isValidCategory ? normalizedCategory : "Fashion"
+  );
+
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState();
   const containerRef = React.useRef(null);
