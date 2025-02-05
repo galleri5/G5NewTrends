@@ -192,16 +192,25 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
               key={index}
               borderWidth="1px"
               borderRadius="lg"
-              p={3}
+              p={2}
               w="100px"
               h="100px"
               display="flex"
               flexDirection="column"
               alignItems="center"
+              position="relative"
               justifyContent="center"
+              backgroundImage={`url('../../assets/grad_back_1.gif')`}
+              backgroundSize="cover"
+              backgroundPosition="center"
             >
               {/* <Image src={brand.logo} alt={brand.name} boxSize="40px" mb={2} /> */}
-              <Text fontSize="xs" textAlign="center" fontWeight={"700"}>
+              <Text
+                fontSize="xs"
+                textAlign="center"
+                fontWeight="700"
+                zIndex="1"
+              >
                 {brand}
               </Text>
             </Box>
