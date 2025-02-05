@@ -226,7 +226,7 @@ const TrendsListPage = () => {
   const navigate = useNavigate();
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFromQuery = searchParams.get("q") || "Fashion";
   const normalizedCategory =
@@ -235,11 +235,11 @@ const TrendsListPage = () => {
   const [selectedCategory, setSelectedCategory] =
     React.useState(normalizedCategory);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState();
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
   const dataCache = React.useRef({});
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
-
   const getCacheKey = (category, timeRange) => `${category}-${timeRange}`;
 
   // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
@@ -264,6 +264,7 @@ const TrendsListPage = () => {
   }, [selectedCategory]);
 
   const fetchData = React.useCallback(async () => {
+    setError(false);
     const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
 
     if (isCacheValid(cacheKey)) {
@@ -291,6 +292,7 @@ const TrendsListPage = () => {
       );
 
       if (!response.ok) {
+        setError(true);
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
@@ -303,6 +305,7 @@ const TrendsListPage = () => {
 
       setData(fetchedData);
     } catch (error) {
+      setError(true);
       console.error("Error fetching data:", error);
     } finally {
       setIsLoading(false);
@@ -475,7 +478,7 @@ const TrendsListPage = () => {
           </Box>
         </Box>
         {/* <Stack pb="100px" minH="100%"> */}
-        {data ? (
+        {data && !error ? (
           <VStack
             spacing={4}
             align="stretch"
@@ -515,24 +518,51 @@ const TrendsListPage = () => {
                 </Skeleton>
               ))
             ) : (
-              <VStack h="50%" alignItems={"center"} justifyContent={"center"}>
-                <Text textAlign={"center"}>
-                  No data available for the selected filters:{" "}
-                  {selectedTrendType} Trend and selected time range (
-                  {selectedTimeRange}).
+              <VStack alignItems={"center"} justifyContent={"center"} h="40vh">
+                <Text textAlign={"center"} fontWeight={"600"} fontSize={"16px"}>
+                  No Data Found!
                 </Text>
-                <Text> Please try changing the filters.</Text>
+                <Image src={"/assets/no_data.png"} alt="no data" />
+                <Text
+                  textColor={"#818181"}
+                  fontSize={"16px"}
+                  fontWeight={"600"}
+                >
+                  {" "}
+                  Try changing filters for results
+                </Text>
               </VStack>
             )}
           </VStack>
         ) : (
           <VStack justifyContent={"center"} alignItems={"center"} h="50%">
             <VStack alignItems={"center"} w="100%">
-              <DotLottieReact
-                src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
-                loop
-                autoplay
-              />
+              {!error ? (
+                <DotLottieReact
+                  src="https://lottie.host/58be6e20-5a21-4e6f-b08e-5425639c5ab4/u6YqH3nMRh.lottie"
+                  loop
+                  autoplay
+                />
+              ) : (
+                <VStack>
+                  <Text
+                    textAlign={"center"}
+                    fontWeight={"600"}
+                    fontSize={"16px"}
+                  >
+                    Something went wrong!{" "}
+                  </Text>
+                  <Image src={"/assets/no_data.png"} alt="no data" />
+                  <Text
+                    textColor={"#818181"}
+                    fontSize={"16px"}
+                    fontWeight={"600"}
+                  >
+                    {" "}
+                    Please try again later.
+                  </Text>
+                </VStack>
+              )}
               {/* <Image
                 src="../../assets/loading.gif"
                 alt="loading"
