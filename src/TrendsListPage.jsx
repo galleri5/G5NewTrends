@@ -226,7 +226,7 @@ const TrendsListPage = () => {
   const navigate = useNavigate();
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState("7d");
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFromQuery = searchParams.get("q") || "Fashion";
   const normalizedCategory =
