@@ -425,7 +425,8 @@ const TrendDetailsPage = () => {
   const [data, setData] = React.useState();
 
   React.useEffect(() => {
-    fetchData();
+    if (selectedCategory && selectedTimeRange && selectedTrendType && trendName)
+      fetchData();
   }, []);
 
   const fetchData = React.useCallback(async () => {
