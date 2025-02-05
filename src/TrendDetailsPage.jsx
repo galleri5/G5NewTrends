@@ -200,7 +200,7 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
               alignItems="center"
               position="relative"
               justifyContent="center"
-              backgroundImage={`url('../../assets/grad_back_1.gif')`}
+              backgroundImage={`url('../../assets/grad_back.gif')`}
               backgroundSize="cover"
               backgroundPosition="center"
             >
