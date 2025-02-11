@@ -245,7 +245,12 @@ const TrendsListPage = () => {
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
   const dataCache = React.useRef({});
-  const [activeItem, setActiveItem] = React.useState("Content Trends");
+  const validValues = ["Content Trends", "Product Trends", "Trends"];
+  const urlParamA = searchParams.get("a");
+
+  const [activeItem, setActiveItem] = React.useState(
+    validValues.includes(urlParamA) ? urlParamA : "Content Trends"
+  );
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
   const getCacheKey = (category, timeRange, activeItem) =>
     `${category}-${timeRange}-${activeItem}`;
@@ -268,8 +273,8 @@ const TrendsListPage = () => {
   };
 
   useEffect(() => {
-    setSearchParams({ q: selectedCategory });
-  }, [selectedCategory]);
+    setSearchParams({ q: selectedCategory, a: activeItem });
+  }, [selectedCategory, activeItem]);
 
   const fetchData = React.useCallback(async () => {
     setError(false);
@@ -354,14 +359,25 @@ const TrendsListPage = () => {
   };
 
   const handleTrendClick = (title, growth) => {
-    const queryParams = new URLSearchParams({
-      selectedCategory: selectedCategory,
-      selectedTimeRange: selectedTimeRange,
-      selectedTrendType: selectedTrendType,
-      growth: growth,
-    });
+    const existingParams = new URLSearchParams(location.search);
+    const filteredParams = new URLSearchParams();
+    if (existingParams.has("q"))
+      filteredParams.set("q", existingParams.get("q"));
+    if (existingParams.has("a"))
+      filteredParams.set("a", existingParams.get("a"));
 
-    navigate(`/trend/${encodeURIComponent(title)}?${queryParams.toString()}`);
+    filteredParams.set("selectedCategory", selectedCategory);
+    filteredParams.set("selectedTimeRange", selectedTimeRange);
+    filteredParams.set("selectedTrendType", selectedTrendType);
+    filteredParams.set("growth", growth);
+    filteredParams.set(
+      "activeItem",
+      activeItem === "Product Trends" ? "product-trends" : ""
+    );
+
+    navigate(
+      `/trend/${encodeURIComponent(title)}?${filteredParams.toString()}`
+    );
   };
 
   return (

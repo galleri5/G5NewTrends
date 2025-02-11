@@ -430,6 +430,7 @@ const TrendDetailsPage = () => {
   const selectedCategory = queryParams.get("selectedCategory");
   const selectedTimeRange = queryParams.get("selectedTimeRange");
   const selectedTrendType = queryParams.get("selectedTrendType");
+  const activeItem = queryParams.get("activeItem");
   const growth = queryParams.get("growth");
   const [data, setData] = React.useState();
 
@@ -441,7 +442,9 @@ const TrendDetailsPage = () => {
   const fetchData = React.useCallback(async () => {
     try {
       const response = await fetch(
-        "https://amazon-api.indianetailer.in/amazon/trend-data",
+        `https://amazon-api.indianetailer.in/amazon${
+          activeItem && `/${activeItem}`
+        }/trend-data`,
         {
           method: "POST",
           headers: {
@@ -505,7 +508,17 @@ const TrendDetailsPage = () => {
               icon={<ChevronLeft size={24} />}
               variant="ghost"
               aria-label="Back"
-              onClick={() => navigate("/")}
+              onClick={() => {
+                const existingParams = new URLSearchParams(location.search);
+                const filteredParams = new URLSearchParams();
+
+                if (existingParams.has("q"))
+                  filteredParams.set("q", existingParams.get("q"));
+                if (existingParams.has("a"))
+                  filteredParams.set("a", existingParams.get("a"));
+
+                navigate(`/?${filteredParams.toString()}`);
+              }}
               position={"absolute"}
               left="2"
             />
