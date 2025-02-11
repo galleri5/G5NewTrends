@@ -245,8 +245,10 @@ const TrendsListPage = () => {
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
   const dataCache = React.useRef({});
+  const [activeItem, setActiveItem] = React.useState("Content Trends");
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
-  const getCacheKey = (category, timeRange) => `${category}-${timeRange}`;
+  const getCacheKey = (category, timeRange, activeItem) =>
+    `${category}-${timeRange}-${activeItem}`;
 
   // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
@@ -271,8 +273,11 @@ const TrendsListPage = () => {
 
   const fetchData = React.useCallback(async () => {
     setError(false);
-    const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
-
+    const cacheKey = getCacheKey(
+      selectedCategory,
+      selectedTimeRange,
+      activeItem
+    );
     if (isCacheValid(cacheKey)) {
       console.log("Using cached data for:", cacheKey);
       setData(dataCache.current[cacheKey].data);
@@ -280,10 +285,11 @@ const TrendsListPage = () => {
     }
     setExpandedCards([]);
     setIsLoading(true);
-
     try {
       const response = await fetch(
-        "https://amazon-api.indianetailer.in/amazon/homepage",
+        `https://amazon-api.indianetailer.in/amazon${
+          activeItem === "Product Trends" ? `/product-trends` : ""
+        }/homepage`,
         {
           method: "POST",
           headers: {
@@ -317,7 +323,7 @@ const TrendsListPage = () => {
       setIsLoading(false);
       setExpandedCards([0]);
     }
-  }, [selectedCategory, selectedTimeRange]);
+  }, [selectedCategory, selectedTimeRange, activeItem]);
 
   React.useEffect(() => {
     const cleanupInterval = setInterval(() => {
@@ -370,7 +376,11 @@ const TrendsListPage = () => {
         ref={containerRef}
         position="relative"
       >
-        <Sidebar containerRef={containerRef} />
+        <Sidebar
+          containerRef={containerRef}
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        />
         <Flex
           justify="space-between"
           align="center"

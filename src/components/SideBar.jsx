@@ -13,9 +13,8 @@ import {
 } from "@chakra-ui/react";
 import "./Sidebar.css";
 
-const Sidebar = ({ containerRef }) => {
+const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Content Trends");
 
   useEffect(() => {
     if (!containerRef?.current) return;
@@ -64,18 +63,21 @@ const Sidebar = ({ containerRef }) => {
       icon: <NotebookTabs size={16} />,
       comingSoon: false,
       bg: "amber",
+      value: null,
     },
     {
       name: "Topic Trends",
       icon: <TrendingUp size={16} />,
       comingSoon: true,
       bg: "transparent",
+      value: "topic-trends",
     },
     {
       name: "Product Trends",
       icon: <Contact size={16} />,
-      comingSoon: true,
-      bg: "transparent",
+      comingSoon: false,
+      bg: "amber",
+      value: "product-trends",
     },
   ];
 
