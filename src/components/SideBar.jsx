@@ -63,21 +63,18 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
       icon: <NotebookTabs size={16} />,
       comingSoon: false,
       bg: "amber",
-      value: null,
     },
     {
       name: "Topic Trends",
       icon: <TrendingUp size={16} />,
       comingSoon: true,
       bg: "transparent",
-      value: "topic-trends",
     },
     {
       name: "Product Trends",
       icon: <Contact size={16} />,
       comingSoon: false,
       bg: "amber",
-      value: "product-trends",
     },
   ];
 
