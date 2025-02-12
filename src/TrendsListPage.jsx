@@ -223,6 +223,7 @@ const TrendCard = ({
 };
 
 const TrendsListPage = () => {
+  const fetchController = React.useRef(null);
   const navigate = useNavigate();
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
@@ -278,18 +279,28 @@ const TrendsListPage = () => {
 
   const fetchData = React.useCallback(async () => {
     setError(false);
+
+    setData(null);
     const cacheKey = getCacheKey(
       selectedCategory,
       selectedTimeRange,
       activeItem
     );
+    if (fetchController.current) {
+      fetchController.current.abort();
+    }
     if (isCacheValid(cacheKey)) {
       console.log("Using cached data for:", cacheKey);
       setData(dataCache.current[cacheKey].data);
       return;
     }
+
     setExpandedCards([]);
     setIsLoading(true);
+
+    const controller = new AbortController();
+    fetchController.current = controller;
+
     try {
       const response = await fetch(
         `https://amazon-api.indianetailer.in/amazon${
@@ -305,6 +316,7 @@ const TrendsListPage = () => {
             genre: selectedCategory,
             duration: selectedTimeRange,
           }),
+          signal: controller.signal,
         }
       );
 
@@ -319,11 +331,12 @@ const TrendsListPage = () => {
         data: fetchedData,
         timestamp: Date.now(),
       };
-
       setData(fetchedData);
     } catch (error) {
-      setError(true);
-      console.error("Error fetching data:", error);
+      if (error.name !== "AbortError") {
+        setError(true);
+        console.error("Error fetching data:", error);
+      }
     } finally {
       setIsLoading(false);
       setExpandedCards([0]);
