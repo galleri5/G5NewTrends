@@ -35,7 +35,6 @@ import {
 } from "recharts";
 import React from "react";
 
-// About Section Component
 const AboutSection = ({ about }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
@@ -77,7 +76,6 @@ const AboutSection = ({ about }) => {
   );
 };
 
-// Analytics Section Component
 export const AnalyticsSection = ({ graphData, locData, brands }) => {
   const months = ["Jan", "Feb", "Mar"];
   const data = Object.entries(graphData?.post_counts).map(
@@ -221,7 +219,6 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
   );
 };
 
-// Content Section Component
 const ContentSection = ({ content, creators }) => {
   const [visibleReels, setVisibleReels] = React.useState(5);
   const [visibleFeed, setVisibleFeed] = React.useState(5);
@@ -234,7 +231,7 @@ const ContentSection = ({ content, creators }) => {
       (entries) => {
         const lastEntry = entries[0];
         if (lastEntry.isIntersecting) {
-          setVisibleReels((prev) => Math.min(prev + 5, content?.reels?.length)); // Load next 5 images
+          setVisibleReels((prev) => Math.min(prev + 5, content?.reels?.length));
         }
       },
       { threshold: 1.0 }
@@ -256,7 +253,7 @@ const ContentSection = ({ content, creators }) => {
       (entries) => {
         const lastEntry = entries[0];
         if (lastEntry.isIntersecting) {
-          setVisibleFeed((prev) => Math.min(prev + 5, content?.feed?.length)); // Load next 5 images
+          setVisibleFeed((prev) => Math.min(prev + 5, content?.feed?.length));
         }
       },
       { threshold: 1.0 }

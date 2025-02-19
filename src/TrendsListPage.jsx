@@ -72,7 +72,7 @@ const FilterDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
-            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"}
             _hover={{ bg: "gray.50" }}
           >
             <HStack spacing={3}>
