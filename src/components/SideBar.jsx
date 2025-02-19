@@ -67,8 +67,8 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
     {
       name: "Topic Trends",
       icon: <TrendingUp size={16} />,
-      comingSoon: true,
-      bg: "transparent",
+      comingSoon: false,
+      bg: "amber",
     },
     {
       name: "Product Trends",
@@ -155,16 +155,18 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
                   ))}
               </VStack>
 
-              <VStack spacing={2} align="stretch" mt={4}>
-                <Text fontSize="sm" color="gray.400">
-                  COMING SOON
-                </Text>
-                {menuItems
-                  .filter((item) => item.comingSoon)
-                  .map((item, index) => (
-                    <MenuItem key={index} item={item} />
-                  ))}
-              </VStack>
+              {menuItems.filter((item) => item.comingSoon).length > 0 && (
+                <VStack spacing={2} align="stretch" mt={4}>
+                  <Text fontSize="sm" color="gray.400">
+                    COMING SOON
+                  </Text>
+                  {menuItems
+                    .filter((item) => item.comingSoon)
+                    .map((item, index) => (
+                      <MenuItem key={index} item={item} />
+                    ))}
+                </VStack>
+              )}
             </Stack>
 
             <Box px={6}>

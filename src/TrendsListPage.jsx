@@ -89,7 +89,7 @@ const FilterDropdown = ({ value, onChange }) => {
 const TimeRangeDropdown = ({ value, onChange }) => {
   const options = [
     { label: "7 days", value: "7d" },
-    { label: "15 days", value: "15d" },
+    // { label: "15 days", value: "15d" },
     { label: "30 days", value: "30d" },
   ];
 
@@ -246,7 +246,7 @@ const TrendsListPage = () => {
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
   const dataCache = React.useRef({});
-  const validValues = ["Content Trends", "Product Trends", "Trends"];
+  const validValues = ["Content Trends", "Product Trends", "Topic Trends"];
   const urlParamA = searchParams.get("a");
 
   const [activeItem, setActiveItem] = React.useState(
@@ -304,7 +304,11 @@ const TrendsListPage = () => {
     try {
       const response = await fetch(
         `https://amazon-api.indianetailer.in/amazon${
-          activeItem === "Product Trends" ? `/product-trends` : ""
+          activeItem === "Product Trends"
+            ? `/product-trends`
+            : activeItem === "Topic Trends"
+            ? "/topic-trends"
+            : ""
         }/homepage`,
         {
           method: "POST",
@@ -385,7 +389,11 @@ const TrendsListPage = () => {
     filteredParams.set("growth", growth);
     filteredParams.set(
       "activeItem",
-      activeItem === "Product Trends" ? "product-trends" : ""
+      activeItem === "Product Trends"
+        ? "product-trends"
+        : activeItem === "Topic Trends"
+        ? "topic-trends"
+        : ""
     );
 
     navigate(
