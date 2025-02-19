@@ -86,15 +86,26 @@ const FilterDropdown = ({ value, onChange }) => {
   );
 };
 
-const TimeRangeDropdown = ({ value, onChange }) => {
+const TimeRangeDropdown = ({ value, onChange, activeItem }) => {
   const options = [
     { label: "7 days", value: "7d" },
     // { label: "15 days", value: "15d" },
     { label: "30 days", value: "30d" },
   ];
+  useEffect(() => {
+    if (activeItem === "Product Trends" && value === "30d") {
+      onChange("7d");
+    } else {
+      onChange("30d");
+    }
+  }, [activeItem]);
+
+  const filteredOptions = options.filter(
+    (option) => !(activeItem === "Product Trends" && option.value === "30d")
+  );
 
   const selectedOption =
-    options.find((opt) => opt.value === value) || options[0];
+    filteredOptions.find((opt) => opt.value === value) || filteredOptions[0];
 
   return (
     <Menu>
@@ -114,13 +125,13 @@ const TimeRangeDropdown = ({ value, onChange }) => {
         {selectedOption.label}
       </MenuButton>
       <MenuList borderRadius="lg">
-        {options.map((option) => (
+        {filteredOptions.map((option) => (
           <MenuItem
             key={option.value}
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
-            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"}
             _hover={{ bg: "gray.50" }}
           >
             {option.label}
@@ -130,7 +141,6 @@ const TimeRangeDropdown = ({ value, onChange }) => {
     </Menu>
   );
 };
-
 const categories = [
   { id: 1, name: "Fashion", icon: "/assets/fashionimage.svg" },
   { id: 2, name: "Beauty", icon: "/assets/beautyimage.svg" },
@@ -227,7 +237,6 @@ const TrendsListPage = () => {
   const navigate = useNavigate();
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFromQuery = searchParams.get("q") || "Fashion";
   const normalizedCategory =
@@ -252,6 +261,7 @@ const TrendsListPage = () => {
   const [activeItem, setActiveItem] = React.useState(
     validValues.includes(urlParamA) ? urlParamA : "Content Trends"
   );
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
   const getCacheKey = (category, timeRange, activeItem) =>
     `${category}-${timeRange}-${activeItem}`;
@@ -525,6 +535,7 @@ const TrendsListPage = () => {
                 <TimeRangeDropdown
                   value={selectedTimeRange}
                   onChange={setSelectedTimeRange}
+                  activeItem={activeItem}
                 />
               </Flex>
             </Box>

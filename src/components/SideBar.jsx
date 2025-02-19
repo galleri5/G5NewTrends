@@ -65,14 +65,14 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
       bg: "amber",
     },
     {
-      name: "Topic Trends",
-      icon: <TrendingUp size={16} />,
+      name: "Product Trends",
+      icon: <Contact size={16} />,
       comingSoon: false,
       bg: "amber",
     },
     {
-      name: "Product Trends",
-      icon: <Contact size={16} />,
+      name: "Topic Trends",
+      icon: <TrendingUp size={16} />,
       comingSoon: false,
       bg: "amber",
     },
@@ -178,7 +178,7 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
                 maxW="200px"
                 mx="auto"
               >
-                Last updated on Jan 28, 2025, 04:47 PM
+                Last updated on Feb 18, 2025, 7 PM
               </Text>
 
               <Flex direction="column" align="center">
