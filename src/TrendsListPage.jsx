@@ -313,13 +313,7 @@ const TrendsListPage = () => {
 
     try {
       const response = await fetch(
-        `https://amazon-api.indianetailer.in/amazon${
-          activeItem === "Product Trends"
-            ? `/product-trends`
-            : activeItem === "Topic Trends"
-            ? "/topic-trends"
-            : ""
-        }/homepage`,
+        `https://amazon-api.indianetailer.in/amazon/homepage`,
         {
           method: "POST",
           headers: {
@@ -329,6 +323,12 @@ const TrendsListPage = () => {
           body: JSON.stringify({
             genre: selectedCategory,
             duration: selectedTimeRange,
+            type:
+              activeItem === "Product Trends"
+                ? `product`
+                : activeItem === "Topic Trends"
+                ? "topic"
+                : "content",
           }),
           signal: controller.signal,
         }
