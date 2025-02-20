@@ -86,26 +86,27 @@ const FilterDropdown = ({ value, onChange }) => {
   );
 };
 
-const TimeRangeDropdown = ({ value, onChange, activeItem }) => {
+const TimeRangeDropdown = ({ value, onChange }) => {
   const options = [
-    { label: "7 days", value: "7d" },
+    { label: "4 days", value: "4d" },
+    // { label: "7 days", value: "7d" },
     // { label: "15 days", value: "15d" },
-    { label: "30 days", value: "30d" },
+    // { label: "30 days", value: "30d" },
   ];
-  useEffect(() => {
-    if (activeItem === "Product Trends" && value === "30d") {
-      onChange("7d");
-    } else {
-      onChange("30d");
-    }
-  }, [activeItem]);
+  // useEffect(() => {
+  //   if (activeItem === "Product Trends" && value === "30d") {
+  //     onChange("7d");
+  //   } else {
+  //     onChange("30d");
+  //   }
+  // }, [activeItem]);
 
-  const filteredOptions = options.filter(
-    (option) => !(activeItem === "Product Trends" && option.value === "30d")
-  );
+  // const filteredOptions = options.filter(
+  //   (option) => !(activeItem === "Product Trends" && option.value === "30d")
+  // );
 
   const selectedOption =
-    filteredOptions.find((opt) => opt.value === value) || filteredOptions[0];
+    options.find((opt) => opt.value === value) || options[0];
 
   return (
     <Menu>
@@ -125,7 +126,7 @@ const TimeRangeDropdown = ({ value, onChange, activeItem }) => {
         {selectedOption.label}
       </MenuButton>
       <MenuList borderRadius="lg">
-        {filteredOptions.map((option) => (
+        {options.map((option) => (
           <MenuItem
             key={option.value}
             onClick={() => onChange(option.value)}
@@ -191,7 +192,7 @@ const TrendCard = ({
               fontSize="sm"
             >
               {percentage} change in{" "}
-              {selectedTimeRange === "7d"
+              {selectedTimeRange === "4d"
                 ? "the last week"
                 : selectedTimeRange === "15d"
                 ? "the last 15 days"
@@ -261,7 +262,7 @@ const TrendsListPage = () => {
   const [activeItem, setActiveItem] = React.useState(
     validValues.includes(urlParamA) ? urlParamA : "Content Trends"
   );
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState("4d");
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
   const getCacheKey = (category, timeRange, activeItem) =>
     `${category}-${timeRange}-${activeItem}`;
