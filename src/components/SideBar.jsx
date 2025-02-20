@@ -13,9 +13,8 @@ import {
 } from "@chakra-ui/react";
 import "./Sidebar.css";
 
-const Sidebar = ({ containerRef }) => {
+const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Content Trends");
 
   useEffect(() => {
     if (!containerRef?.current) return;
@@ -66,16 +65,16 @@ const Sidebar = ({ containerRef }) => {
       bg: "amber",
     },
     {
-      name: "Topic Trends",
-      icon: <TrendingUp size={16} />,
-      comingSoon: true,
-      bg: "transparent",
-    },
-    {
       name: "Product Trends",
       icon: <Contact size={16} />,
-      comingSoon: true,
-      bg: "transparent",
+      comingSoon: false,
+      bg: "amber",
+    },
+    {
+      name: "Topic Trends",
+      icon: <TrendingUp size={16} />,
+      comingSoon: false,
+      bg: "amber",
     },
   ];
 
@@ -156,16 +155,18 @@ const Sidebar = ({ containerRef }) => {
                   ))}
               </VStack>
 
-              <VStack spacing={2} align="stretch" mt={4}>
-                <Text fontSize="sm" color="gray.400">
-                  COMING SOON
-                </Text>
-                {menuItems
-                  .filter((item) => item.comingSoon)
-                  .map((item, index) => (
-                    <MenuItem key={index} item={item} />
-                  ))}
-              </VStack>
+              {menuItems.filter((item) => item.comingSoon).length > 0 && (
+                <VStack spacing={2} align="stretch" mt={4}>
+                  <Text fontSize="sm" color="gray.400">
+                    COMING SOON
+                  </Text>
+                  {menuItems
+                    .filter((item) => item.comingSoon)
+                    .map((item, index) => (
+                      <MenuItem key={index} item={item} />
+                    ))}
+                </VStack>
+              )}
             </Stack>
 
             <Box px={6}>
@@ -177,7 +178,7 @@ const Sidebar = ({ containerRef }) => {
                 maxW="200px"
                 mx="auto"
               >
-                Last updated on Jan 28, 2025, 04:47 PM
+                Last updated on Feb 18, 2025, 7 PM
               </Text>
 
               <Flex direction="column" align="center">

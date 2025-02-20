@@ -122,7 +122,7 @@ export const ContentCard = ({ type, post }) => {
           draggable={false}
           border="1px solid #000000"
         >
-          <CardBody paddingY="10px" paddingX="0px">
+          <CardBody paddingY="10px" paddingX="0px" overflow={"hidden"}>
             <Flex
               align="center"
               mb={3}

@@ -72,7 +72,7 @@ const FilterDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
-            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"}
             _hover={{ bg: "gray.50" }}
           >
             <HStack spacing={3}>
@@ -88,10 +88,22 @@ const FilterDropdown = ({ value, onChange }) => {
 
 const TimeRangeDropdown = ({ value, onChange }) => {
   const options = [
-    { label: "7 days", value: "7d" },
-    { label: "15 days", value: "15d" },
-    { label: "30 days", value: "30d" },
+    { label: "4 days", value: "4d" },
+    // { label: "7 days", value: "7d" },
+    // { label: "15 days", value: "15d" },
+    // { label: "30 days", value: "30d" },
   ];
+  // useEffect(() => {
+  //   if (activeItem === "Product Trends" && value === "30d") {
+  //     onChange("7d");
+  //   } else {
+  //     onChange("30d");
+  //   }
+  // }, [activeItem]);
+
+  // const filteredOptions = options.filter(
+  //   (option) => !(activeItem === "Product Trends" && option.value === "30d")
+  // );
 
   const selectedOption =
     options.find((opt) => opt.value === value) || options[0];
@@ -120,7 +132,7 @@ const TimeRangeDropdown = ({ value, onChange }) => {
             onClick={() => onChange(option.value)}
             py={2}
             px={3}
-            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"} // Highlight selected item
+            bg={selectedOption.value === option.value ? "#FFFAD6" : "white"}
             _hover={{ bg: "gray.50" }}
           >
             {option.label}
@@ -130,7 +142,6 @@ const TimeRangeDropdown = ({ value, onChange }) => {
     </Menu>
   );
 };
-
 const categories = [
   { id: 1, name: "Fashion", icon: "/assets/fashionimage.svg" },
   { id: 2, name: "Beauty", icon: "/assets/beautyimage.svg" },
@@ -181,7 +192,7 @@ const TrendCard = ({
               fontSize="sm"
             >
               {percentage} change in{" "}
-              {selectedTimeRange === "7d"
+              {selectedTimeRange === "4d"
                 ? "the last week"
                 : selectedTimeRange === "15d"
                 ? "the last 15 days"
@@ -227,7 +238,6 @@ const TrendsListPage = () => {
   const navigate = useNavigate();
   const [expandedCards, setExpandedCards] = React.useState([]);
   const [selectedTrendType, setSelectedTrendType] = React.useState("emerging");
-  const [selectedTimeRange, setSelectedTimeRange] = React.useState("30d");
   const [searchParams, setSearchParams] = useSearchParams();
   const categoryFromQuery = searchParams.get("q") || "Fashion";
   const normalizedCategory =
@@ -246,8 +256,16 @@ const TrendsListPage = () => {
   const containerRef = React.useRef(null);
   const [data, setData] = React.useState();
   const dataCache = React.useRef({});
+  const validValues = ["Content Trends", "Product Trends", "Topic Trends"];
+  const urlParamA = searchParams.get("a");
+
+  const [activeItem, setActiveItem] = React.useState(
+    validValues.includes(urlParamA) ? urlParamA : "Content Trends"
+  );
+  const [selectedTimeRange, setSelectedTimeRange] = React.useState("4d");
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
-  const getCacheKey = (category, timeRange) => `${category}-${timeRange}`;
+  const getCacheKey = (category, timeRange, activeItem) =>
+    `${category}-${timeRange}-${activeItem}`;
 
   // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
@@ -267,13 +285,18 @@ const TrendsListPage = () => {
   };
 
   useEffect(() => {
-    setSearchParams({ q: selectedCategory });
-  }, [selectedCategory]);
+    setSearchParams({ q: selectedCategory, a: activeItem });
+  }, [selectedCategory, activeItem]);
 
   const fetchData = React.useCallback(async () => {
     setError(false);
+
     setData(null);
-    const cacheKey = getCacheKey(selectedCategory, selectedTimeRange);
+    const cacheKey = getCacheKey(
+      selectedCategory,
+      selectedTimeRange,
+      activeItem
+    );
     if (fetchController.current) {
       fetchController.current.abort();
     }
@@ -291,7 +314,7 @@ const TrendsListPage = () => {
 
     try {
       const response = await fetch(
-        "https://amazon-api.indianetailer.in/amazon/homepage",
+        `https://amazon-api.indianetailer.in/amazon/home`,
         {
           method: "POST",
           headers: {
@@ -301,6 +324,12 @@ const TrendsListPage = () => {
           body: JSON.stringify({
             genre: selectedCategory,
             duration: selectedTimeRange,
+            type:
+              activeItem === "Product Trends"
+                ? `product`
+                : activeItem === "Topic Trends"
+                ? "topic"
+                : "content",
           }),
           signal: controller.signal,
         }
@@ -327,7 +356,7 @@ const TrendsListPage = () => {
       setIsLoading(false);
       setExpandedCards([0]);
     }
-  }, [selectedCategory, selectedTimeRange]);
+  }, [selectedCategory, selectedTimeRange, activeItem]);
 
   React.useEffect(() => {
     const cleanupInterval = setInterval(() => {
@@ -358,14 +387,29 @@ const TrendsListPage = () => {
   };
 
   const handleTrendClick = (title, growth) => {
-    const queryParams = new URLSearchParams({
-      selectedCategory: selectedCategory,
-      selectedTimeRange: selectedTimeRange,
-      selectedTrendType: selectedTrendType,
-      growth: growth,
-    });
+    const existingParams = new URLSearchParams(location.search);
+    const filteredParams = new URLSearchParams();
+    if (existingParams.has("q"))
+      filteredParams.set("q", existingParams.get("q"));
+    if (existingParams.has("a"))
+      filteredParams.set("a", existingParams.get("a"));
 
-    navigate(`/trend/${encodeURIComponent(title)}?${queryParams.toString()}`);
+    filteredParams.set("selectedCategory", selectedCategory);
+    filteredParams.set("selectedTimeRange", selectedTimeRange);
+    filteredParams.set("selectedTrendType", selectedTrendType);
+    filteredParams.set("growth", growth);
+    filteredParams.set(
+      "activeItem",
+      activeItem === "Product Trends"
+        ? "product"
+        : activeItem === "Topic Trends"
+        ? "topic"
+        : "content"
+    );
+
+    navigate(
+      `/trend/${encodeURIComponent(title)}?${filteredParams.toString()}`
+    );
   };
 
   return (
@@ -380,7 +424,11 @@ const TrendsListPage = () => {
         ref={containerRef}
         position="relative"
       >
-        <Sidebar containerRef={containerRef} />
+        <Sidebar
+          containerRef={containerRef}
+          activeItem={activeItem}
+          setActiveItem={setActiveItem}
+        />
         <Flex
           justify="space-between"
           align="center"
@@ -488,6 +536,7 @@ const TrendsListPage = () => {
                 <TimeRangeDropdown
                   value={selectedTimeRange}
                   onChange={setSelectedTimeRange}
+                  activeItem={activeItem}
                 />
               </Flex>
             </Box>

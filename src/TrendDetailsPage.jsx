@@ -8,7 +8,6 @@ import {
   Flex,
   Text,
   Tabs,
-  Image,
   TabList,
   TabPanels,
   Tab,
@@ -35,7 +34,6 @@ import {
 } from "recharts";
 import React from "react";
 
-// About Section Component
 const AboutSection = ({ about }) => {
   const [isExpanded, setIsExpanded] = React.useState(false);
 
@@ -77,7 +75,6 @@ const AboutSection = ({ about }) => {
   );
 };
 
-// Analytics Section Component
 export const AnalyticsSection = ({ graphData, locData, brands }) => {
   const months = ["Jan", "Feb", "Mar"];
   const data = Object.entries(graphData?.post_counts).map(
@@ -221,7 +218,6 @@ export const AnalyticsSection = ({ graphData, locData, brands }) => {
   );
 };
 
-// Content Section Component
 const ContentSection = ({ content, creators }) => {
   const [visibleReels, setVisibleReels] = React.useState(5);
   const [visibleFeed, setVisibleFeed] = React.useState(5);
@@ -234,7 +230,7 @@ const ContentSection = ({ content, creators }) => {
       (entries) => {
         const lastEntry = entries[0];
         if (lastEntry.isIntersecting) {
-          setVisibleReels((prev) => Math.min(prev + 5, content?.reels?.length)); // Load next 5 images
+          setVisibleReels((prev) => Math.min(prev + 5, content?.reels?.length));
         }
       },
       { threshold: 1.0 }
@@ -256,7 +252,7 @@ const ContentSection = ({ content, creators }) => {
       (entries) => {
         const lastEntry = entries[0];
         if (lastEntry.isIntersecting) {
-          setVisibleFeed((prev) => Math.min(prev + 5, content?.feed?.length)); // Load next 5 images
+          setVisibleFeed((prev) => Math.min(prev + 5, content?.feed?.length));
         }
       },
       { threshold: 1.0 }
@@ -430,6 +426,7 @@ const TrendDetailsPage = () => {
   const selectedCategory = queryParams.get("selectedCategory");
   const selectedTimeRange = queryParams.get("selectedTimeRange");
   const selectedTrendType = queryParams.get("selectedTrendType");
+  const activeItem = queryParams.get("activeItem");
   const growth = queryParams.get("growth");
   const [data, setData] = React.useState();
 
@@ -441,7 +438,7 @@ const TrendDetailsPage = () => {
   const fetchData = React.useCallback(async () => {
     try {
       const response = await fetch(
-        "https://amazon-api.indianetailer.in/amazon/trend-data",
+        `https://amazon-api.indianetailer.in/amazon/trend/data`,
         {
           method: "POST",
           headers: {
@@ -449,6 +446,7 @@ const TrendDetailsPage = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            type: activeItem,
             genre: selectedCategory,
             duration: selectedTimeRange,
             trend_type: selectedTrendType,
@@ -505,7 +503,17 @@ const TrendDetailsPage = () => {
               icon={<ChevronLeft size={24} />}
               variant="ghost"
               aria-label="Back"
-              onClick={() => navigate("/")}
+              onClick={() => {
+                const existingParams = new URLSearchParams(location.search);
+                const filteredParams = new URLSearchParams();
+
+                if (existingParams.has("q"))
+                  filteredParams.set("q", existingParams.get("q"));
+                if (existingParams.has("a"))
+                  filteredParams.set("a", existingParams.get("a"));
+
+                navigate(`/?${filteredParams.toString()}`);
+              }}
               position={"absolute"}
               left="2"
             />
