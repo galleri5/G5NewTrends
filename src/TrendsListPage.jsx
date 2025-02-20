@@ -313,7 +313,7 @@ const TrendsListPage = () => {
 
     try {
       const response = await fetch(
-        `https://amazon-api.indianetailer.in/amazon/homepage`,
+        `https://amazon-api.indianetailer.in/amazon/home`,
         {
           method: "POST",
           headers: {
