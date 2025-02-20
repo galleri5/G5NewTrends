@@ -401,10 +401,10 @@ const TrendsListPage = () => {
     filteredParams.set(
       "activeItem",
       activeItem === "Product Trends"
-        ? "product-trends"
+        ? "product"
         : activeItem === "Topic Trends"
-        ? "topic-trends"
-        : ""
+        ? "topic"
+        : "content"
     );
 
     navigate(

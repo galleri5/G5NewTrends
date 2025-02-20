@@ -8,7 +8,6 @@ import {
   Flex,
   Text,
   Tabs,
-  Image,
   TabList,
   TabPanels,
   Tab,
@@ -439,9 +438,7 @@ const TrendDetailsPage = () => {
   const fetchData = React.useCallback(async () => {
     try {
       const response = await fetch(
-        `https://amazon-api.indianetailer.in/amazon${
-          activeItem && `/${activeItem}`
-        }/trend-data`,
+        `https://amazon-api.indianetailer.in/amazon/trend/data`,
         {
           method: "POST",
           headers: {
@@ -449,6 +446,7 @@ const TrendDetailsPage = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            type: activeItem,
             genre: selectedCategory,
             duration: selectedTimeRange,
             trend_type: selectedTrendType,
