@@ -648,7 +648,12 @@ const TrendsListPage = () => {
             )}
           </VStack>
         ) : (
-          <VStack justifyContent={"center"} alignItems={"center"} h="50%">
+          <VStack
+            justifyContent={"center"}
+            alignItems={"center"}
+            minH="40vh"
+            h="50dvh"
+          >
             <VStack alignItems={"center"} w="100%">
               {!error ? (
                 <DotLottieReact
