@@ -59,17 +59,18 @@ const Sidebar = ({ containerRef, activeItem, setActiveItem }) => {
 
   const menuItems = [
     {
-      name: "Content Trends",
-      icon: <NotebookTabs size={16} />,
-      comingSoon: false,
-      bg: "amber",
-    },
-    {
       name: "Product Trends",
       icon: <Contact size={16} />,
       comingSoon: false,
       bg: "amber",
     },
+    {
+      name: "Content Trends",
+      icon: <NotebookTabs size={16} />,
+      comingSoon: false,
+      bg: "amber",
+    },
+
     {
       name: "Topic Trends",
       icon: <TrendingUp size={16} />,

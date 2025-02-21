@@ -264,12 +264,37 @@ const TrendsListPage = () => {
   const urlParamA = searchParams.get("a");
 
   const [activeItem, setActiveItem] = React.useState(
-    validValues.includes(urlParamA) ? urlParamA : "Content Trends"
+    validValues.includes(urlParamA) ? urlParamA : "Product Trends"
   );
   const [selectedTimeRange, setSelectedTimeRange] = React.useState("4d");
   const CACHE_EXPIRATION = 3 * 60 * 60 * 1000;
   const getCacheKey = (category, timeRange, activeItem) =>
     `${category}-${timeRange}-${activeItem}`;
+
+  const [isFilterFixed, setIsFilterFixed] = React.useState(false);
+  const filterRef = React.useRef(null);
+  const filterPositionRef = React.useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!filterRef.current) return;
+
+      if (filterPositionRef.current === 0) {
+        filterPositionRef.current = filterRef.current.offsetTop;
+      }
+
+      const scrollPosition = window.scrollY;
+      setIsFilterFixed(scrollPosition > filterPositionRef.current);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    if (filterRef.current) {
+      filterPositionRef.current = filterRef.current.offsetTop;
+    }
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
@@ -422,11 +447,18 @@ const TrendsListPage = () => {
         maxW="480px"
         p={0}
         bg="white"
-        minH="100dvh"
-        h={"100vh"}
+        height="100%"
+        minH={"100vh"}
         overflow="auto"
         ref={containerRef}
         position="relative"
+        sx={{
+          WebkitOverflowScrolling: "touch",
+          overscrollBehavior: "none",
+          "@supports (-webkit-touch-callout: none)": {
+            minHeight: "-webkit-fill-available",
+          },
+        }}
       >
         <Sidebar
           containerRef={containerRef}
@@ -446,7 +478,6 @@ const TrendsListPage = () => {
               alt="galleri5logo"
               mt={"10px"}
             />
-
             <Text fontSize="xl" fontWeight="semibold">
               Trends
             </Text>
@@ -510,43 +541,57 @@ const TrendsListPage = () => {
             ))}
           </HStack>
         </Box>
+
         <Box
+          ref={filterRef}
           pt="4"
-          position={"sticky !important"}
-          top="0"
-          zIndex={"999"}
-          backdropFilter="blur(10px)"
-          backgroundBlendMode="overlay"
-          backgroundColor="#ffffff7d"
+          style={{
+            position: isFilterFixed ? "fixed" : "relative",
+            top: isFilterFixed ? 0 : "auto",
+            width: isFilterFixed ? "inherit" : "100%",
+            maxWidth: isFilterFixed ? "inherit" : "100%",
+            zIndex: 999,
+            backdropFilter: "blur(10px)",
+            backgroundBlendMode: "overlay",
+            backgroundColor: "#ffffff7d",
+          }}
         >
           <Box>
-            <Box>
-              <Text
-                color="gray.500"
-                mb={3}
-                fontSize="10px"
-                fontWeight={"700"}
-                px={4}
-              >
-                FILTERS
-              </Text>
-              <Flex pb={3} gap={4} px={4} borderBottom={"1px solid #e4e4e4a1"}>
-                <Box flex={1}>
-                  <FilterDropdown
-                    value={selectedTrendType}
-                    onChange={setSelectedTrendType}
-                  />
-                </Box>
-                <TimeRangeDropdown
-                  value={selectedTimeRange}
-                  onChange={setSelectedTimeRange}
-                  activeItem={activeItem}
+            <Text
+              color="gray.500"
+              mb={3}
+              fontSize="10px"
+              fontWeight={"700"}
+              px={4}
+            >
+              FILTERS
+            </Text>
+            <Flex pb={3} gap={4} px={4} borderBottom={"1px solid #e4e4e4a1"}>
+              <Box flex={1}>
+                <FilterDropdown
+                  value={selectedTrendType}
+                  onChange={setSelectedTrendType}
                 />
-              </Flex>
-            </Box>
+              </Box>
+              <TimeRangeDropdown
+                value={selectedTimeRange}
+                onChange={setSelectedTimeRange}
+                activeItem={activeItem}
+              />
+            </Flex>
           </Box>
         </Box>
-        {/* <Stack pb="100px" minH="100%"> */}
+
+        {isFilterFixed && (
+          <Box
+            height="100px"
+            style={{
+              transition: "height 0.3s ease-in-out",
+              opacity: isFilterFixed ? 1 : 0,
+            }}
+          />
+        )}
+
         {data && !error ? (
           <VStack
             spacing={4}
@@ -597,7 +642,6 @@ const TrendsListPage = () => {
                   fontSize={"16px"}
                   fontWeight={"600"}
                 >
-                  {" "}
                   Try changing filters for results
                 </Text>
               </VStack>
@@ -619,7 +663,7 @@ const TrendsListPage = () => {
                     fontWeight={"600"}
                     fontSize={"16px"}
                   >
-                    Something went wrong!{" "}
+                    Something went wrong!
                   </Text>
                   <Image src={"/assets/no_data.png"} alt="no data" />
                   <Text
@@ -627,20 +671,13 @@ const TrendsListPage = () => {
                     fontSize={"16px"}
                     fontWeight={"600"}
                   >
-                    {" "}
                     Please try again later.
                   </Text>
                 </VStack>
               )}
-              {/* <Image
-                src="../../assets/loading.gif"
-                alt="loading"
-                maxH="240px"
-              /> */}
             </VStack>
           </VStack>
         )}
-        {/* </Stack> */}
       </Container>
     </Box>
   );
