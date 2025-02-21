@@ -233,6 +233,10 @@ const TrendCard = ({
   );
 };
 
+const globalDataCache = {
+  current: {},
+};
+
 const TrendsListPage = () => {
   const fetchController = React.useRef(null);
   const navigate = useNavigate();
@@ -270,14 +274,14 @@ const TrendsListPage = () => {
   // console.log(selectedCategory, selectedTimeRange, selectedTrendType, data);
 
   const isCacheValid = (cacheKey) => {
-    const cachedItem = dataCache.current[cacheKey];
+    const cachedItem = globalDataCache.current[cacheKey];
     if (!cachedItem) return false;
 
     const now = Date.now();
     const isExpired = now - cachedItem.timestamp > CACHE_EXPIRATION;
 
     if (isExpired) {
-      delete dataCache.current[cacheKey];
+      delete globalDataCache.current[cacheKey];
       return false;
     }
 
@@ -302,7 +306,7 @@ const TrendsListPage = () => {
     }
     if (isCacheValid(cacheKey)) {
       console.log("Using cached data for:", cacheKey);
-      setData(dataCache.current[cacheKey].data);
+      setData(globalDataCache.current[cacheKey].data);
       return;
     }
 
@@ -342,7 +346,7 @@ const TrendsListPage = () => {
 
       const fetchedData = await response.json();
 
-      dataCache.current[cacheKey] = {
+      globalDataCache.current[cacheKey] = {
         data: fetchedData,
         timestamp: Date.now(),
       };
@@ -361,17 +365,17 @@ const TrendsListPage = () => {
   React.useEffect(() => {
     const cleanupInterval = setInterval(() => {
       const now = Date.now();
-      Object.keys(dataCache.current).forEach((key) => {
-        const cachedItem = dataCache.current[key];
+      Object.keys(globalDataCache.current).forEach((key) => {
+        const cachedItem = globalDataCache.current[key];
         if (now - cachedItem.timestamp > CACHE_EXPIRATION) {
-          delete dataCache.current[key];
+          delete globalDataCache.current[key];
         }
       });
     }, CACHE_EXPIRATION);
 
     return () => {
       clearInterval(cleanupInterval);
-      dataCache.current = {};
+      // dataCache.current = {};
     };
   }, []);
 
